@@ -1,0 +1,94 @@
+/* Home / landing hero container */
+.home-landing {
+  position: relative;
+  height: 78vh;
+  margin-bottom: 40px;
+  border-radius: 26px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Use local background path when deploying; replace as needed */
+  background-image: url('/mnt/data/background.jpeg'); /* replace with images/background.jpeg in prod */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.45),
+    inset 0 0 80px rgba(0, 0, 0, 0.35);
+}
+
+/* Deep dusk overlay for mood + contrast */
+.home-landing::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(8, 14, 11, 0.55),
+    rgba(6, 10, 8, 0.40)
+  );
+  backdrop-filter: brightness(0.92);
+  pointer-events: none;
+}
+
+/* Ambient particle layer */
+.home-landing::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background-image: radial-gradient(
+    circle at 40% 30%,
+    rgba(255,255,255,0.06) 0%,
+    transparent 65%
+  );
+  opacity: 0.35;
+  animation: ambientFloat 18s ease-in-out infinite alternate;
+}
+@keyframes ambientFloat {
+   0% { transform: translateY(0px) translateX(0px);}
+   100% { transform: translateY(-16px) translateX(12px);} 
+  }
+
+/* Frosted glass hero panel */
+.hero-overlay {
+  position: relative;
+  z-index: 2;
+  padding: 46px 52px;
+  max-width: 950px;
+  border-radius: 26px;
+
+  background: rgba(30, 40, 36, 0.35);
+  backdrop-filter: blur(26px) saturate(1.6);
+  -webkit-backdrop-filter: blur(26px) saturate(1.6);
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 28px 58px rgba(0, 0, 0, 0.48), inset 0 0 38px rgba(255, 255, 255, 0.07);
+  animation: heroEnter 0.8s ease forwards;
+  opacity: 0;
+}
+@keyframes heroEnter {
+   0% { opacity:0; transform: translateY(18px) scale(.97);}
+   100% { opacity:1; transform: translateY(0) scale(1);} 
+}
+
+/* Hero typography */
+.hero-title { margin: 0 0 8px 0; font-family: "Kensmark One", "Inter", system-ui, sans-serif; font-weight:700; color: var(--accent-gold); font-size: clamp(34px,4vw,48px); text-shadow: 0 0 12px rgba(20,29,26,0.65); }
+.hero-lead { color: #eafaf0; font-size:1.12rem; line-height:1.6; opacity:0.98; }
+
+/* CTA */
+.cta-row { margin-top:18px; display:flex; gap:14px; }
+.hero-overlay .btn { padding: 14px 32px; background: linear-gradient(90deg, var(--machine-accent), #2b8bce); color: #fff; border-radius:14px; font-weight:600; box-shadow: 0 6px 16px rgba(0,0,0,0.4), inset 0 0 12px rgba(255,255,255,0.12); transition: all .25s ease; }
+.hero-overlay .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(0,0,0,0.45), inset 0 0 14px rgba(255,255,255,0.22); }
+
+/* Logo */
+.logo-mark { width:46px; height:46px; border-radius:12px; background-image: url('images/icon.ico'); background-size:cover; background-position:center; background-repeat:no-repeat; background-color:#0b2a1f; box-shadow: 0 6px 16px rgba(0,0,0,0.45), inset 0 0 10px rgba(242,197,124,0.12); border:1px solid rgba(255,255,255,0.04); }
+
+/* Auto-link styling preserved & harmonized */
+.auto-link { color: var(--accent-gold); font-weight:600; text-decoration:none; cursor:pointer; transition: color .18s ease, text-shadow .18s ease, background-color .18s ease, padding .15s ease, border-radius .15s ease; border-radius:4px; padding:2px 4px; }
+.auto-link:hover { color:#fff7d0; background: rgba(242,197,124,0.16); text-shadow: 0 0 8px rgba(242,197,124,0.55); border-radius:6px; }

@@ -1,0 +1,124 @@
+/* ==========================================================
+   HEADER / TOPBAR (FIXED + CLEANED)
+   ========================================================== */
+
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  backdrop-filter: blur(12px);
+  background: linear-gradient(
+    180deg,
+    rgba(6, 18, 12, 0.8),
+    rgba(6, 18, 12, 0.55)
+  );
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  z-index: 2000;
+}
+
+.topbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ------------------ Logo ------------------ */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-mark {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background-image: url('../images/icon.ico');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #0b2a1f;
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.45),
+    inset 0 0 10px rgba(228, 200, 80, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.logo-text {
+  font-family: "Sansation", sans-serif;
+  font-size: 1.28rem;
+  color: var(--accent);
+  letter-spacing: 0.4px;
+}
+
+/* ==========================================================
+   SEARCH BAR
+   ========================================================== */
+
+.search-wrap {
+  position: relative;
+  width: 420px;
+  max-width: 60vw;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: var(--radius-md);
+  background: rgba(16, 34, 24, 0.65);
+  color: #eafff3;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  transition: 0.2s;
+}
+
+.search-input:hover {
+  box-shadow:
+    0 0 0 2px var(--accent-gold-soft),
+    0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+.search-input:focus {
+  box-shadow:
+    0 0 0 2px var(--accent-gold),
+    0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+/* ------------------ Search Results Dropdown ------------------ */
+.search-results {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: rgba(10, 24, 16, 0.95);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius-md);
+  max-height: 320px;
+  overflow-y: auto;
+  padding: 6px;
+  display: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  z-index: 3000;
+}
+
+.result-item {
+  padding: 10px 12px;
+  border-radius: 8px;
+  display: block;
+  cursor: pointer;
+  color: var(--accent);
+  transition: 0.15s;
+}
+
+.result-item:hover {
+  background: rgba(20, 60, 40, 0.25);
+  box-shadow: inset 0 0 12px var(--accent-gold-soft);
+  transform: translateY(-2px);
+}
