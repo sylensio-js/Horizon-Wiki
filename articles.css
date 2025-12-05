@@ -157,3 +157,34 @@ article .meta { color: var(--muted); margin-bottom:12px; }
 /* =========================
    END MERGED CSS
    ========================= */
+
+.attack-list {
+  display: grid;
+  gap: 12px;
+}
+
+.attack-card {
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 12px 14px;
+  border-radius: 10px;
+  backdrop-filter: blur(3px);
+  transition: 0.2s;
+}
+
+.attack-card:hover {
+  border-color: rgba(255,255,255,0.25);
+  transform: translateY(-2px);
+}
+
+.attack-card h3 {
+  margin: 0 0 6px;
+  font-size: 1.1em;
+  color: var(--accent-color-machine, #9ad3ff);
+}
+
+.attack-card p {
+  margin: 0;
+  opacity: 0.9;
+  line-height: 1.35;
+}

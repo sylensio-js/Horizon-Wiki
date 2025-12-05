@@ -3,34 +3,87 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Forbidden West Wiki</title>
-
+  <title>Forbidden West Wiki - Complete Guide to Machines, Lore & Elements</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Comprehensive wiki for Horizon: Forbidden West featuring detailed machine guides, lore, elements, and strategies. Search through machines like Thunderjaw, Slitherfang, and more.">
+  <meta name="keywords" content="Horizon Forbidden West, wiki, machines, Thunderjaw, Slitherfang, Aloy, GAIA, game guide">
+  <meta name="author" content="Forbidden West Wiki">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Forbidden West Wiki - Complete Game Guide">
+  <meta property="og:description" content="Your complete guide to Horizon: Forbidden West machines, lore, and gameplay elements.">
+  <meta property="og:image" content="images/icon.ico">
+  <meta property="og:url" content="https://yoursite.com">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Forbidden West Wiki">
+  <meta name="twitter:description" content="Complete guide to Horizon: Forbidden West">
+  
+  <!-- Performance & Security -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;600&family=Kensmark+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;600&family=Kensmark+One&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;600&family=Kensmark+One&display=swap" rel="stylesheet"></noscript>
 
   <!-- Theme stylesheet -->
-  <link rel="stylesheet" href="variables.css">
-  <link rel="stylesheet" href="global.css">
-  <link rel="stylesheet" href="header.css">
-  <link rel="stylesheet" href="home.css">
-  <link rel="stylesheet" href="articles.css">
+  <link rel="stylesheet" href="css/Variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/articles.css">
+  <link rel="stylesheet" href="css/light-theme.css">
 
   <!-- Favicon -->
-  <link rel="icon" href="icon.ico" type="image/x-icon" />
+  <link rel="icon" href="images/icon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="images/icon.ico">
+  
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="manifest.json">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Forbidden West Wiki",
+    "description": "Complete guide to Horizon: Forbidden West",
+    "url": "https://yoursite.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://yoursite.com/?search={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
 </head>
 <body class="homepage">
   <!-- HEADER -->
   <header class="topbar" role="banner">
     <div class="topbar-inner">
       <div class="logo">
-        <div class="logo-mark" aria-hidden="true"></div>
+        <img src="images/icon.ico" alt="Logo" class="logo-mark">
         <div class="logo-text">Forbidden West Wiki</div>
       </div>
 
-      <div class="search-wrap">
-        <input id="searchBar" class="search-input" type="search" autocomplete="off" placeholder="Search machines, tribes or locations..." aria-label="Search">
-        <div id="search-results" class="search-results" role="listbox" aria-label="Search results"></div>
+      <div class="search-wrap" role="search">
+        <input id="searchBar" class="search-input" type="search" autocomplete="off" placeholder="Try: Thunderjaw, Frost, GAIA, or 'machines'" aria-label="Search" aria-expanded="false" aria-haspopup="listbox">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <div class="search-loading" id="search-loading" hidden>
+          <div class="loading-spinner"></div>
+        </div>
+        <div id="search-results" class="search-results" role="listbox" aria-label="Search results" hidden></div>
       </div>
+      
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <span class="theme-icon">🌙</span>
+      </button>
     </div>
   </header>
 
@@ -42,13 +95,47 @@
       <div class="hero-overlay">
         <h1 class="hero-title">Welcome to the Forbidden West Wiki</h1>
         <p class="hero-lead">
-          A compact, well-organized compendium of machines, lore, and guides for <em>Horizon Forbidden West</em>.
-          Use the search box above to find machines, elements, and other entries. This page is a friendly landing — start where you like.
+          A compact, well-organized compendium of machines, lore, and guides for <em>Horizon: Forbidden West</em>.
+          Use the search box above to find machines, elements, lore, and other entries. This page is a friendly landing — start where you like.
         </p>
 
-        <div class="cta-row">
-          <button id="cta-explore" class="btn-ghost">Explore Machines</button>
-          <a class="btn-primary" href="#" id="cta-learn">What is this wiki?</a>
+        <div class="browse-categories">
+          <h3>Browse by Category</h3>
+          <div class="category-grid">
+            <button class="category-card" data-category="machines">
+              <span class="category-icon">🤖</span>
+              <span class="category-name">Machines</span>
+              <span class="category-count">25+ entries</span>
+            </button>
+            <button class="category-card" data-category="elements">
+              <span class="category-icon">⚡</span>
+              <span class="category-name">Elements</span>
+              <span class="category-count">6 types</span>
+            </button>
+            <button class="category-card" data-category="lore">
+              <span class="category-icon">📖</span>
+              <span class="category-name">Lore</span>
+              <span class="category-count">Characters & Story</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="popular-content">
+          <h3>Popular Content</h3>
+          <div class="popular-links" id="popular-links">
+            <button class="popular-item" data-article="thunderjaw">Thunderjaw</button>
+            <button class="popular-item" data-article="slitherfang">Slitherfang</button>
+            <button class="popular-item" data-article="stormbird">Stormbird</button>
+            <button class="popular-item" data-article="frost">Frost Element</button>
+            <button class="popular-item" data-article="GAIA">GAIA</button>
+          </div>
+        </div>
+
+        <div class="quick-access">
+          <h3 id="quick-title">Recent Searches</h3>
+          <div class="quick-links" id="recent-links" role="list">
+            <div class="no-recent" role="listitem">No recent searches yet</div>
+          </div>
         </div>
       </div>
     </section>
@@ -57,7 +144,21 @@
     <div id="article-container" aria-live="polite"></div>
   </main>
 
+  <!-- Back to top button -->
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top" hidden>
+    <span aria-hidden="true">↑</span>
+  </button>
+
   <!-- Scripts -->
   <script src="script.js" defer></script>
+  
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      });
+    }
+  </script>
 </body>
 </html>

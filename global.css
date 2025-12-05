@@ -51,3 +51,46 @@ main {
     0 5px 18px rgba(232,196,77,0.25),
     inset 0 0 12px rgba(232,196,77,0.14);
 }
+
+/* ------------ Back to Top Button ------------ */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: rgba(16, 34, 24, 0.9);
+  border: 1px solid var(--accent-gold-soft);
+  border-radius: 50%;
+  color: var(--accent-gold);
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.back-to-top:not([hidden]) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: rgba(16, 34, 24, 1);
+  border-color: var(--accent-gold);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ------------ Smooth Scrolling ------------ */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ------------ Focus Styles ------------ */
+*:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}

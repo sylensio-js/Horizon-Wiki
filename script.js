@@ -1,5 +1,5 @@
 /* ==========================
-   Forbidden West Wiki - JS
+  Forbidden West Wiki - JS
    (external file)
    ========================== */
 
@@ -10,9 +10,21 @@ const searchBar = document.getElementById('searchBar');
 const searchResults = document.getElementById('search-results');
 const ctaExplore = document.getElementById('cta-explore');
 
+/* HTML escaping function to prevent XSS */
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
 /* Simple article store (HTML strings) - expand this object with more entries */
 const articles = {
 "slitherfang": `
+
+
+
+
+
 <article id="slitherfang" class="theme-machine">
   <h1 class="title">Slitherfang</h1>
   
@@ -38,19 +50,53 @@ const articles = {
         <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
         <div class="accordion-content">
           <p>During combat it may switch the contents of its sac between Acid and Purgewater, changing the element of some attacks.</p>
-          <ul>
-            <li><strong>Electro Slam</strong>: charges nodes on its tail then slams the ground to release a burst of electricity. Destroying the tail nodes disables this attack.</li>
-            <li><strong>Venom Spray</strong>: fires a high-pressure jet of Acid or Purgewater. Destroying the elemental sac beneath its mouth stops this attack.</li>
-            <li><strong>Slithering Stride</strong>: burrows and surges, dealing damage and knockback. Removing the Earthgrinders on its upper neck disables this behavior.</li>
-            <li><strong>Thunderbolt</strong>: fires a powerful electric beam from its tail nodes that explodes on impact. Destroying the tail nodes disables this attack.</li>
-            <li><strong>Sonic Stun</strong>: emits high-frequency waves that temporarily incapacitate targets. Destroy the sonic hoods on its head to stop it.</li>
-            <li><strong>Electro Sweep</strong>: sweeps with its charged tail to hit everything in front of it. Destroying the tail nodes disables this attack.</li>
-            <li><strong>Bite</strong>: lunges forward to bite. This attack cannot be disabled.</li>
-            <li><strong>Tearing Bite</strong>: charges forward biting and knocking down anything in its path. This attack cannot be disabled.</li>
-            <li><strong>Head Clear</strong>: uses its massive head to sweep enemies aside. This attack cannot be disabled.</li>
-            <li><strong>Shocking Ensnare</strong>: coils around a target and detonates an electric charge from its tail. Destroying the tail nodes prevents this move.</li>
-            <li><strong>Subterranean Shockwave</strong>: burrows underground then charges at its enemy, dealing damage and knockback in the way. Destroying the Earthgrinders on its neck disable this attack</li>
-          </ul>
+          <div class="attack-list">
+  <div class="attack-card">
+    <h3>Electro Slam</h3>
+    <p>charges nodes on its tail then slams the ground to release a burst of electricity. Destroying the tail nodes disables this attack.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Venom Spray</h3>
+    <p>fires a high-pressure jet of Acid or Purgewater. Destroying the elemental sac beneath its mouth stops this attack.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Slithering Stride</h3>
+    <p>burrows and surges, dealing damage and knockback. Removing the Earthgrinders on its upper neck disables this behavior.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Thunderbolt</h3>
+    <p>fires a powerful electric beam from its tail nodes that explodes on impact. Destroying the tail nodes disables this attack.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Sonic Stun</h3>
+    <p>emits high-frequency waves that temporarily incapacitate targets. Destroy the sonic hoods on its head to stop it.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Electro Sweep</h3>
+    <p>sweeps with its charged tail to hit everything in front of it. Destroying the tail nodes disables this attack.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Bite</h3>
+    <p>lunges forward to bite. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Tearing Bite</h3>
+    <p>charges forward biting and knocking down anything in its path. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Head Clear</h3>
+    <p>uses its massive head to sweep enemies aside. This attack cannot be disabled.</p>
+  </div>
+ <div class="attack-card">
+    <h3>Shocking Ensnare</h3>
+    <p>coils around a target and detonates an electric charge from its tail. Destroying the tail nodes prevents this move.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Subterranean Shockwave</h3>
+    <p>burrows underground then charges at its enemy, dealing damage and knockback in the way. Destroying the Earthgrinders on its neck disable this attack</p>
+  </div>
+</div>
+        </div>
         </div>
       </div>
     </div>
@@ -112,19 +158,53 @@ const articles = {
         <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
         <div class="accordion-content">
           <p>During combat it may switch the contents of its sac between Acid and Purgewater, changing the element of some attacks.</p>
-          <ul>
-            <li><strong>Electro Slam</strong>: charges nodes on its tail then slams the ground to release a burst of electricity. Destroying the tail nodes disables this attack.</li>
-            <li><strong>Venom Spray</strong>: fires a high-pressure jet of Acid or Purgewater. Destroying the elemental sac beneath its mouth stops this attack.</li>
-            <li><strong>Slithering Stride</strong>: burrows and surges, dealing damage and knockback. Removing the Earthgrinders on its upper neck disables this behavior.</li>
-            <li><strong>Thunderbolt</strong>: fires a powerful electric beam from its tail nodes that explodes on impact. Destroying the tail nodes disables this attack.</li>
-            <li><strong>Sonic Stun</strong>: emits high-frequency waves that temporarily incapacitate targets. Destroy the sonic hoods on its head to stop it.</li>
-            <li><strong>Electro Sweep</strong>: sweeps with its charged tail to hit everything in front of it. Destroying the tail nodes disables this attack.</li>
-            <li><strong>Bite</strong>: lunges forward to bite. This attack cannot be disabled.</li>
-            <li><strong>Tearing Bite</strong>: charges forward biting and knocking down anything in its path. This attack cannot be disabled.</li>
-            <li><strong>Head Clear</strong>: uses its massive head to sweep enemies aside. This attack cannot be disabled.</li>
-            <li><strong>Shocking Ensnare</strong>: coils around a target and detonates an electric charge from its tail. Destroying the tail nodes prevents this move.</li>
-            <li><strong>Subterranean Shockwave</strong>: burrows underground then charges at its enemy, dealing damage and knockback in the way. Destroying the Earthgrinders on its neck disable this attack</li>
-          </ul>
+          <div class="attack-list">
+  <div class="attack-card">
+    <h3>Electro Slam</h3>
+    <p>charges nodes on its tail then slams the ground to release a burst of electricity. Destroying the tail nodes disables this attack.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Venom Spray</h3>
+    <p>fires a high-pressure jet of Acid or Purgewater. Destroying the elemental sac beneath its mouth stops this attack.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Slithering Stride</h3>
+    <p>burrows and surges, dealing damage and knockback. Removing the Earthgrinders on its upper neck disables this behavior.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Thunderbolt</h3>
+    <p>fires a powerful electric beam from its tail nodes that explodes on impact. Destroying the tail nodes disables this attack.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Sonic Stun</h3>
+    <p>emits high-frequency waves that temporarily incapacitate targets. Destroy the sonic hoods on its head to stop it.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Electro Sweep</h3>
+    <p>sweeps with its charged tail to hit everything in front of it. Destroying the tail nodes disables this attack.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Bite</h3>
+    <p>lunges forward to bite. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Tearing Bite</h3>
+    <p>charges forward biting and knocking down anything in its path. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Head Clear</h3>
+    <p>uses its massive head to sweep enemies aside. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Shocking Ensnare</h3>
+    <p>coils around a target and detonates an electric charge from its tail. Destroying the tail nodes prevents this move.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Subterranean Shockwave</h3>
+    <p>burrows underground then charges at its enemy, dealing damage and knockback in the way. Destroying the Earthgrinders on its neck disable this attack</p>
+  </div>
+</div>
+       </div>
         </div>
       </div>
     </div>
@@ -170,9 +250,19 @@ const articles = {
     <span class="tag">slitherfang</span>
   </div>
 </article>
+
+
+
+
+
 `,
 
 "stalker": `
+
+
+
+
+
 <article id="stalker" class="theme-machine">
   <h1 class="title">Stalker</h1>
   
@@ -197,13 +287,26 @@ const articles = {
         <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
         <div class="accordion-content">
           <p>At Stalker sites you may spot red devices with white fins on the ground — proximity mines that, when triggered, alert nearby Stalkers. You can use these to your advantage by triggering them remotely to lure machines into traps.</p>
-          <ul>
-            <li><strong>Tail Sweep</strong>: swings its razor tail in a wide arc. This attack cannot be disabled.</li>
-            <li><strong>Hack and Slash</strong>: charges and slashes with claws and jaws. This attack cannot be disabled.</li>      
-            <li><strong>Dart Snipe</strong>: fires a precise energy dart from a shoulder cannon. Destroying the dart cannon disables this attack.</li>
-            <li><strong>Dart Burst</strong>: charges the dart cannon then fires three rapid darts. Destroying the dart cannon disables this attack.</li>
-          </ul>
+          <div class="attack-list">
+  <div class="attack-card">
+    <h3>Tail Sweep</h3>
+    <p>swings its razor tail in a wide arc. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Hack and Slash</h3>
+    <p>charges and slashes with claws and jaws. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Dart Snipe</h3>
+    <p>fires a precise energy dart from a shoulder cannon. Destroying the dart cannon disables this attack.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Dart Burst</h3>
+    <p>charges the dart cannon then fires three rapid darts. Destroying the dart cannon disables this attack.</p>
+  </div>
+</div>
           <p>It may also cloak and lay explosive mines.Destroy the stealth generator to stop invisibility, and destroy the mine launchers above the hind legs to stop mine deployment.</p>
+        </div>
         </div>
       </div>
     </div>
@@ -258,13 +361,26 @@ const articles = {
         <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
         <div class="accordion-content">
           <p>At Stalker sites you may spot red devices with white fins on the ground — proximity mines that, when triggered, alert nearby Stalkers. You can use these to your advantage by triggering them remotely to lure machines into traps.</p>
-          <ul>
-            <li><strong>Tail Sweep</strong>: swings its razor tail in a wide arc. This attack cannot be disabled.</li>
-            <li><strong>Hack and Slash</strong>: charges and slashes with claws and jaws. This attack cannot be disabled.</li>      
-            <li><strong>Dart Snipe</strong>: fires a precise energy dart from a shoulder cannon. Destroying the dart cannon disables this attack.</li>
-            <li><strong>Dart Burst</strong>: charges the dart cannon then fires three rapid darts. Destroying the dart cannon disables this attack.</li>
-          </ul>
+          <div class="attack-list">
+  <div class="attack-card">
+    <h3>Tail Sweep</h3>
+    <p>swings its razor tail in a wide arc. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Hack and Slash</h3>
+    <p>charges and slashes with claws and jaws. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Dart Snipe</h3>
+    <p>fires a precise energy dart from a shoulder cannon. Destroying the dart cannon disables this attack.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Dart Burst</h3>
+    <p>charges the dart cannon then fires three rapid darts. Destroying the dart cannon disables this attack.</p>
+  </div>
+</div>
           <p>It may also cloak and lay explosive mines. Destroy the stealth generator to stop invisibility, and destroy the mine launchers above the hind legs to stop mine deployment.</p>
+        </div>
         </div>
       </div>
     </div>
@@ -301,9 +417,19 @@ const articles = {
 </section>
 </article>
 </div>
+
+
+
+
+
 `,
 
 "slaughterspine": `
+
+
+
+
+
 
 <article id="slaughterspine" class="theme-machine">
   <h1 class="title">Slaughterspine</h1>
@@ -329,19 +455,50 @@ const articles = {
         <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
         <div class="accordion-content">
           <p>Early in combat it may charge its Plasma Energizers; if they fully charge, multiple attacks gain plasma damage. Prevent this by shooting the energizers on its legs. An additional energizer can appear under its belly when it is low on health.</p>
-          <ul>
-            <li><strong>Dashing Maw</strong>: drops its jaw and charges forward. This attack cannot be disabled.</li>
-            <li><strong>Laser Swipe</strong>: fires a Plasma beam from its mouth. Applying full Drenched status can disable it.</li>
-            <li><strong>Plasma Snipe</strong>: fires an accurate Plasma projectile. Applying Drenched can disable it.</li>
-            <li><strong>Tail Slam</strong>: slams its tail into the ground for heavy damage. This attack cannot be disabled.</li>
-            <li><strong>Orbital Lances</strong>: shoots out orbital laser beacons that converge on its target, effectively trapping it. Destroying its spinetail launchers disables this attack</li>
-            <li><strong>Explosive Maw</strong>: in Charged Form, bites the ground multiple times, releasing Plasma explosions into the surrounding area. This attack cannot be disabled</li>
-            <li><strong>Lancer Beam</strong>: in Charged Form, it props up its tail, shooting out five Plasma lasers perpendicular to itself. Destroying tail emitters or applying Drenched can disable it.</li>
-            <li><strong>Spinetail Missiles</strong>: in Charged Form, it launches seeking Plasma missiles; destroy missile launchers and apply Drenched to disable.</li>
-            <li><strong>Plasma Eruption</strong>: in Charged Form, plants its tail into the ground, shooting Plasma geysers under its enemies. Destroying its tail emmiters disables this attack.</li>
-            <li><strong>Pendulum Sweep</strong>: while in Charged Form, shoots Plasma beams from its mouth and tail simultaneously, swinging both in double pendulum motion</li>
-          </ul>
+          <div class="attack-list">
+  <div class="attack-card">
+    <h3>Dashing Maw</h3>
+    <p>drops its jaw and charges forward. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Laser Swipe</h3>
+    <p>fires a Plasma beam from its mouth. Applying full Drenched status can disable it.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Plasma Snipe</h3>
+    <p>fires an accurate Plasma projectile. Applying Drenched can disable it.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Tail Slam</h3>
+    <p>slams its tail into the ground for heavy damage. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Orbital Lances</h3>
+    <p>shoots out orbital laser beacons that converge on its target, effectively trapping it. Destroying its spinetail launchers disables this attack</p>
+  </div>
+  <div class="attack-card">
+    <h3>Explosive Maw</h3>
+    <p>in Charged Form, bites the ground multiple times, releasing Plasma explosions into the surrounding area. This attack cannot be disabled</p>
+  </div>
+  <div class="attack-card">
+    <h3>Lancer Beam</h3>
+    <p>in Charged Form, it props up its tail, shooting out five Plasma lasers perpendicular to itself. Destroying tail emitters or applying Drenched can disable it.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Spinetail Missiles</h3>
+    <p>in Charged Form, it launches seeking Plasma missiles; destroy missile launchers and apply Drenched to disable.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Plasma Eruption</h3>
+    <p>in Charged Form, plants its tail into the ground, shooting Plasma geysers under its enemies. Destroying its tail emmiters disables this attack.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Pendulum Sweep</h3>
+    <p>while in Charged Form, shoots Plasma beams from its mouth and tail simultaneously, swinging both in double pendulum motion</p>
+  </div>
+</div>
           <p><strong>Note:</strong>While it's in charged form, every Plasma attack will secrete Plasma "fountains" that will stay on the battlefield and spew out Plasma buildup</p>
+         </div>
         </div>
       </div>
     </div>
@@ -350,7 +507,7 @@ const articles = {
       <div class="accordion-item">
         <div class="accordion-header" aria-expanded="false">Strategy <span class="chev">▾</span></div>
         <div class="accordion-content">
-         <p>The Slaughterspine is one of the hardest machines to take down in the entire game at any stage of progression, but anything will go down with the right method. Start by immediately shooting its Plasma energizers to prevent its Charged Form. If you were too late and it entered Charged Form, then barrage it with Purgewater to disable most of its attacks and focus on taking down its tail lancers once its Drenched. But if did disable its Charged form, then rip out of the Plasma launchers on its spine to use against it. Then just rinse and repeat untill the machine is dead.</p>
+         <p>The Slaughterspine is one of the hardest machines to take down in the entire game at any stage of progression, but anything will go down with the right method. Start by immediately shooting its Plasma energizers to prevent its Charged Form. If you were too late and it entered Charged Form, then barrage it with Purgewater to disable most of its attacks and focus on taking down its tail lancers once its Drenched. But if did disable its Charged form, then rip out of the Plasma launchers on its spine to use against it. Then just rinse and repeat until the machine is dead.</p>
         </div>
       </div>
     </div>
@@ -400,19 +557,50 @@ const articles = {
         <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
         <div class="accordion-content">
           <p>Early in combat it may charge its Plasma Energizers; if they fully charge, multiple attacks gain plasma damage. Prevent this by shooting the energizers on its legs. An additional energizer can appear under its belly when it is low on health.</p>
-          <ul>
-            <li><strong>Dashing Maw</strong>: drops its jaw and charges forward. This attack cannot be disabled.</li>
-            <li><strong>Laser Swipe</strong>: fires a Plasma beam from its mouth. Applying full Drenched status can disable it.</li>
-            <li><strong>Plasma Snipe</strong>: fires an accurate Plasma projectile. Applying Drenched can disable it.</li>
-            <li><strong>Tail Slam</strong>: slams its tail into the ground for heavy damage. This attack cannot be disabled.</li>
-            <li><strong>Orbital Lances</strong>: shoots out orbital laser beacons that converge on its target, effectively trapping it. Destroying its spinetail launchers disables this attack</li>
-            <li><strong>Explosive Maw</strong>: in Charged Form, bites the ground multiple times, releasing Plasma explosions into the surrounding area. This attack cannot be disabled</li>
-            <li><strong>Lancer Beam</strong>: in Charged Form, it props up its tail, shooting out five Plasma lasers perpendicular to itself. Destroying tail emitters or applying Drenched can disable it.</li>
-            <li><strong>Spinetail Missiles</strong>: in Charged Form, it launches seeking Plasma missiles; destroy missile launchers and apply Drenched to disable.</li>
-            <li><strong>Plasma Eruption</strong>: in Charged Form, plants its tail into the ground, shooting Plasma geysers under its enemies. Destroying its tail emmiters disables this attack.</li>
-            <li><strong>Pendulum Sweep</strong>: while in Charged Form, shoots Plasma beams from its mouth and tail simultaneously, swinging both in a double pendulum motion</li>
-          </ul>
+          <div class="attack-list">
+  <div class="attack-card">
+    <h3>Dashing Maw</h3>
+    <p>drops its jaw and charges forward. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Laser Swipe</h3>
+    <p>fires a Plasma beam from its mouth. Applying full Drenched status can disable it.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Plasma Snipe</h3>
+    <p>fires an accurate Plasma projectile. Applying Drenched can disable it.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Tail Slam</h3>
+    <p>slams its tail into the ground for heavy damage. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Orbital Lances</h3>
+    <p>shoots out orbital laser beacons that converge on its target, effectively trapping it. Destroying its spinetail launchers disables this attack</p>
+  </div>
+  <div class="attack-card">
+    <h3>Explosive Maw</h3>
+    <p>in Charged Form, bites the ground multiple times, releasing Plasma explosions into the surrounding area. This attack cannot be disabled</p>
+  </div>
+  <div class="attack-card">
+    <h3>Lancer Beam</h3>
+    <p>in Charged Form, it props up its tail, shooting out five Plasma lasers perpendicular to itself. Destroying tail emitters or applying Drenched can disable it.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Spinetail Missiles</h3>
+    <p>in Charged Form, it launches seeking Plasma missiles; destroy missile launchers and apply Drenched to disable.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Plasma Eruption</h3>
+    <p>in Charged Form, plants its tail into the ground, shooting Plasma geysers under its enemies. Destroying its tail emmiters disables this attack.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Pendulum Sweep</h3>
+    <p>while in Charged Form, shoots Plasma beams from its mouth and tail simultaneously, swinging both in a double pendulum motion</p>
+  </div>
+</div>
           <p><strong>Note:</strong>While it's in charged form, every Plasma attack will secrete Plasma "fountains" that will stay on the battlefield and spew out Plasma buildup</p>
+         </div>
         </div>
       </div>
     </div>
@@ -457,9 +645,19 @@ const articles = {
   </div>
 </article>
 </div>
+
+
+
+
+
 `,
 
 "stormbird": `
+
+
+
+
+
 
 <article id="stormbird" class="theme-machine">
   <h1 class="title">Stormbird</h1>
@@ -484,17 +682,46 @@ const articles = {
       <div class="accordion-item">
         <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
         <div class="accordion-content">
-          <ul>
-            <li><strong>Carpet Shock</strong>: flies over its target, shooting down Shock bombs on everything under it. Disable by destroying the storm cannon on its chest.</li>
-            <li><strong>Thunderbolt Dive</strong>: ascends high into the sky, then starts diving down covered in Electricity, which explodes on impact. This attack cannot be disabled.</li>
-            <li><strong>Lightning Strike</strong>: charges its storm cannon to shoot out a focused, homing Shock bomb that explodes on impact and leaves electric residue. This attack can be disabled by removing its storm cannon.</li>
-            <li><strong>Thunder Barrage</strong>: uses its storm cannon to fire a burst of Shock bombs that explode on impact. Destroy its storm cannon to disable it.</li>
-            <li><strong>Electric Cage</strong>: creates an electric field around itself, then starts to march towards it enemy, electrifying everything in its way. Remove its storm cannon to disable this attack.</li>
-            <li><strong>Wing Torrent</strong>: uses its thrusters to create a powerful gust of wind that deals heavy knockback. Destroy all of its wing thrusters to disable this attack.</li>
-            <li><strong>Thunder Whip</strong>: infuses its whip-like tail with Shock damage, then sweeps it in a wide arc. This attack cannot be disabled.</li>
-            <li><strong>Storm Beak</strong>: electrifies its beak, then start to stab its enemy multiple times. This attack cannot be disabled.</li>
-            <li><strong>Shock Talons</strong>: charges its razor talons with electricity. This attack cannot be disabled.</li>
-          </ul>
+          <div class="attack-list">
+  <div class="attack-card">
+    <h3>Carpet Shock</h3>
+    <p>flies over its target, shooting down Shock bombs on everything under it. Disable by destroying the storm cannon on its chest.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Thunderbolt Dive</h3>
+    <p>ascends high into the sky, then starts diving down covered in Electricity, which explodes on impact. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Lightning Strike</h3>
+    <p>charges its storm cannon to shoot out a focused, homing Shock bomb that explodes on impact and leaves electric residue. This attack can be disabled by removing its storm cannon.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Thunder Barrage</h3>
+    <p>uses its storm cannon to fire a burst of Shock bombs that explode on impact. Destroy its storm cannon to disable it.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Electric Cage</h3>
+    <p>creates an electric field around itself, then starts to march towards it enemy, electrifying everything in its way. Remove its storm cannon to disable this attack.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Wing Torrent</h3>
+    <p>uses its thrusters to create a powerful gust of wind that deals heavy knockback. Destroy all of its wing thrusters to disable this attack.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Thunder Whip</h3>
+    <p>infuses its whip-like tail with Shock damage, then sweeps it in a wide arc. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Storm Beak</h3>
+    <p>electrifies its beak, then start to stab its enemy multiple times. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Shock Talons</h3>
+    <p>charges its razor talons with electricity. This attack cannot be disabled.</p>
+  </div>
+</div>
+
+
         </div>
       </div>
     </div>
@@ -548,17 +775,44 @@ const articles = {
       <div class="accordion-item">
         <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
         <div class="accordion-content">
-          <ul>
-            <li><strong>Carpet Shock</strong>: flies over its target, shooting down Shock bombs on everything under it. Disable by destroying the storm cannon on its chest.</li>
-            <li><strong>Thunderbolt Dive</strong>: ascends high into the sky, then starts diving down covered in Electricity, which explodes on impact. This attack cannot be disabled.</li>
-            <li><strong>Lightning Strike</strong>: charges its storm cannon to shoot out a focused, homing Shock bomb that explodes on impact and leaves electric residue. This attack can be disabled by removing its storm cannon.</li>
-            <li><strong>Thunder Barrage</strong>: uses its storm cannon to fire a burst of Shock bombs that explode on impact. Destroy its storm cannon to disable it.</li>
-            <li><strong>Electric Cage</strong>: creates an electric field around itself, then starts to march towards it enemy, electrifying everything in its way. Remove its storm cannon to disable this attack.</li>
-            <li><strong>Wing Torrent</strong>: uses its thrusters to create a powerful gust of wind that deals heavy knockback. Destroy all of its wing thrusters to disable this attack.</li>
-            <li><strong>Thunder Whip</strong>: infuses its whip-like tail with Shock damage, then sweeps it in a wide arc. This attack cannot be disabled.</li>
-            <li><strong>Storm Beak</strong>: electrifies its beak, then start to stab its enemy multiple times. This attack cannot be disabled.</li>
-            <li><strong>Shock Talons</strong>: charges its razor talons with electricity. This attack cannot be disabled.</li>
-          </ul>
+          <div class="attack-list">
+  <div class="attack-card">
+    <h3>Carpet Shock</h3>
+    <p>flies over its target, shooting down Shock bombs on everything under it. Disable by destroying the storm cannon on its chest.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Thunderbolt Dive</h3>
+    <p>ascends high into the sky, then starts diving down covered in Electricity, which explodes on impact. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Lightning Strike</h3>
+    <p>charges its storm cannon to shoot out a focused, homing Shock bomb that explodes on impact and leaves electric residue. This attack can be disabled by removing its storm cannon.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Thunder Barrage</h3>
+    <p>uses its storm cannon to fire a burst of Shock bombs that explode on impact. Destroy its storm cannon to disable it.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Electric Cage</h3>
+    <p>creates an electric field around itself, then starts to march towards it enemy, electrifying everything in its way. Remove its storm cannon to disable this attack.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Wing Torrent</h3>
+    <p>uses its thrusters to create a powerful gust of wind that deals heavy knockback. Destroy all of its wing thrusters to disable this attack.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Thunder Whip</h3>
+    <p>infuses its whip-like tail with Shock damage, then sweeps it in a wide arc. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Storm Beak</h3>
+    <p>electrifies its beak, then start to stab its enemy multiple times. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Shock Talons</h3>
+    <p>charges its razor talons with electricity. This attack cannot be disabled.</p>
+  </div>
+</div>
         </div>
       </div>
     </div>
@@ -604,9 +858,19 @@ const articles = {
   </div>
 </article>
 </div>
+
+
+
+
+
 `,
 
 "scorcher": `
+
+
+
+
+
 
 <article id="scorcher" class="theme-machine">
   <h1 class="title">Scorcher</h1>
@@ -631,13 +895,33 @@ const articles = {
       <div class="accordion-item">
         <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
         <div class="accordion-content">
-          <ul>
-            <li><strong>Flaming Maw</strong>: shoots flames from its mouth, the swings its head torching everything nearby. This attack cannot be disabled.</li>
-            <li><strong>Incendiary Wave</strong>: rears and sweeps flamethrowers in an arc, creating a damaging wall of fire. This cannot be disabled.</li>
-            <li><strong>Minelayer</strong>: deploys 3 waves of incendiary mines that explode on contact. Destroy the mine launcher on its back to disable.</li>
-            <li><strong>Ignition Boost</strong>: fires flames behind itself to propel forward towards its enemy, leaving a burning trail. This cannot be disabled.</li>
-            <li><strong>Blazing Claws</strong>: slashes with fiery claws causing heavy damage and igniting targets. This cannot be disabled.</li>
-            <li><strong>Firestorm</strong>: ignites the surrounding area producing a damaging storm of flame. This cannot be disabled.</li>
+          <div class="attack-list">
+  <div class="attack-card">
+    <h3>Flaming Maw</h3>
+    <p>shoots flames from its mouth, the swings its head torching everything nearby. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Incendiary Wave</h3>
+    <p>rears and sweeps flamethrowers in an arc, creating a damaging wall of fire. This cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Minelayer</h3>
+    <p>deploys 3 waves of incendiary mines that explode on contact. Destroy the mine launcher on its back to disable.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Ignition Boost</h3>
+    <p>ignites Fire behind itself to propel forward towards its enemy, leaving a burning trail. This cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Blazing Claws</h3>
+    <p>slashes with fiery claws causing heavy damage and igniting targets. This cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Firestorm</h3>
+    <p>ignites the surrounding area producing a damaging storm of flame. This cannot be disabled.</p>
+  </div>
+</div>
+        .
           </ul>
         </div>
       </div>
@@ -698,13 +982,33 @@ const articles = {
       <div class="accordion-item">
         <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
         <div class="accordion-content">
-          <ul>
-            <li><strong>Flaming Maw</strong>: shoots flames from its mouth, the swings its head torching everything nearby. This attack cannot be disabled.</li>
-            <li><strong>Incendiary Wave</strong>: rears and sweeps flamethrowers in an arc, creating a damaging wall of fire. This cannot be disabled.</li>
-            <li><strong>Minelayer</strong>: deploys 3 waves of incendiary mines that explode on contact. Destroy the mine launcher on its back to disable.</li>
-            <li><strong>Ignition Boost</strong>: fires flames behind itself to propel forward towards its enemy, leaving a burning trail. This cannot be disabled.</li>
-            <li><strong>Blazing Claws</strong>: slashes with fiery claws causing heavy damage and igniting targets. This cannot be disabled.</li>
-            <li><strong>Firestorm</strong>: ignites the surrounding area producing a damaging storm of flame. This cannot be disabled.</li>
+          <div class="attack-list">
+  <div class="attack-card">
+    <h3>Flaming Maw</h3>
+    <p>shoots Fire from its mouth, the swings its head torching everything nearby. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Incendiary Wave</h3>
+    <p>rears and sweeps flamethrowers in an arc, creating a damaging wall of fire. This cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Minelayer</h3>
+    <p>deploys 3 waves of incendiary mines that explode on contact. Destroy the mine launcher on its back to disable.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Ignition Boost</h3>
+    <p>fires Fire behind itself to propel forward towards its enemy, leaving a burning trail. This cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Blazing Claws</h3>
+    <p>slashes with fiery claws causing heavy damage and igniting targets. This cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Firestorm</h3>
+    <p>ignites the surrounding area producing a damaging storm of flame. This cannot be disabled.</p>
+  </div>
+</div>
+        .
           </ul>
         </div>
       </div>
@@ -750,9 +1054,19 @@ const articles = {
   </section>
 </article>
 </div>
+
+
+
+
+
 `,
 
 "shellsnapper": `
+
+
+
+
+
 
 <article id="shellsnapper" class="theme-machine">
   <h1 class="title">Shellsnapper</h1>
@@ -778,17 +1092,42 @@ const articles = {
       <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
       <div class="accordion-content">
         <p>Shellsnappers are often found partially buried at their sites — be aware of ambushes when approaching.</p>
-        <ul>
-          <li><strong>Cleaving Ice</strong>: slashes with Frost-infused claws. This attack cannot be disabled.</li>
-          <li><strong>Frost Jaw</strong>: extends its neck to bite with a Frost-infused jaw. This attack cannot be disabled.</li>
-          <li><strong>Shell Slam</strong>: leaps and slams down, producing a shockwave. This attack cannot be disabled.</li>
-          <li><strong>Ice Whip</strong>: lashes a Frost-infused tail for heavy damage and knockback. This attack cannot be disabled.</li>
-          <li><strong>Kinetic Slam</strong>: while boosted, slams its shell into the ground, releasing kinetic energy in the form of a shockwave. This attack cannot be disabled.</li>
-          <li><strong>Kinetic Beam</strong>: while boosted, fires a powerful beam; destroy the kinetic dynamo to disable.</li>
-          <li><strong>Shivering Barrage</strong>: fires three Frost projectiles that explode and leave Frost pools. This attack cannot be disabled.</li>
-          <li><strong>Glacial Salvo</strong>: while boosted, the shell fires Frost projectiles independently; destroy the shell to stop this.</li>
-        </ul>
-        <p>When low on health, the Shellsnapper will activate its kinetic dynamo and its shell will turn from light blue to a deep orange.</p>      
+        <div class="attack-list">
+  <div class="attack-card">
+    <h3>Cleaving Ice</h3>
+    <p>slashes with Frost-infused claws. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Frost Jaw</h3>
+    <p>extends its neck to bite with a Frost-infused jaw. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Shell Slam</h3>
+    <p>leaps and slams down, producing a shockwave. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Ice Whip</h3>
+    <p>lashes a Frost-infused tail for heavy damage and knockback. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Kinetic Slam</h3>
+    <p>while boosted, slams its shell into the ground, releasing kinetic energy in the form of a shockwave. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Kinetic Beam</h3>
+    <p>while boosted, fires a powerful beam; destroy the kinetic dynamo to disable.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Shivering Barrage</h3>
+    <p>fires three Frost projectiles that explode and leave Frost pools. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Glacial Salvo</h3>
+    <p>while boosted, the shell fires Frost projectiles independently; destroy the shell to stop this.</p>
+  </div>
+</div>
+        <p>When low on health, the Shellsnapper will activate its kinetic dynamo and its shell will turn from light blue to a deep orange.</p>           
+        </div>
         </div>
     </div>
   </div>
@@ -843,18 +1182,43 @@ const articles = {
     <div class="accordion-item">
       <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
       <div class="accordion-content">
-      <p>Shellsnappers are often found partially buried at their sites — be aware of ambushes when approaching.</p>
-      <ul>
-        <li><strong>Cleaving Ice</strong>: slashes with Frost-infused claws; This attack can be disabled by bursting the Chillwater sac located on its belly.</li>
-        <li><strong>Frost Jaw</strong>: extends its neck to bite with a Frost-infused jaw; This attack can be disabled by bursting the Chillwater sac located on its belly.</li>
-        <li><strong>Shell Slam</strong>: leaps from far away and slams down on its enemy leaving Frost residue in its wake; This attack can be disabled by bursting the Chillwater sac located on its belly.</li>
-        <li><strong>Ice Whip</strong>: expands its tail to make an Frost-infused whip, lashing enemies and dealing knockback; This attack can be disabled by bursting the Chillwater sac located on its belly.</li>
-        <li><strong>Kinetic Slam</strong>: while boosted, slams its shell into the ground, releasing kinetic energy in the form of a shockwave. This attack cannot be disabled.</li>
-        <li><strong>Kinetic Beam</strong>: while boosted, fires a powerful beam; destroy the kinetic dynamo to disable.</li>
-        <li><strong>Shivering Barrage</strong>: fires three Frost projectiles that explode and leave Frost pools; This attack can be disabled by bursting the Chillwater sac located on its belly.</li>
-        <li><strong>Glacial Salvo</strong>: while boosted, the shell fires Frost projectiles independently; This attack can be disabled by bursting the Chillwater sac located on its belly.</li>
-        </ul>
+        <p>Shellsnappers are often found partially buried at their sites — be aware of ambushes when approaching.</p>
+      <div class="attack-list">
+  <div class="attack-card">
+    <h3>Cleaving Ice</h3>
+    <p>slashes with Frost-infused claws; This attack can be disabled by bursting the Chillwater sac located on its belly.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Frost Jaw</h3>
+    <p>extends its neck to bite with a Frost-infused jaw; This attack can be disabled by bursting the Chillwater sac located on its belly.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Shell Slam</h3>
+    <p>leaps from far away and slams down on its enemy leaving Frost residue in its wake; This attack can be disabled by bursting the Chillwater sac located on its belly.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Ice Whip</h3>
+    <p>expands its tail to make an Frost-infused whip, lashing enemies and dealing knockback; This attack can be disabled by bursting the Chillwater sac located on its belly.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Kinetic Slam</h3>
+    <p>while boosted, slams its shell into the ground, releasing kinetic energy in the form of a shockwave. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Kinetic Beam</h3>
+    <p>while boosted, fires a powerful beam; destroy the kinetic dynamo to disable.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Shivering Barrage</h3>
+    <p>fires three Frost projectiles that explode and leave Frost pools; This attack can be disabled by bursting the Chillwater sac located on its belly.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Glacial Salvo</h3>
+    <p>while boosted, the shell fires Frost projectiles independently; This attack can be disabled by bursting the Chillwater sac located on its belly.</p>
+  </div>
+</div>
         <p>When low on health, the Shellsnapper will activate its kinetic dynamo and its shell will turn from light blue to a deep orange.</p>      
+        deep orange.</p>      
         </div>
     </div>
   </div>
@@ -892,9 +1256,19 @@ const articles = {
   </section>
 </article>
 </div>
+
+
+
+
+
 `,
 
 "snapmaw": `
+
+
+
+
+
 
 <article id="snapmaw" class="theme-machine">
   <h1 class="title">Snapmaw</h1>
@@ -919,15 +1293,33 @@ const articles = {
     <div class="accordion">
       <div class="accordion-item">
         <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
-        <div class="accordion-content">
-          <ul>
-          <li><strong>Ice Burst</strong>: fires a spray of Frost projectiles from its mouth; This attack can be disabled by bursting its Chillwater gullet.</li>
-          <li><strong>Swing Bite</strong>: lunges forward with its jaws. This attack cannot be disabled.</li>
-          <li><strong>Tail Swipe</strong>: swings its tail in a wide arc. This attack cannot be disabled.</li>
-          <li><strong>Lunging Jaw</strong>: launches itself to bite a target. This attack cannot be disabled.</li>
-          <li><strong>Bite</strong>: bites targets at short range. This attack cannot be disabled.</li>
-          <li><strong>Twinfold Strike</strong>: jumps towards it enemy, swinging its tail twice in the air before slamming into the ground. This attack cannot be disabled</li>
-          </ul>
+        x
+          <div class="attack-list">
+  <div class="attack-card">
+    <h3>Ice Burst</h3>
+    <p>fires a spray of Frost projectiles from its mouth; This attack can be disabled by bursting its Chillwater gullet.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Swing Bite</h3>
+    <p>lunges forward with its jaws. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Tail Swipe</h3>
+    <p>swings its tail in a wide arc. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Lunging Jaw</h3>
+    <p>launches itself to bite a target. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Bite</h3>
+    <p>bites targets at short range. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Twinfold Strike</h3>
+    <p>jumps towards it enemy, swinging its tail twice in the air before slamming into the ground. This attack cannot be disabled</p>
+  </div>
+</div>
         </div>
       </div>
     </div>
@@ -961,14 +1353,7 @@ const articles = {
     </div>
   </div>
 
-  <div class="accordion">
- <div class="accordion-item">
-  <div class="accordion-header" aria-expanded="false">Overriding <span class="chev">▾</span></div>
-  <div class="accordion-content">
-  <p>The Snapmaw can be overridden, and the its module can be acquired by overriding Cauldron IOTA's core. As for performance, its very good, like a 7/10, its sites are very close to a lot of machine sites, and it deals good damage, but my only issue is its close-range attacks are slow, so by the time the snapmaw actually attacks, the other machine will be able to stagger it.</p>
-  </div>
- </div>
-</div>
+
   </section>
 
   <!-- Apex Variant -->
@@ -979,15 +1364,33 @@ const articles = {
     <div class="accordion">
       <div class="accordion-item">
         <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
-        <div class="accordion-content">
-          <ul>
-          <li><strong>Ice Burst</strong>: fires a spray of Frost projectiles from its mouth; This attack can be disabled by bursting its Chillwater gullet.</li>
-          <li><strong>Swing Bite</strong>: lunges forward with its jaws. This attack cannot be disabled.</li>
-          <li><strong>Tail Swipe</strong>: swings its tail in a wide arc. This attack cannot be disabled.</li>
-          <li><strong>Lunging Jaw</strong>: launches itself to bite a target. This attack cannot be disabled.</li>
-          <li><strong>Bite</strong>: bites targets at short range. This attack cannot be disabled.</li>
-          <li><strong>Twinfold Strike</strong>: jumps towards it enemy, swinging its tail twice in the air before slamming into the ground. This attack cannot be disabled</li>
-          </ul>
+        x
+          <div class="attack-list">
+  <div class="attack-card">
+    <h3>Ice Burst</h3>
+    <p>fires a spray of Frost projectiles from its mouth; This attack can be disabled by bursting its Chillwater gullet.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Swing Bite</h3>
+    <p>lunges forward with its jaws. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Tail Swipe</h3>
+    <p>swings its tail in a wide arc. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Lunging Jaw</h3>
+    <p>launches itself to bite a target. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Bite</h3>
+    <p>bites targets at short range. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Twinfold Strike</h3>
+    <p>jumps towards it enemy, swinging its tail twice in the air before slamming into the ground. This attack cannot be disabled</p>
+  </div>
+</div>
         </div>
       </div>
     </div>
@@ -1024,9 +1427,19 @@ const articles = {
   </section>
 </article>
 </div>
+
+
+
+
+
 `,
 
 "shell-walker": `
+
+
+
+
+
 
 <article id="shell-walker" class="theme-machine">
   <h1 class="title">Shell-Walker</h1>
@@ -1051,15 +1464,33 @@ const articles = {
         <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
         <div class="accordion-content">
         <p>Shell-Walkers often travel in convoys and are typically accompanied by other machines.</p>
-        <ul>
-        <li><strong>Claw Combo</strong>: deals consecutive strikes with its shield and lightning claws. This attack can be disabled by removing both of its claws</li>
-          <li><strong>Left Hook</strong>: throws a punch with its deactivated shield claw; remove the shield claw to disable this attack.</li>
-          <li><strong>Ground Slam</strong>: slams its body into the ground, dealing heavy knockback. This attack cannot be disabled.</li>
-          <li><strong>Electric Nova</strong>: discharges an electric burst that stuns and damages; This attack can be disabled by destroying the power generator located on its back.</li>
-          <li><strong>Energy Gate</strong>: raises an energy shield with its left claw; remove the shield claw to disable.</li>
-          <li><strong>Rapid Claw</strong>: quickly strikes with its lightning claw, releasing electric explosions; destroying the lightning claw disables this attack.</li>
-          <li><strong>Thunder Barrage</strong> at long range, it uses its lightning claw to shoot 3 Shock bombs that explode on impact. This attack can be disabled by removing its lightning claw
-        </ul>
+        <div class="attack-list">
+  <div class="attack-card">
+    <h3>Claw Combo</h3>
+    <p>deals consecutive strikes with its shield and lightning claws. This attack can be disabled by removing both of its claws</p>
+  </div>
+  <div class="attack-card">
+    <h3>Left Hook</h3>
+    <p>throws a punch with its deactivated shield claw; remove the shield claw to disable this attack.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Ground Slam</h3>
+    <p>slams its body into the ground, dealing heavy knockback. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Electric Nova</h3>
+    <p>discharges an electric burst that stuns and damages; This attack can be disabled by destroying the power generator located on its back.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Energy Gate</h3>
+    <p>raises an energy shield with its left claw; remove the shield claw to disable.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Rapid Claw</h3>
+    <p>quickly strikes with its lightning claw, releasing electric explosions; destroying the lightning claw disables this attack.</p>
+  </div>
+</div>
+        </div>
         </div>
       </div>
     </div>
@@ -1093,14 +1524,7 @@ const articles = {
       </div>
     </div>
 
-    <div class="accordion">
- <div class="accordion-item">
-  <div class="accordion-header" aria-expanded="false">Overriding <span class="chev">▾</span></div>
-  <div class="accordion-content">
-  <p>The Shell-Walker can be overridden, and the its module can be acquired by overriding Cauldron CHI's core. As for performance, its amazing, like a 8/10, its Shock attacks and shield are very good as a tank, and the convoys can be close to some pretty strong machines, but most of the time it will get killed by other machines that are part of the convoy.</p>
-  </div>
- </div>
-</div>
+
   </section>
 
   <section class="machine-variant" data-variant-section="apex">
@@ -1112,13 +1536,29 @@ const articles = {
         <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
         <div class="accordion-content">
         <p>As with the normal form, Apex Shell-Walkers are encountered in convoys and rely on their shield and claws to defend cargo.</p>
-        <ul>
-          <li><strong>Left Hook</strong>: powerful claw swing; disable by removing the shield claw.</li>
-          <li><strong>Ground Slam</strong>: shockwave slam. This attack cannot be disabled.</li>
-          <li><strong>Electric Nova</strong>: area electric discharge. This attack cannot be disabled.</li>
-          <li><strong>Energy Gate</strong>: energy shield deployment; disable by removing the shield claw.</li>
-          <li><strong>Claw Combo</strong>: rapid lightning-claw strikes; destroy the lightning claw to stop it.</li>
-        </ul>
+        <div class="attack-list">
+  <div class="attack-card">
+    <h3>Left Hook</h3>
+    <p>powerful claw swing; disable by removing the shield claw.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Ground Slam</h3>
+    <p>shockwave slam. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Electric Nova</h3>
+    <p>area electric discharge. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Energy Gate</h3>
+    <p>energy shield deployment; disable by removing the shield claw.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Claw Combo</h3>
+    <p>rapid lightning-claw strikes; destroy the lightning claw to stop it.</p>
+  </div>
+</div>
+        </div>
         </div>
       </div>
     </div>
@@ -1155,9 +1595,19 @@ const articles = {
   </section>
 </article>
 </div>
+
+
+
+
+
 `,
 
 "scrapper": `
+
+
+
+
+
 
 <article id="scrapper" class="theme-machine">
   <h1 class="title">Scrapper</h1>
@@ -1182,14 +1632,33 @@ const articles = {
         <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
         <div class="accordion-content">
         <p>Scrappers continuously scan their surroundings and react quickly to threats, so expect rapid movements and sudden attacks.</p>
-        <ul>
-          <li><strong>Slash</strong>: swipes with claws. This attack cannot be disabled.</li>
-          <li><strong>Bite</strong>: lunges to bite. This attack cannot be disabled.</li>
-          <li><strong>Tail Whip</strong>: swings its tail. This attack cannot be disabled.</li>
-          <li><strong>Claw Swipe</strong>: fast dual-claw slashes. This attack cannot be disabled.</li>
-          <li><strong>Plasma Blast</strong>: fires a concentrated Plasma shot. This attack can be disabled by destroying the Plasma cell located on its hind legs.</li>
-          <li><strong>Plasma Beam</strong>: charges and fires a continuous Plasma beam. This attack can be disabled by destroying the Plasma cell located on its hind legs.</li>
-        </ul>
+        <div class="attack-list">
+  <div class="attack-card">
+    <h3>Slash</h3>
+    <p>swipes with claws. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Bite</h3>
+    <p>lunges to bite. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Tail Whip</h3>
+    <p>swings its tail. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Claw Swipe</h3>
+    <p>fast dual-claw slashes. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Plasma Blast</h3>
+    <p>fires a concentrated Plasma shot. This attack can be disabled by destroying the Plasma cell located on its hind legs.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Plasma Beam</h3>
+    <p>charges and fires a continuous Plasma beam. This attack can be disabled by destroying the Plasma cell located on its hind legs.</p>
+  </div>
+</div>
+        </div>
         </div>
       </div>
     </div>
@@ -1221,14 +1690,7 @@ const articles = {
     </div>
   </div>
 
-  <div class="accordion">
- <div class="accordion-item">
-  <div class="accordion-header" aria-expanded="false">Overriding <span class="chev">▾</span></div>
-  <div class="accordion-content">
-  <p>The Scrapper can be overridden, and the its module can be acquired by overriding Cauldron MU's core. As for performance, its somewhat bad, like a 4/10, the only positives of overriding this machine its the stun attack, and its abundance.</p>
-  </div>
- </div>
-</div>
+
   </section>
 
   <!-- Apex Variant -->
@@ -1241,14 +1703,33 @@ const articles = {
       <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
       <div class="accordion-content">
       <p>The Apex Scrapper keeps the same rapid scanning behavior but deals more damage and can sustain more hits.</p>
-      <ul>
-        <li><strong>Slash</strong>: claw swipe. This attack cannot be disabled.</li>
-        <li><strong>Bite</strong>: lunging jaw attack. This attack cannot be disabled.</li>
-        <li><strong>Tail Whip</strong>: wide tail swing. This attack cannot be disabled.</li>
-        <li><strong>Claw Swipe</strong>: fast dual-claw attack. This attack cannot be disabled.</li>
-        <li><strong>Plasma Blast</strong>: concentrated Plasma shot. This attack cannot be disabled.</li>
-        <li><strong>Plasma Beam</strong>: charged continuous beam. This attack cannot be disabled.</li>
-      </ul>
+      <div class="attack-list">
+  <div class="attack-card">
+    <h3>Slash</h3>
+    <p>claw swipe. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Bite</h3>
+    <p>lunging jaw attack. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Tail Whip</h3>
+    <p>wide tail swing. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Claw Swipe</h3>
+    <p>fast dual-claw attack. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Plasma Blast</h3>
+    <p>concentrated Plasma shot. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Plasma Beam</h3>
+    <p>charged continuous beam. This attack cannot be disabled.</p>
+  </div>
+</div>
+      </div>
       </div>
     </div>
   </div>
@@ -1281,9 +1762,19 @@ const articles = {
   </section>
   </article>
 </div>
+
+
+
+
+
 `,
 
 "skydrifter": `
+
+
+
+
+
 
    <article id="skydrifter" class="theme-machine">
   <h1 class="title">Skydrifter</h1>
@@ -1306,16 +1797,39 @@ const articles = {
   <div class="accordion">
     <div class="accordion-item">
       <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
-      <div class="accordion-content">
+      x
       <p>The Skydrifter will often be found airborne scanning for targets, so it's very unlikely you're gonna be able to sneak up to it</p>
-      <ul>
-        <li><strong>Feather Spray</strong>: shoots a burst of razor sharp feathers from its tail, This attack can be disabled by shooting down its tail</li>
-        <li><strong>Watcher</strong>: sprays its enemies tracker fluid so that the Skydrifter will always know their location. This attack cannot be disabled</li>
-        <li><strong>Razor Torrent</strong>: hovers in the air, then sweeps forward delivering 2 slashes from its razor wings. This attack cannot be disabled</li>
-        <li><strong>Tail Arc</strong>: swings its tail in an area around itself. This attack cannot be disabled</li>
-        <li><strong>Flaming Pounce</strong>: launches itself onto its enemy with its fiery thrusters, leaving a scorched area. This attack cannot be disabled</li>
-        <li><strong>Dive Bomb</strong>: while it's flying in th air, starts diving towards its enemy, then shoots a wing blast that stun the enemy. This attack cannot be disabled</li>
-        <li><strong>Blazestorm</strong>: creates a flaming tornado around itself. This attack cannot be disabled</li>
+      <div class="attack-list">
+  <div class="attack-card">
+    <h3>Feather Spray</h3>
+    <p>shoots a burst of razor sharp feathers from its tail, This attack can be disabled by shooting down its tail</p>
+  </div>
+  <div class="attack-card">
+    <h3>Watcher</h3>
+    <p>sprays its enemies tracker fluid so that the Skydrifter will always know their location. This attack cannot be disabled</p>
+  </div>
+  <div class="attack-card">
+    <h3>Razor Torrent</h3>
+    <p>hovers in the air, then sweeps forward delivering 2 slashes from its razor wings. This attack cannot be disabled</p>
+  </div>
+  <div class="attack-card">
+    <h3>Tail Arc</h3>
+    <p>swings its tail in an area around itself. This attack cannot be disabled</p>
+  </div>
+  <div class="attack-card">
+    <h3>Flaming Pounce</h3>
+    <p>launches itself onto its enemy with its fiery thrusters, leaving a scorched area. This attack cannot be disabled</p>
+  </div>
+  <div class="attack-card">
+    <h3>Dive Bomb</h3>
+    <p>while it's flying in th air, starts diving towards its enemy, then shoots a wing blast that stun the enemy. This attack cannot be disabled</p>
+  </div>
+  <div class="attack-card">
+    <h3>Blazestorm</h3>
+    <p>creates a flaming tornado around itself. This attack cannot be disabled</p>
+  </div>
+</div>
+      isabled
       </ul>
       </div>
     </div>
@@ -1349,14 +1863,7 @@ const articles = {
     </div>
   </div>
 
-  <div class="accordion">
- <div class="accordion-item">
-  <div class="accordion-header" aria-expanded="false">Overriding <span class="chev">▾</span></div>
-  <div class="accordion-content">
-  <p>The Skydrifter can be overridden, and the its module can be acquired by overriding Cauldron IOTA's core. As for performance, its decent, like 6/10, only because of its fire attacks dealing good damage, and the fact that its an aerial machine.</p>
-  </div>
- </div>
-</div>
+
 </section>
 
  <!-- Apex Variant -->
@@ -1368,16 +1875,39 @@ const articles = {
   <div class="accordion">
     <div class="accordion-item">
       <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
-      <div class="accordion-content">
+      x
       <p>The Skydrifter will often be found airborne scanning for targets, so it's very unlikely you're gonna be able to sneak up to it</p>
-      <ul>
-        <li><strong>Feather Spray</strong>: shoots a burst of razor sharp feathers from its tail, This attack can be disabled by shooting down its tail</li>
-        <li><strong>Watcher</strong>: sprays its enemies tracker fluid so that the Skydrifter will always know their location. This attack cannot be disabled</li>
-        <li><strong>Razor Torrent</strong>: hovers in the air, then sweeps forward delivering 2 slashes from its razor wings. This attack cannot be disabled</li>
-        <li><strong>Tail Arc</strong>: swings its tail in an area around itself. This attack cannot be disabled</li>
-        <li><strong>Flaming Pounce</strong>: launches itself onto its enemy with its fiery thrusters, leaving a scorched area. This attack cannot be disabled</li>
-        <li><strong>Dive Bomb</strong>: while it's flying in th air, starts diving towards its enemy, then shoots a wing blast that stun the enemy. This attack cannot be disabled</li>
-        <li><strong>Blaze Cyclone</strong>: creates a flaming tornado around itself. This attack cannot be disabled</li>
+      <div class="attack-list">
+  <div class="attack-card">
+    <h3>Feather Spray</h3>
+    <p>shoots a burst of razor sharp feathers from its tail, This attack can be disabled by shooting down its tail</p>
+  </div>
+  <div class="attack-card">
+    <h3>Watcher</h3>
+    <p>sprays its enemies tracker fluid so that the Skydrifter will always know their location. This attack cannot be disabled</p>
+  </div>
+  <div class="attack-card">
+    <h3>Razor Torrent</h3>
+    <p>hovers in the air, then sweeps forward delivering 2 slashes from its razor wings. This attack cannot be disabled</p>
+  </div>
+  <div class="attack-card">
+    <h3>Tail Arc</h3>
+    <p>swings its tail in an area around itself. This attack cannot be disabled</p>
+  </div>
+  <div class="attack-card">
+    <h3>Flaming Pounce</h3>
+    <p>launches itself onto its enemy with its fiery thrusters, leaving a scorched area. This attack cannot be disabled</p>
+  </div>
+  <div class="attack-card">
+    <h3>Dive Bomb</h3>
+    <p>while it's flying in th air, starts diving towards its enemy, then shoots a wing blast that stun the enemy. This attack cannot be disabled</p>
+  </div>
+  <div class="attack-card">
+    <h3>Blaze Cyclone</h3>
+    <p>creates a flaming tornado around itself. This attack cannot be disabled</p>
+  </div>
+</div>
+      isabled
       </ul>
       </div>
     </div>
@@ -1414,9 +1944,19 @@ const articles = {
 </section>
 </article>
 </div>
+
+
+
+
+
 `,
 
 "scrounger": `
+
+
+
+
+
 
     <article id="scrounger" class="theme-machine">
   <h1 class="title">Scrounger</h1>
@@ -1439,13 +1979,30 @@ const articles = {
     <div class="accordion">
     <div class="accordion-item">
       <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
-      <div class="accordion-content">
-      <ul>
-        <li><strong>Lunging Crunch</strong>: leaps into the air, biting its enemies. This attack cannot be disabled.</li>
-        <li><strong>Bite</strong>: it just bites the enemy. This attack cannot be disabled.</li>
-        <li><strong>Swirling Shockwave</strong>: jumps into the air while shooting two stunning shockwaves. This attack cannot be disabled/</li>
-        <li><strong>Shock Burst</strong>: shoots a burst of 3 Shock projectiles from its mouth. This attack can be disabled by destroying its power cell located on its back.</li>
-        <li><strong>Shock Blast</strong>: shoots a powerful, homing Shock projectile that explodes on impact. This attack can be disabled by removing the power cell located on its back.</li>      
+      x
+      <div class="attack-list">
+  <div class="attack-card">
+    <h3>Lunging Crunch</h3>
+    <p>leaps into the air, biting its enemies. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Bite</h3>
+    <p>it just bites the enemy. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Swirling Shockwave</h3>
+    <p>jumps into the air while shooting two stunning shockwaves. This attack cannot be disabled/</p>
+  </div>
+  <div class="attack-card">
+    <h3>Shock Burst</h3>
+    <p>shoots a burst of 3 Shock projectiles from its mouth. This attack can be disabled by destroying its power cell located on its back.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Shock Blast</h3>
+    <p>shoots a powerful, homing Shock projectile that explodes on impact. This attack can be disabled by removing the power cell located on its back.</p>
+  </div>
+</div>
+      /li>      
         </ul>
       </div>
     </div>
@@ -1479,14 +2036,7 @@ const articles = {
    </div>
   </div>
 
-  <div class="accordion">
- <div class="accordion-item">
-  <div class="accordion-header" aria-expanded="false">Overriding <span class="chev">▾</span></div>
-  <div class="accordion-content">
-  <p>The Scrounger can be overridden, and the its module can be acquired by overriding Cauldron MU's core. As for performance, it's the exact same as the Scrapper.</p>
-  </div>
- </div>
-</div>
+
 </section>
 
 <section class="machine-variant" data-variant-section="apex">
@@ -1496,13 +2046,30 @@ const articles = {
     <div class="accordion">
     <div class="accordion-item">
       <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
-      <div class="accordion-content">
-      <ul>
-        <li><strong>Lunging Crunch</strong>: leaps into the air, biting its enemies. This attack cannot be disabled.</li>
-        <li><strong>Bite</strong>: it just bites the enemy. This attack cannot be disabled.</li>
-        <li><strong>Swirling Shockwave</strong>: jumps into the air while shooting two stunning shockwaves. This attack cannot be disabled/</li>
-        <li><strong>Shock Burst</strong>: shoots a burst of 3 Shock projectiles from its mouth. This attack can be disabled by destroying its power cell located on its back.</li>
-        <li><strong>Shock Blast</strong>: shoots a powerful, homing Shock projectile that explodes on impact. This attack can be disabled by removing the power cell located on its back.</li>      
+      x
+      <div class="attack-list">
+  <div class="attack-card">
+    <h3>Lunging Crunch</h3>
+    <p>leaps into the air, biting its enemies. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Bite</h3>
+    <p>it just bites the enemy. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Swirling Shockwave</h3>
+    <p>jumps into the air while shooting two stunning shockwaves. This attack cannot be disabled/</p>
+  </div>
+  <div class="attack-card">
+    <h3>Shock Burst</h3>
+    <p>shoots a burst of 3 Shock projectiles from its mouth. This attack can be disabled by destroying its power cell located on its back.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Shock Blast</h3>
+    <p>shoots a powerful, homing Shock projectile that explodes on impact. This attack can be disabled by removing the power cell located on its back.</p>
+  </div>
+</div>
+      /li>      
         </ul>
       </div>
     </div>
@@ -1539,9 +2106,19 @@ const articles = {
 </section>
 </article>
 </div>
+
+
+
+
+
 `,
 
 "spikesnout": `
+
+
+
+
+
 
 <article id="spikesnout" class="theme-machine">
  <h1 class="title">Spikesnout</h1>
@@ -1560,21 +2137,40 @@ const articles = {
 <section class="machine-variant" data-variant-section="normal">
     <h2>Normal Variant</h2>
     <p class="intro">The Spikesnout is an acquisition machine that liquefies resources of the soil to extract them. It retreats if provoked, leaving clouds of vapor that strengthen allies or weakens enemies.</p>
-
+x
     <div class="accordion">
     <div class="accordion-item">
       <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
-      <div class="accordion-content">
+      
       <p>It will often be found along other machines, and not in its own independent site.</p>
-      <ul>
-        <li><strong>Corroding Spread</strong>: shoots metal shards coated in Acid. This attack can be disabled by shooting off its Metalbite canisters.</li>
-        <li><strong>Lunging Slash</strong>: jumps towards it enemy, slashing it 2 times. This attack cannot be disabled.</li>
-        <li><strong>Mist Spray</strong>: shoots its enemy with a random debuffing mist towards its enemy, or a buffing mist towards its allies. This attack can be disabled by exploding the mist sac located on it tail.</li>
-        <li><strong>Mist Perimiter</strong>: sprays its immediate area with a mist to buff its allies. This attack can be disabled by destroying the mist sac located on its tail.</li>
-        <li><strong>Mist Sweep</strong>: swings its tail overhead, spreading a buffing of debuffing mist into the surrounding area. This attack can be disabled by removing the mist sac located on its tail.</li>
-        <li><strong>Mist Dart</strong>: shoots an accurate dart of highly concentrated mist to its enemy. this attack can be disabled by shooting down the tail sac located on its tail.</li>
-        </ul>
+      <div class="attack-list">
+  <div class="attack-card">
+    <h3>Corroding Spread</h3>
+    <p>shoots metal shards coated in Acid. This attack can be disabled by shooting off its Metalbite canisters.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Lunging Slash</h3>
+    <p>jumps towards it enemy, slashing it 2 times. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Mist Spray</h3>
+    <p>shoots its enemy with a random debuffing mist towards its enemy, or a buffing mist towards its allies. This attack can be disabled by exploding the mist sac located on it tail.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Mist Perimiter</h3>
+    <p>sprays its immediate area with a mist to buff its allies. This attack can be disabled by destroying the mist sac located on its tail.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Mist Sweep</h3>
+    <p>swings its tail overhead, spreading a buffing of debuffing mist into the surrounding area. This attack can be disabled by removing the mist sac located on its tail.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Mist Dart</h3>
+    <p>shoots an accurate dart of highly concentrated mist to its enemy. this attack can be disabled by shooting down the tail sac located on its tail.</p>
+  </div>
+</div>
         <p>And these mists include: a yellow stamina-draining liquid stored in its tail, a blue damage-dampening liquid stored on its underbelly, and a red amplifying liquid stored on its back.</p>
+       stored on its back.</p>
       </div>
     </div>
   </div>
@@ -1607,14 +2203,7 @@ const articles = {
    </div>
   </div>
 
-  <div class="accordion">
- <div class="accordion-item">
-  <div class="accordion-header" aria-expanded="false">Overriding <span class="chev">▾</span></div>
-  <div class="accordion-content">
-  <p>The Spikesnout can be overridden, and the its module can be acquired by overriding Cauldron CHI's core. As for performance, it's actually the best support in the game, well-deserved 10/10, an overridden Spikesnout with the Tenakth Tactician armor, and you can solo anything, even an Apex Thunderjaw.</p>
-  </div>
- </div>
-</div>
+
 </section>
 
 <section class="machine-variant" data-variant-section="apex">
@@ -1624,17 +2213,36 @@ const articles = {
     <div class="accordion">
     <div class="accordion-item">
       <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
-      <div class="accordion-content">
+      x
       <p>It will often be found along other machines, and not in its own independent site.</p>
-      <ul>
-        <li><strong>Corroding Spread</strong>: shoots metal shards coated in Acid. This attack can be disabled by shooting off its Metalbite canisters.</li>
-        <li><strong>Lunging Slash</strong>: jumps towards it enemy, slashing it 2 times. This attack cannot be disabled.</li>
-        <li><strong>Mist Spray</strong>: shoots its enemy with a random debuffing mist towards its enemy, or a buffing mist towards its allies. This attack can be disabled by exploding the mist sac located on it tail.</li>
-        <li><strong>Mist Perimiter</strong>: sprays its immediate area with a mist to buff its allies. This attack can be disabled by destroying the mist sac located on its tail.</li>
-        <li><strong>Mist Sweep</strong>: swings its tail overhead, spreading a buffing of debuffing mist into the surrounding area. This attack can be disabled by removing the mist sac located on its tail.</li>
-        <li><strong>Mist Dart</strong>: shoots an accurate dart of highly concentrated mist to its enemy. this attack can be disabled by shooting down the tail sac located on its tail.</li>
-        </ul>
+      <div class="attack-list">
+  <div class="attack-card">
+    <h3>Corroding Spread</h3>
+    <p>shoots metal shards coated in Acid. This attack can be disabled by shooting off its Metalbite canisters.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Lunging Slash</h3>
+    <p>jumps towards it enemy, slashing it 2 times. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Mist Spray</h3>
+    <p>shoots its enemy with a random debuffing mist towards its enemy, or a buffing mist towards its allies. This attack can be disabled by exploding the mist sac located on it tail.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Mist Perimiter</h3>
+    <p>sprays its immediate area with a mist to buff its allies. This attack can be disabled by destroying the mist sac located on its tail.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Mist Sweep</h3>
+    <p>swings its tail overhead, spreading a buffing of debuffing mist into the surrounding area. This attack can be disabled by removing the mist sac located on its tail.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Mist Dart</h3>
+    <p>shoots an accurate dart of highly concentrated mist to its enemy. this attack can be disabled by shooting down the tail sac located on its tail.</p>
+  </div>
+</div>
         <p>And these mists include: a yellow stamina-draining liquid stored in its tail, a blue damage-dampening liquid stored on its underbelly, and a red amplifying liquid stored on its back.</p>
+       stored on its back.</p>
       </div>
     </div>
   </div>
@@ -1670,9 +2278,19 @@ const articles = {
   </section>
 </article>
 </div>
+
+
+
+
+
 `,
 
 "tremortusk": `
+
+
+
+
+
 
      <article id="tremortusk" class="theme-machine">
   <h1 class="title">Tremortusk</h1>
@@ -1695,18 +2313,47 @@ const articles = {
     <div class="accordion">
     <div class="accordion-item">
       <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
-      <div class="accordion-content">
+      x
       <p>The Salvo cannons on its sides will fire independently of the Tremortusk's actions every 13 seconds, and the shots can knock you down instantly and have a large radius.</p>
-      <ul>
-        <li><strong>Superheated Sling</strong>: picks up a boulder from the ground, heating it with its trunk, then throws it at the enemy leaving a scorched area in its wake. Thsi attack can be disabled by exploding the blaze sac on it belly.</li>
-        <li><strong>Flame Sweep</strong>: uses its trunk to shoot flames near the ground, sending forth waves of fire that deal heavy damage. This attack can be disabled by exploding the blaze sac under its belly.</li>
-        <li><strong>Tusk Grab</strong>: grabs its enemy using its tusks. This attack can be disabled by removing all of its tusks.</li>
-        <li><strong>Electro Stomp</strong>: charges its legs with electricity, then stomps the ground sending out an electric shockwave. This attack can be disabled by destroying all of its sparkers.</li>
-        <li><strong>Shock Stampede</strong>: charges its feet with electricity, then creates 3 smaller consecutive electric shockwaves. This attack can be disabled by removing all of its sparkers</li>
-        <li><strong>Tusk Sweep</strong>: slowly starts to move towards it enemies, while swinging its tusks left and right. this attack can be disabled by shooting down all of its tusks.</li>
-        <li><strong>Tusk Slam</strong>: slmas its tusks into the ground, dealing a smal AOE. This attack cn disabled by destroying all of its tusks</li>
-        <li><strong>Plasma Repeater</strong>: shoots a burst of Plasma projectiles. This attack can be disabled by shooting down its Plasma cannons located near the base of its trunk, which are usable heavy weapons</li>
-        <li><strong>Berserker Boost</strong>: injects itself and the surrounding area with amplifying liquid, boosting its damage and attack speed. This attack can be disabled by bursting the amplifying sac on its chest, but its will trigger the amplified effect on nearby machines.</li>
+      <div class="attack-list">
+  <div class="attack-card">
+    <h3>Superheated Sling</h3>
+    <p>picks up a boulder from the ground, heating it with its trunk, then throws it at the enemy leaving a scorched area in its wake. Thsi attack can be disabled by exploding the blaze sac on it belly.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Flame Sweep</h3>
+    <p>uses its trunk to shoot Fire near the ground, sending forth waves of fire that deal heavy damage. This attack can be disabled by exploding the blaze sac under its belly.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Tusk Grab</h3>
+    <p>grabs its enemy using its tusks. This attack can be disabled by removing all of its tusks.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Electro Stomp</h3>
+    <p>charges its legs with electricity, then stomps the ground sending out an electric shockwave. This attack can be disabled by destroying all of its sparkers.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Shock Stampede</h3>
+    <p>charges its feet with electricity, then creates 3 smaller consecutive electric shockwaves. This attack can be disabled by removing all of its sparkers</p>
+  </div>
+  <div class="attack-card">
+    <h3>Tusk Sweep</h3>
+    <p>slowly starts to move towards it enemies, while swinging its tusks left and right. this attack can be disabled by shooting down all of its tusks.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Tusk Slam</h3>
+    <p>slmas its tusks into the ground, dealing a smal AOE. This attack cn disabled by destroying all of its tusks</p>
+  </div>
+  <div class="attack-card">
+    <h3>Plasma Repeater</h3>
+    <p>shoots a burst of Plasma projectiles. This attack can be disabled by shooting down its Plasma cannons located near the base of its trunk, which are usable heavy weapons</p>
+  </div>
+  <div class="attack-card">
+    <h3>Berserker Boost</h3>
+    <p>injects itself and the surrounding area with amplifying liquid, boosting its damage and attack speed. This attack can be disabled by bursting the amplifying sac on its chest, but its will trigger the amplified effect on nearby machines.</p>
+  </div>
+</div>
+      ines.
         </ul>
       </div>
     </div>
@@ -1716,7 +2363,7 @@ const articles = {
    <div class="accordion-item">
     <div class="accordion-header" aria-expanded="false">Strategy <span class="chev">▾</span></div>
     <div class="accordion-content">
-    <p>The Tremortusk is very difficult to take down, even on its own, but with the right technique, anything will go down. Start by bursting the amplifying sac on its chest, it will get amplified now but it won't be able to later on in the fight. Then shoot down the Plasma cannons on its face to use them against it, which can be very effective when followed up with impact weapons to charge the explosion. Then start targeting its Salvo cannons, which can be very annoying to dodge later on when you're low on health. After that, start shooting it with Frost, then bombard it with anything untill the Frost wears off. Then just rinse and repeat the last part untill it's dead.</p>
+    <p>The Tremortusk is very difficult to take down, even on its own, but with the right technique, anything will go down. Start by bursting the amplifying sac on its chest, it will get amplified now but it won't be able to later on in the fight. Then shoot down the Plasma cannons on its face to use them against it, which can be very effective when followed up with impact weapons to charge the explosion. Then start targeting its Salvo cannons, which can be very annoying to dodge later on when you're low on health. After that, start shooting it with Frost, then bombard it with anything until the Frost wears off. Then just rinse and repeat the last part until it's dead.</p>
     </div>
    </div>
   </div>
@@ -1762,18 +2409,47 @@ const articles = {
     <div class="accordion">
     <div class="accordion-item">
       <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
-      <div class="accordion-content">
+      x
       <p>The Salvo cannons on its sides will fire independently of the Tremortusk's actions every 13 seconds, and the shots can knock you down instantly and have a large radius.</p>
-      <ul>
-        <li><strong>Superheated Sling</strong>: picks up a boulder from the ground, heating it with its trunk, then throws it at the enemy leaving a scorched area in its wake. Thsi attack can be disabled by exploding the blaze sac on it belly.</li>
-        <li><strong>Flame Sweep</strong>: uses its trunk to shoot flames near the ground, sending forth waves of fire that deal heavy damage. This attack can be disabled by exploding the blaze sac under its belly.</li>
-        <li><strong>Tusk Grab</strong>: grabs its enemy using its tusks. This attack can be disabled by removing all of its tusks.</li>
-        <li><strong>Electro Stomp</strong>: charges its legs with electricity, then stomps the ground sending out an electric shockwave. This attack can be disabled by destroying all of its sparkers.</li>
-        <li><strong>Shock Stampede</strong>: charges its feet with electricity, then creates 3 smaller consecutive electric shockwaves. This attack can be disabled by removing all of its sparkers</li>
-        <li><strong>Tusk Sweep</strong>: slowly starts to move towards it enemies, while swinging its tusks left and right. this attack can be disabled by shooting down all of its tusks.</li>
-        <li><strong>Tusk Slam</strong>: slmas its tusks into the ground, dealing a smal AOE. This attack cn disabled by destroying all of its tusks</li>
-        <li><strong>Plasma Repeater</strong>: shoots a burst of Plasma projectiles. This attack can be disabled by shooting down its Plasma cannons located near the base of its trunk, which are usable heavy weapons</li>
-        <li><strong>Berserker Boost</strong>: injects itself and the surrounding area with amplifying liquid, boosting its damage and attack speed. This attack can be disabled by bursting the amplifying sac on its chest, but its will trigger the amplified effect on nearby machines.</li>
+      <div class="attack-list">
+  <div class="attack-card">
+    <h3>Superheated Sling</h3>
+    <p>picks up a boulder from the ground, heating it with its trunk, then throws it at the enemy leaving a scorched area in its wake. Thsi attack can be disabled by exploding the blaze sac on it belly.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Flame Sweep</h3>
+    <p>uses its trunk to shoot Fire near the ground, sending forth waves of fire that deal heavy damage. This attack can be disabled by exploding the blaze sac under its belly.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Tusk Grab</h3>
+    <p>grabs its enemy using its tusks. This attack can be disabled by removing all of its tusks.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Electro Stomp</h3>
+    <p>charges its legs with electricity, then stomps the ground sending out an electric shockwave. This attack can be disabled by destroying all of its sparkers.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Shock Stampede</h3>
+    <p>charges its feet with electricity, then creates 3 smaller consecutive electric shockwaves. This attack can be disabled by removing all of its sparkers</p>
+  </div>
+  <div class="attack-card">
+    <h3>Tusk Sweep</h3>
+    <p>slowly starts to move towards it enemies, while swinging its tusks left and right. this attack can be disabled by shooting down all of its tusks.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Tusk Slam</h3>
+    <p>slmas its tusks into the ground, dealing a smal AOE. This attack cn disabled by destroying all of its tusks</p>
+  </div>
+  <div class="attack-card">
+    <h3>Plasma Repeater</h3>
+    <p>shoots a burst of Plasma projectiles. This attack can be disabled by shooting down its Plasma cannons located near the base of its trunk, which are usable heavy weapons</p>
+  </div>
+  <div class="attack-card">
+    <h3>Berserker Boost</h3>
+    <p>injects itself and the surrounding area with amplifying liquid, boosting its damage and attack speed. This attack can be disabled by bursting the amplifying sac on its chest, but its will trigger the amplified effect on nearby machines.</p>
+  </div>
+</div>
+      ines.
         </ul>
       </div>
     </div>
@@ -1783,7 +2459,7 @@ const articles = {
    <div class="accordion-item">
     <div class="accordion-header" aria-expanded="false">Strategy <span class="chev">▾</span></div>
     <div class="accordion-content">
-    <p>The Apex Tremortusk is even more resilient to damage than its normal variant, but with the right technique, anything will go down. Start by bursting the amplifying sac on its chest, it will get amplified now but it won't be able to later on in the fight. Then shoot down the Plasma cannons on its face to use them against it, which can be very effective when followed up with impact weapons to charge the explosion. Then start targeting its Salvo cannons, which can be very annoying to dodge later on when you're low on health. After that, start shooting it with Frost, then bombard it with anything untill the Frost wears off. Then just rinse and repeat the last part untill it's dead.</p>
+    <p>The Apex Tremortusk is even more resilient to damage than its normal variant, but with the right technique, anything will go down. Start by bursting the amplifying sac on its chest, it will get amplified now but it won't be able to later on in the fight. Then shoot down the Plasma cannons on its face to use them against it, which can be very effective when followed up with impact weapons to charge the explosion. Then start targeting its Salvo cannons, which can be very annoying to dodge later on when you're low on health. After that, start shooting it with Frost, then bombard it with anything until the Frost wears off. Then just rinse and repeat the last part until it's dead.</p>
     </div>
    </div>
   </div>
@@ -1813,9 +2489,19 @@ const articles = {
   </section>
 </article>
 </div>
+
+
+
+
+
 `,
 
 "tideripper": `
+
+
+
+
+
 
 <article id="tideripper" class="theme-machine aquatic">
   <h1 class="title">Tideripper</h1>
@@ -1839,17 +2525,43 @@ const articles = {
     <div class="accordion">
       <div class="accordion-item">
         <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
-        <div class="accordion-content">
+        x
         <p>Typical for large machines, the Tideripper is predominantly solitary. They are generally found in lakes or the ocean, where they filter sediment for resources. They only come onto dry land if they detect a threat (such as a hunter), although they will occasionally waddle onto shore.</p>
-          <ul>
-          <li><strong>Neck Toss</strong>: sweeps its long neck, knocking everything out of the way. This attac cannot be disabled.</li>
-          <li><strong>Slipstream Tackle</strong>: creates a sort of Slip-n-Slide under it to charge at its enemy. This attack can be disabled by destroying its Purgewater belly.</li>
-          <li><strong>Drenching Slam</strong>: slams its body onto the ground, creating a Purgewater shockwave. This attack can be disabled the Purgewater sac on its underbelly.</li>\
-          <li><strong>Twin Strike</strong>: sweeps the area with both its tail and neck in one fluid motion. This attack cannot be disabled.</li>
-          <li><strong>Flipper Leap</strong>: charges at its enemy, smashing its giant flippers along the way. This attack cannot be disabled.</li>
-          <li><strong>Lunging Jaw<</strong>: rapidly launches itself at its enemy, embedding it in the ground to inject its enemies with Purgewater. This attack can be partially disabled by destroying the Purgewater sac on its belly.</li>
-          <li><strong>Tidal Rush</strong>: activates its Tidal disc, shooting out high-pressure Purgewater streams over a large area which work indepenedently of the Tideripper's actions. This attack can be disabled by either removing the Tidal disc or destroying the Purgewater sac on its belly.</li>
-          <li><strong>Jetstream</strong>: creates a large Purgewater jet that sweeps over a wide arc or in a straight line. This attack can be disabled by either decommissioning the Purgewater cannons or destroying the Purgewater sac on its belly.</li>
+          <div class="attack-list">
+  <div class="attack-card">
+    <h3>Neck Toss</h3>
+    <p>sweeps its long neck, knocking everything out of the way. This attac cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Slipstream Tackle</h3>
+    <p>creates a sort of Slip-n-Slide under it to charge at its enemy. This attack can be disabled by destroying its Purgewater belly.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Drenching Slam</h3>
+    <p>slams its body onto the ground, creating a Purgewater shockwave. This attack can be disabled the Purgewater sac on its underbelly.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Twin Strike</h3>
+    <p>sweeps the area with both its tail and neck in one fluid motion. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Flipper Leap</h3>
+    <p>charges at its enemy, smashing its giant flippers along the way. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Lunging Jaw</h3>
+    <p>rapidly launches itself at its enemy, embedding it in the ground to inject its enemies with Purgewater. This attack can be partially disabled by destroying the Purgewater sac on its belly.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Tidal Rush</h3>
+    <p>activates its Tidal disc, shooting out high-pressure Purgewater streams over a large area which work indepenedently of the Tideripper's actions. This attack can be disabled by either removing the Tidal disc or destroying the Purgewater sac on its belly.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Jetstream</h3>
+    <p>creates a large Purgewater jet that sweeps over a wide arc or in a straight line. This attack can be disabled by either decommissioning the Purgewater cannons or destroying the Purgewater sac on its belly.</p>
+  </div>
+</div>
+        .
           </ul>
         </div>
       </div>
@@ -1859,7 +2571,7 @@ const articles = {
       <div class="accordion-item">
         <div class="accordion-header" aria-expanded="false">Strategy <span class="chev">▾</span></div>
         <div class="accordion-content">
-          <p>Tiderippers are tricky because they're fast, aquatic, and heavily armored, but they have very exploitable weak points. Start by taking out its Tidal disc, as it can get very infuriating to keep getting knocked down. Then prime it with Frost to increase its damage vulnerability, after that just barrage it with anything untill the Frost wears off. When it wears off, go ahead and bombard it with Shock to open up for critical hits. Then just rinse and repeat the last two steps untill it's dead.</p>
+          <p>Tiderippers are tricky because they're fast, aquatic, and heavily armored, but they have very exploitable weak points. Start by taking out its Tidal disc, as it can get very infuriating to keep getting knocked down. Then prime it with Frost to increase its damage vulnerability, after that just barrage it with anything until the Frost wears off. When it wears off, go ahead and bombard it with Shock to open up for critical hits. Then just rinse and repeat the last two steps until it's dead.</p>
         </div>
       </div>
     </div>
@@ -1905,17 +2617,43 @@ const articles = {
     <div class="accordion">
       <div class="accordion-item">
         <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
-        <div class="accordion-content">
+        x
         <p>Typical for large machines, the Tideripper is predominantly solitary. They are generally found in lakes or the ocean, where they filter sediment for resources. They only come onto dry land if they detect a threat (such as a hunter), although they will occasionally waddle onto shore.</p>
-          <ul>
-          <li><strong>Neck Toss</strong>: sweeps its long neck, knocking everything out of the way. This attac cannot be disabled.</li>
-          <li><strong>Slipstream Tackle</strong>: creates a sort of Slip-n-Slide under it to charge at its enemy. This attack can be disabled by destroying its Purgewater belly.</li>
-          <li><strong>Drenching Slam</strong>: slams its body onto the ground, creating a Purgewater shockwave. This attack can be disabled the Purgewater sac on its underbelly.</li>\
-          <li><strong>Twin Strike</strong>: sweeps the area with both its tail and neck in one fluid motion. This attack cannot be disabled.</li>
-          <li><strong>Flipper Leap</strong>: charges at its enemy, smashing its giant flippers along the way. This attack cannot be disabled.</li>
-          <li><strong>Lunging Jaw<</strong>: rapidly launches itself at its enemy, embedding it in the ground to inject its enemies with Purgewater. This attack can be partially disabled by destroying the Purgewater sac on its belly.</li>
-          <li><strong>Tidal Rush</strong>: activates its Tidal disc, shooting out high-pressure Purgewater streams over a large area which work indepenedently of the Tideripper's actions. This attack can be disabled by either removing the Tidal disc or destroying the Purgewater sac on its belly.</li>
-          <li><strong>Jetstream</strong>: creates a large Purgewater jet that sweeps over a wide arc or in a straight line. This attack can be disabled by either decommissioning the Purgewater cannons or destroying the Purgewater sac on its belly.</li>
+          <div class="attack-list">
+  <div class="attack-card">
+    <h3>Neck Toss</h3>
+    <p>sweeps its long neck, knocking everything out of the way. This attac cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Slipstream Tackle</h3>
+    <p>creates a sort of Slip-n-Slide under it to charge at its enemy. This attack can be disabled by destroying its Purgewater belly.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Drenching Slam</h3>
+    <p>slams its body onto the ground, creating a Purgewater shockwave. This attack can be disabled the Purgewater sac on its underbelly.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Twin Strike</h3>
+    <p>sweeps the area with both its tail and neck in one fluid motion. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Flipper Leap</h3>
+    <p>charges at its enemy, smashing its giant flippers along the way. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Lunging Jaw<</h3>
+    <p>rapidly launches itself at its enemy, embedding it in the ground to inject its enemies with Purgewater. This attack can be partially disabled by destroying the Purgewater sac on its belly.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Tidal Rush</h3>
+    <p>activates its Tidal disc, shooting out high-pressure Purgewater streams over a large area which work indepenedently of the Tideripper's actions. This attack can be disabled by either removing the Tidal disc or destroying the Purgewater sac on its belly.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Jetstream</h3>
+    <p>creates a large Purgewater jet that sweeps over a wide arc or in a straight line. This attack can be disabled by either decommissioning the Purgewater cannons or destroying the Purgewater sac on its belly.</p>
+  </div>
+</div>
+        .
           </ul>
         </div>
       </div>
@@ -1925,7 +2663,7 @@ const articles = {
       <div class="accordion-item">
         <div class="accordion-header" aria-expanded="false">Strategy <span class="chev">▾</span></div>
         <div class="accordion-content">
-         <p>Tiderippers are tricky because they're fast, aquatic, and heavily armored, but they have very exploitable weak points. Start by taking out its Tidal disc, as it can get very infuriating to keep getting knocked down. Then prime it with Frost to increase its damage vulnerability, after that just barrage it with anything untill the Frost wears off. When it wears off, go ahead and bombard it with Shock to open up for critical hits. Then just rinse and repeat the last two steps untill it's dead.</p>
+         <p>Tiderippers are tricky because they're fast, aquatic, and heavily armored, but they have very exploitable weak points. Start by taking out its Tidal disc, as it can get very infuriating to keep getting knocked down. Then prime it with Frost to increase its damage vulnerability, after that just barrage it with anything until the Frost wears off. When it wears off, go ahead and bombard it with Shock to open up for critical hits. Then just rinse and repeat the last two steps until it's dead.</p>
         </div>
       </div>
     </div>
@@ -1962,9 +2700,19 @@ const articles = {
   </div>
 </article>
 </div>
+
+
+
+
+
 `,
 
 "widemaw": `
+
+
+
+
+
 
 <article id="widemaw" class="theme-machine aquatic">
   <h1 class="title">Widemaw</h1>
@@ -1988,17 +2736,43 @@ const articles = {
     <div class="accordion">
       <div class="accordion-item">
         <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
-        <div class="accordion-content">
+        x
         <p>The Widemaw will mostly be grazing on the ground, shooting out fertilizer pods which can be collected.</p>
-          <ul>
-          <li><strong>Sweeping Crunch</strong>: opens its jaws wide, sucking in everything for a powerful bite. This attack cannot be disabled.</li>
-          <li><strong>Rock Toss</strong>: sucks in nearby soil and sediment to create a large rock in its mouth, then infuses the rock with Purgewater to throw at its enemy. This attack can be partially disabled by destroying its Purgewater canisters.</li>
-          <li><strong>Vortex Swipe</strong>: activates the vacuum generator on its throat to suck in its enemies for Drenched bite. This attack can be partially disabled by destroying its Purgewater canisters.</li>
-          <li><strong>Aquatic Exhaust</strong>: shoots out Purgewater from its pod dispensers. This attack can be disabled by destroying its Purgewater canisters.</li>
-          <li><strong>Striding Maw</strong>: submerges itself halfway into the ground, propelling itself towards its enemy with its mouth open ready to bite. This attack cannot be disabled.</li>
-          <li><strong>Drenching Barrage</strong>: fires multiple Purgewater-infused rocks in quick succession. This attack can be partially disabled by destroying its Purgewater canisters.</li>
-          <li><strong>Soaking Shockwave</strong>: spins around itself, sucking in nearby rocks and soil to form a large boulder, then it crushes that boulder to release Purgewater into the air. This attack can be disabled by destroying its Purgewater canisters.</li>
-          <li><strong>Booty Blast</strong>: shoots buckshot-like projectiles from its butt, dealing both Fire and Purgewater damage. This attack can be disabled by destroying both its Purgewater canisters and its pod dispensers.</li>
+          <div class="attack-list">
+  <div class="attack-card">
+    <h3>Sweeping Crunch</h3>
+    <p>opens its jaws wide, sucking in everything for a powerful bite. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Rock Toss</h3>
+    <p>sucks in nearby soil and sediment to create a large rock in its mouth, then infuses the rock with Purgewater to throw at its enemy. This attack can be partially disabled by destroying its Purgewater canisters.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Vortex Swipe</h3>
+    <p>activates the vacuum generator on its throat to suck in its enemies for Drenched bite. This attack can be partially disabled by destroying its Purgewater canisters.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Aquatic Exhaust</h3>
+    <p>shoots out Purgewater from its pod dispensers. This attack can be disabled by destroying its Purgewater canisters.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Striding Maw</h3>
+    <p>submerges itself halfway into the ground, propelling itself towards its enemy with its mouth open ready to bite. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Drenching Barrage</h3>
+    <p>fires multiple Purgewater-infused rocks in quick succession. This attack can be partially disabled by destroying its Purgewater canisters.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Soaking Shockwave</h3>
+    <p>spins around itself, sucking in nearby rocks and soil to form a large boulder, then it crushes that boulder to release Purgewater into the air. This attack can be disabled by destroying its Purgewater canisters.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Booty Blast</h3>
+    <p>shoots buckshot-like projectiles from its butt, dealing both Fire and Purgewater damage. This attack can be disabled by destroying both its Purgewater canisters and its pod dispensers.</p>
+  </div>
+</div>
+        .
           </ul>
         </div>
       </div>
@@ -2034,14 +2808,7 @@ const articles = {
   </div>
 </div>
 
-<div class="accordion">
- <div class="accordion-item">
-  <div class="accordion-header" aria-expanded="false">Overriding <span class="chev">▾</span></div>
-  <div class="accordion-content">
-  <p>The Widemaw can be overridden, and its module can be acquired by overriding Cauldron MU's core. As for performance, its decent compared to other options, maybe a 5/10. but it's capable enough to take down 2 of its apex variants.</p>
-  </div>
- </div>
-</div>
+
   </section>
 
   <!-- Apex Variant -->
@@ -2052,17 +2819,43 @@ const articles = {
     <div class="accordion">
       <div class="accordion-item">
         <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
-        <div class="accordion-content">
+        x
         <p>The Apex Widemaw will also mostly be grazing on the ground, shooting out fertilizer pods which can be collected.</p>
-          <ul>
-          <li><strong>Sweeping Crunch</strong>: opens its jaws wide, sucking in everything for a powerful bite. This attack cannot be disabled.</li>
-          <li><strong>Rock Toss</strong>: sucks in nearby soil and sediment to create a large rock in its mouth, then infuses the rock with Purgewater to throw at its enemy. This attack can be partially disabled by destroying its Purgewater canisters.</li>
-          <li><strong>Vortex Swipe</strong>: activates the vacuum generator on its throat to suck in its enemies for Drenched bite. This attack can be partially disabled by destroying its Purgewater canisters.</li>
-          <li><strong>Aquatic Exhaust</strong>: shoots out Purgewater from its pod dispensers. This attack can be disabled by destroying its Purgewater canisters.</li>
-          <li><strong>Striding Maw</strong>: submerges itself halfway into the ground, propelling itself towards its enemy with its mouth open ready to bite. This attack cannot be disabled.</li>
-          <li><strong>Drenching Barrage</strong>: fires multiple Purgewater-infused rocks in quick succession. This attack can be partially disabled by destroying its Purgewater canisters.</li>
-          <li><strong>Soaking Shockwave</strong>: spins around itself, sucking in nearby rocks and soil to form a large boulder, then it crushes that boulder to release Purgewater into the air. This attack can be disabled by destroying its Purgewater canisters.</li>
-          <li><strong>Booty Blast</strong>: shoots buckshot-like projectiles from its butt, dealing both Fire and Purgewater damage. This attack can be disabled by destroying both its Purgewater canisters and its pod dispensers.</li>
+          <div class="attack-list">
+  <div class="attack-card">
+    <h3>Sweeping Crunch</h3>
+    <p>opens its jaws wide, sucking in everything for a powerful bite. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Rock Toss</h3>
+    <p>sucks in nearby soil and sediment to create a large rock in its mouth, then infuses the rock with Purgewater to throw at its enemy. This attack can be partially disabled by destroying its Purgewater canisters.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Vortex Swipe</h3>
+    <p>activates the vacuum generator on its throat to suck in its enemies for Drenched bite. This attack can be partially disabled by destroying its Purgewater canisters.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Aquatic Exhaust</h3>
+    <p>shoots out Purgewater from its pod dispensers. This attack can be disabled by destroying its Purgewater canisters.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Striding Maw</h3>
+    <p>submerges itself halfway into the ground, propelling itself towards its enemy with its mouth open ready to bite. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Drenching Barrage</h3>
+    <p>fires multiple Purgewater-infused rocks in quick succession. This attack can be partially disabled by destroying its Purgewater canisters.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Soaking Shockwave</h3>
+    <p>spins around itself, sucking in nearby rocks and soil to form a large boulder, then it crushes that boulder to release Purgewater into the air. This attack can be disabled by destroying its Purgewater canisters.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Booty Blast</h3>
+    <p>shoots buckshot-like projectiles from its butt, dealing both Fire and Purgewater damage. This attack can be disabled by destroying both its Purgewater canisters and its pod dispensers.</p>
+  </div>
+</div>
+        .
           </ul>
         </div>
       </div>
@@ -2084,18 +2877,18 @@ const articles = {
     </div>
     <div class="accordion-content">
       <div class="drops-grid">
-        <div class="drop common">Metal Shards - 100%</div>
-        <div class="drop common">Purgewater - 100%</div>
-        <div class="drop rare">Apex Widemaw Heart - 56%</div>
-        <div class="drop common">Piercing Spike - 50%</div>
-        <div class="drop common">Volatile Sludge - 50%</div>
-        <div class="drop rare">Machine Muscle - 30%</div>
-        <div class="drop rare">Widemaw Circulator - 28%</div>
-        <div class="drop rare">Medium Machine Core - 27%</div>
-        <div class="drop common">Braided Wire - 20%</div>
-        <div class="drop rare">Widemaw Primary Nerve - 18%</div>
-        <div class="drop common">Metal Bone - 11%</div>
-        <div class="drop common">Sturdy Hardplate - 11%</div>
+        <div class="drop common"><strong>Metal Shards</strong> - 100%</div>
+        <div class="drop common"><strong>Purgewater</strong> - 100%</div>
+        <div class="drop rare"><strong>Apex Widemaw Heart</strong> - 56%</div>
+        <div class="drop common"><strong>Piercing Spike</strong> - 50%</div>
+        <div class="drop common"><strong>Volatile Sludge</strong> - 50%</div>
+        <div class="drop rare"><strong>Machine Muscle</strong> - 30%</div>
+        <div class="drop uncommon"><strong>Widemaw Circulator</strong> - 28%</div>
+        <div class="drop rare"><strong>Medium Machine Core</strong> - 27%</div>
+        <div class="drop common"><strong>Braided Wire</strong> - 20%</div>
+        <div class="drop rare"><strong>Widemaw Primary Nerve</strong> - 18%</div>
+        <div class="drop common"><strong>Metal Bone</strong> - 11%</div>
+        <div class="drop common"><strong>Sturdy Hardplate</strong> - 11%</div>
       </div>
     </div>
   </div>
@@ -2108,9 +2901,19 @@ const articles = {
   </div>
 </article>
 </div>
+
+
+
+
+
 `,
 
 "clamberjaw": `
+
+
+
+
+
 
 <article id="clamberjaw" class="theme-machine">
   <h1 class="title">Clamberjaw</h1>
@@ -2134,16 +2937,39 @@ const articles = {
     <div class="accordion">
       <div class="accordion-item">
         <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
-        <div class="accordion-content">
+        x
           <p>The Clamberjaw will be found either hanging on trees or scrapping a dead machine. its also very aware of its surroundings</p>
-          <ul>
-          <li><strong>Flaming Volley</strong>: throws a barrage of fiery scraps at its target. This attack can be disabled by destroying its Blaze sac.</li>
-          <li><strong>Toxic Tailswipe</strong>: sweeps its tail, knocking back its enemies and releasing noxious fumes into the area. This attack can be disabled by destroying its tail.</li>
-          <li><strong>Ground Pound</strong>: leaps into the air, then slams into the ground, creating a small shockwave. This attack cannot be disabled.</li>
-          <li><strong>Lock Lunge</strong>: jumps towards its enemy, locking it in an animation in which it grabs the enemy's legs and throws them into the air. This attack cannot be disabled.</li>
-          <li><strong>Claw Slash</strong>: slashes its enemy with razor-sharp claws. This attack cannot be disabled.</li>
-          <li><strong>Scrap Stash</strong>: scans the area for buried scrap, then it attaches it to its tail to empower its attack with Acid. This attack can be disabled by removing its tail.</li>
-          <li><strong>Scrap Sling</strong>: throws the piece of scrap its attached to its tail, dealing damage over time in an area. This attack can be disabedby destroying its tail.</li>
+          <div class="attack-list">
+  <div class="attack-card">
+    <h3>Flaming Volley</h3>
+    <p>throws a barrage of fiery scraps at its target. This attack can be disabled by destroying its Blaze sac.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Toxic Tailswipe</h3>
+    <p>sweeps its tail, knocking back its enemies and releasing noxious fumes into the area. This attack can be disabled by destroying its tail.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Ground Pound</h3>
+    <p>leaps into the air, then slams into the ground, creating a small shockwave. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Lock Lunge</h3>
+    <p>jumps towards its enemy, locking it in an animation in which it grabs the enemy's legs and throws them into the air. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Claw Slash</h3>
+    <p>slashes its enemy with razor-sharp claws. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Scrap Stash</h3>
+    <p>scans the area for buried scrap, then it attaches it to its tail to empower its attack with Acid. This attack can be disabled by removing its tail.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Scrap Sling</h3>
+    <p>throws the piece of scrap its attached to its tail, dealing damage over time in an area. This attack can be disabled by destroying its tail.</p>
+  </div>
+</div>
+        .
           </ul>
         </div>
       </div>
@@ -2153,7 +2979,7 @@ const articles = {
       <div class="accordion-item">
         <div class="accordion-header" aria-expanded="false">Strategy <span class="chev">▾</span></div>
         <div class="accordion-content">
-          <p>The Clamberjaw is very very agile, so if you're tryingto take it down quick, then stun it with Shock or knock it down with Impact to the legs, after that just spam critical strikes untill it's dead.</p>
+          <p>The Clamberjaw is very very agile, so if you're trying to take it down quick, then stun it with Shock or knock it down with Impact to the legs, after that just spam critical strikes until it's dead.</p>
         </div>
       </div>
     </div>
@@ -2165,32 +2991,65 @@ const articles = {
     </div>
     <div class="accordion-content">
       <div class="drops-grid">
+        <div class="drop common"><strong>Echo Shell</strong> - 100%</div>
+        <div class="drop common"><strong>Blaze</strong> - 100%</div>
+        <div class="drop common"><strong>Metal Shards</strong> - 100%</div>
+        <div class="drop rare"><strong>Machine Muscle</strong> - 31%</div>
+        <div class="drop rare"><strong>Medium Machine Core</strong> - 28%</div>
+        <div class="drop rare"><strong>Clamberjaw Circulator</strong> - 26%</div>
+        <div class="drop common"><strong>Braided Wire</strong> - 20%</div>
+        <div class="drop rare"><strong>Clamberjaw Primary Nerve</strong> - 18%</div>
+        <div class="drop common"><strong>Metal Bone</strong> - 10%</div>
+        <div class="drop common"><strong>Sturdy Hardplate</strong> - 10%</div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="accordion">
- <div class="accordion-item">
-  <div class="accordion-header" aria-expanded="false">Overriding <span class="chev">▾</span></div>
-  <div class="accordion-content">
-  <p></p>
-  </div>
- </div>
-</div>
+
   </section>
 
   <!-- Apex Variant -->
   <section class="machine-variant" data-variant-section="apex">
     <h2>Apex Variant</h2>
-    <p class="intro"></p>
+    <p class="intro">The Apex Clamberjaw is a hunter-killer variant with increased damage and resilience.</p>
 
     <div class="accordion">
       <div class="accordion-item">
         <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
-        <div class="accordion-content">
-          <p></p>
-          <ul>
+        x
+          <p>The Clamberjaw will be found either hanging on trees or scrapping a dead machine. its also very aware of its surroundings</p>
+          <div class="attack-list">
+  <div class="attack-card">
+    <h3>Flaming Volley</h3>
+    <p>throws a barrage of fiery scraps at its target. This attack can be disabled by destroying its Blaze sac.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Toxic Tailswipe</h3>
+    <p>sweeps its tail, knocking back its enemies and releasing noxious fumes into the area. This attack can be disabled by destroying its tail.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Ground Pound</h3>
+    <p>leaps into the air, then slams into the ground, creating a small shockwave. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Lock Lunge</h3>
+    <p>jumps towards its enemy, locking it in an animation in which it grabs the enemy's legs and throws them into the air. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Claw Slash</h3>
+    <p>slashes its enemy with razor-sharp claws. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Scrap Stash</h3>
+    <p>scans the area for buried scrap, then it attaches it to its tail to empower its attack with Acid. This attack can be disabled by removing its tail.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Scrap Sling</h3>
+    <p>throws the piece of scrap it attached to its tail, dealing damage over time in an area. This attack can be disabled by destroying its tail.</p>
+  </div>
+</div>
+        .
           </ul>
         </div>
       </div>
@@ -2200,7 +3059,7 @@ const articles = {
       <div class="accordion-item">
         <div class="accordion-header" aria-expanded="false">Strategy <span class="chev">▾</span></div>
         <div class="accordion-content">
-          <p></p>
+          <p>The Apex Clamberjaw is even more agile and resilient compared to its normal version, but it has basically the same weaknesses. So start by stunning it with either bombarding it with Shock, or just shooting its legs with Impact, then just spam critical hits until its dead</p>
         </div>
       </div>
     </div>
@@ -2212,22 +3071,640 @@ const articles = {
     </div>
     <div class="accordion-content">
       <div class="drops-grid">
+      <div class="drop common"><strong>Blaze</strong> - 100%</div>
+      <div class="drop common"><strong>Metal Shards</strong> - 100%</div>
+      <div class="drop common"><strong>Echo Shell</strong> - 100%</div>
+      <div class="drop epic"><strong>Apex Clamberjaw Heart</strong> - 54%</div>
+      <div class="drop epic"><strong>Volatile Sludge</strong> - 51%</div>
+      <div class="drop rare"><strong>Machine Muscle</strong> - 31%</div>
+      <div class="drop rare"><strong>Clamberjaw Circulator</strong> - 27%</div>
+      <div class="drop rare"><strong>Medium Machine Core</strong> - 27%</div>
+      <div class="drop common"><strong>Braided Wire</strong> - 20%</div>
+      <div class="drop rare"><strong>Clamberjaw Primary Nerve</strong> - 18%</div>
+      <div class="drop common"><strong>Metal Bone</strong> - 10%</div>
+      <div class="drop common"><strong>Sturdy Hardplate</strong> - 10%</div>
       </div>
     </div>
   </div>
 </div>
   </section>
-
   <div class="tags">
     <span class="tag">machine</span>
     <span class="tag">clamberjaw</span>
   </div>
 </article>
 </div>
+
+
+
+
+
 `,
 
+"rollerback": `
+
+
+
+
+
+
+  <article id="rollerback" class="theme-machine">
+  <h1 class="title">Rollerback</h1>
+  
+
+  <section class="infobox">
+    <div><strong>Type:</strong>Transport - Heavyweight</div>
+    <div><strong>Real-World Inspiration:</strong>Pangolin</div>
+  </section>
+
+  <div class="machine-tabs" role="tablist">
+    <button data-variant="normal" class="active">Normal</button>
+    <button data-variant="apex">Apex</button>
+  </div>
+
+  <!-- Normal Variant -->
+  <section class="machine-variant" data-variant-section="normal">
+    <h2>Normal Variant</h2>
+      <p>The Rollerback is a large, very fast combat machine that can magnetically reattach its armor plates to its body. It also uses Adhesive attack, which hinder its enemy's movement.</p>
+  
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
+          <div class="accordion-content">
+            <div class="attack-list">
+  <div class="attack-card">
+    <h3>Mach Roll</h3>
+    <p>ignites its thrusters, then it rolls over its enemy, leaving a trail of fire behind it. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Rock Spin</h3>
+    <p>spins its body in place to kick up rocks at its enemy. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Spin Slam</h3>
+    <p>rapidly spins its body, then it activates its thrusters to propell itself upward, then it slams into the ground multiple times. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Ravaging Sweep</h3>
+    <p>wildly swings its tail around itself until it gets disoriented. This attack can be disabled by removing its hammer tail.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Tail Slam</h3>
+    <p>slams its tail on the enemy in quick succession. This attack can be disabled by tearing off its hammer tail.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Blaze Discharge</h3>
+    <p>ignites its thrusters, then it fires a barrage of fireballs at its enemy. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Acrobatic Combo</h3>
+    <p>demonstrates its agility by performing a combination of Tail Slam, Spin Slam, and Ravaging Sweep. This attack can be disabled by removing its hammer tail.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Sticky Burst</h3>
+    <p>fires a barrage of Sticky projectiles that explode on impact and deal Adhesive buildup. This attack can be disabled by bursting its adhesive sacs located on its front shoulders under the armor.</p>
+  </div>
+</div>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header" aria-expanded="false">Strategy <span class="chev">▾</span></div>
+          <div class="accordion-content">
+            <p>The Rollerback's main advantages are its agility and its Adhesive attacks, but both of these advantages can be removed at the same time. So start by destroying its gravity generator to remove its ability to reattach torn armor, then burst its Adhesive sac to disabled its Sticky Barrage, and to limit its agility, then tear off its hammer tail to disable most of its attacks. After that just stun it for the final blow.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header" aria-expanded="false">Item Drops <span class="chev">▾</span></div>
+          <div class="accordion-content">
+              <div class="drops-grid">
+                <div class="drop common"><strong>Metalbite</strong> - 100%</div>
+                <div class="drop common"><strong>Metal Shards</strong> - 100%</div>
+                <div class="drop rare"><strong>Blastpaste</strong> - 100%</div>
+                <div class="drop epic"><strong>Crystal Braiding</strong> - 100%</div>
+                <div class="drop common"><strong>Sturdy Hardplate</strong> - 70%</div>
+                <div class="drop uncommon"><strong>Rollerback Circulator</strong> - 34%</div>
+                <div class="drop uncommon"><strong>Machine Muscle</strong> - 30%</div>
+                <div class="drop rare"><strong>Medium Machine Core</strong> - 27%</div>
+                <div class="drop rare"><strong>Rollerback Primary Nerve</strong> - 22%</div>
+                <div class="drop common"><strong>Braided Wire</strong> - 20%</div>
+                <div class="drop common"><strong>Metal Bone</strong>- 11%</div>
+              </div>
+            </div>
+        </div>
+      </div>
+
+
+  </section>
+
+  <!-- Apex Variant -->
+  <section class="machine-variant" data-variant-section="apex">
+    <h2>Apex Variant</h2>
+      <p class="intro">The Apex Rollerback is a hunter-killer variant of the normal Rollerback, tougher and more aggressive, with distinctive black-and-gold armor and purple musculature.</p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
+          x
+            <div class="attack-list">
+  <div class="attack-card">
+    <h3>Mach Roll</h3>
+    <p>ignites its thrusters, then it rolls over its enemy, leaving a trail of fire behind it. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Rock Spin</h3>
+    <p>spins its body in place to kick up rocks at its enemy. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Spin Slam</h3>
+    <p>rapidly spins its body, then it activates its thrusters to propell itself upward, then it slams into the ground multiple times. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Ravaging Sweep</h3>
+    <p>wildly swings its tail around itself until it gets disoriented. This attack can be disabled by removing its hammer tail.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Tail Slam</h3>
+    <p>slams its tail on the enemy in quick succession. This attack can be disabled by tearing off its hammer tail.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Blaze Discharge</h3>
+    <p>ignites its thrusters, then it fires a barrage of fireballs at its enemy. This attack cannot be disabled.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Acrobatic Combo</h3>
+    <p>demonstrates its agility by performing a combination of Tail Slam, Spin Slam, and Ravaging Sweep. This attack can be disabled by removing its hammer tail.</p>
+  </div>
+  <div class="attack-card">
+    <h3>Sticky Burst</h3>
+    <p>fires a barrage of Sticky projectiles that explode on impact and deal Adhesive buildup. This attack can be disabled by bursting its adhesive sacs located on its front shoulders under the armor.</p>
+  </div>
+</div>
+          i>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header" aria-expanded="false">Strategy <span class="chev">▾</span></div>
+        <div class="accordion-content">
+          <p>The Apex Rollerback's main advantages are its agility and its Adhesive attacks, but both of these advantages can be removed at the same time. So start by destroying its gravity generator to remove its ability to reattach torn armor, then burst its Adhesive sac to disabled its Sticky Barrage, and to limit its agility, then tear off its hammer tail to disable most of its attacks. After that just stun it for the final blow.</p>
+        </div>
+      </div>    
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header" aria-expanded="false">Item Drops <span class="chev">▾</span></div>
+        <div class="accordion-content">
+            <div class="drops-grid">
+              <div class="drop rare"><strong>Blastpaste</strong> - 100%</div>
+              <div class="drop common"><strong>Metal Shards</strong> - 100%</div>
+              <div class="drop common"><strong>Sparker</strong> - 100%</div>
+              <div class="drop epic"><strong>Crystal Braiding</strong> - 100%</div>
+              <div class="drop common"><strong>Sturdy Hardplate</strong>- 69%</div>
+              <div class="drop epic"><strong>Apex Rollerback Heart</strong> - 66%</div>
+              <div class="drop epic"><strong>Volatile Sludge</strong> - 51%</div>
+              <div class="drop uncommon"><strong>Rollerback Circulator</strong> - 33%</div>
+              <div class="drop uncommon"><strong>Machine Muscle</strong> - 31%</div>
+              <div class="drop rare"><strong>Medium Machine Core</strong> - 27%</div>
+              <div class="drop rare"><strong>Rollerback Primary Nerve</strong> - 23%</div>
+              <div class="drop common"><strong>Braided Wire</strong> - 21%</div>
+              <div class="drop common"><strong>Metal Bone</strong> - 10%</div>
+            </div>
+          </div>        
+      </div>    
+    </div>
+  </section>
+  </article>
+
+
+
+
+
+`,
+
+"thunderjaw": `
+
+
+
+
+
+
+<article id="thunderjaw" class="theme-machine">
+  <h1 class="title">Thunderjaw</h1>
+  
+  <section class="infobox">
+    <div><strong>Type:</strong>Combat - Heavyweight</div>
+    <div><strong>Real-World Inspiration:</strong>Tyrannosaurus Rex</div>
+  </section>
+
+  <div class="machine-tabs" role="tablist">
+    <button data-variant="normal" class="active">Normal</button>
+    <button data-variant="apex">Apex</button>
+  </div>
+
+  <!-- Normal Variant -->
+  <section class="machine-variant" data-variant-section="normal">
+    <h2>Normal Variant</h2>
+    <p class="intro">The Thunderjaw is a monstrous machine equipped with a wide array of heavy artillery and melee attacks.</p>
+
+    <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
+          <div class="accordion-content">
+            <div class="attack-list">
+
+  <div class="attack-card">
+    <h3>Disc Volley</h3>
+    <p>Shoots a barrage of explosive, homing discs. Can be disabled by destroying the Disc Launchers (usable as heavy weapons).</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Razor Jaw</h3>
+    <p>Jabs the enemy with sharp mechanical jaws. Cannot be disabled.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Bolt Barrage</h3>
+    <p>Rapid-fire energy cannon attack. Disabled by removing the Rapidfire Cannons.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Thundering Bulldoze</h3>
+    <p>Charges straight at the target, destroying anything in its path. Cannot be disabled.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Foot Stomp</h3>
+    <p>Stomps the ground, generating a shockwave. Cannot be disabled.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Lunging Maw</h3>
+    <p>Leaps forward and sweeps the area with massive jaws. Cannot be disabled.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Tail Smash</h3>
+    <p>Slams its tail repeatedly for massive damage. Disabled by tearing off the tail.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Tail Sweep</h3>
+    <p>Wildly swings its tail in a wide arc. Disabled by tearing off the tail.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Energy Net</h3>
+    <p>Fires multiple energy beams after most weapons are removed. Cannot be disabled.</p>
+  </div>
+
+</div>
+          </div>
+        </div>
+      </div>
+
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header" aria-expanded="false">Strategy <span class="chev">▾</span></div>
+        <div class="accordion-content">
+          <p>The Thunderjaw is one of the mightiest base machines in the game, and it's capable of dealing a lot of damage and tanking a lot of it, but it can be taken down with the right methods. Start by tearing off one or both of its Disc launchers to use against it, then shoot down its tail to disable some of its attacks and to collect it. After that just keep applying Acid and Electricity to it until it's down.</p>
+        </div>
+      </div>
+    </div>    
+   <div class="accordion">
+   <div class="accordion-item">
+    <div class="accordion-header" aria-expanded="false">Item Drops <span class="chev">▾</span></div>
+    <div class="accordion-content">
+     <div class="drops-grid">
+      <div class="drop common"><strong>Glowblast</strong> - 100%</div>
+      <div class="drop common"><strong>Metal Shards</strong> - 100%</div>
+      <div class="drop epic"><strong>Crystal Braiding</strong> - 100%</div>
+      <div class="drop common"><strong>Braided Wire</strong> - 76%</div>
+      <div class="drop rare"><strong>Large Machine Core</strong> - 70%</div>
+      <div class="drop uncommon"><strong>Thunderjaw Circulator</strong> - 70%</div>
+      <div class="drop rare"><strong>Thunderjaw Primary Nerve</strong> - 62%</div>
+      <div class="drop epic"><strong>Volatile Sludge</strong> - 51%</div>
+      <div class="drop uncommon"><strong>Machine Muscle</strong> - 45%</div>
+      <div class="drop epic"><strong>Luminous Brainstem </strong>- 29%</div>
+      <div class="drop rare"><strong>Metal Bone</strong> - 29%</div>
+      <div class="drop common"><strong>Sturdy Hardplate</strong> - 15%</div>
+    </div>
+   </div>
+  </div>
+  </div>
+
+<div class="accordion">
+ <div class="accordion-item">
+  <div class="accordion-header" aria-expanded="false">Overriding <span class="chev">▾</span></div>
+  <div class="accordion-content">
+  <p>The Thunderjaw can be overridden, and its module can be acquired by overriding Cauldron KAPPA's core. As for performance, its excellent, like a 9/10, its attacks are devastating and it can take down almost any machine, including its Apex counterpart.</p>
+  </div>
+ </div>
+</div>
+  </section>
+
+  <section class="machine-variant" data-variant-section="apex">
+    <h2>Apex Variant</h2>
+      <p class="intro">The Apex Thunderjaw is a hunter-killer variant of the normal Thunderjaw, tougher and more aggressive, with distinctive black-and-gold armor and purple musculature.</p>
+
+    <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
+          <div class="accordion-content">
+            <div class="attack-list">
+
+  <div class="attack-card">
+    <h3>Disc Volley</h3>
+    <p>Shoots a barrage of explosive, homing discs. Can be disabled by destroying the Disc Launchers (usable as heavy weapons).</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Razor Jaw</h3>
+    <p>Jabs the enemy with sharp mechanical jaws. Cannot be disabled.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Bolt Barrage</h3>
+    <p>Rapid-fire energy cannon attack. Disabled by removing the Rapidfire Cannons.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Thundering Bulldoze</h3>
+    <p>Charges straight at the target, destroying anything in its path. Cannot be disabled.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Foot Stomp</h3>
+    <p>Stomps the ground, generating a shockwave. Cannot be disabled.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Lunging Maw</h3>
+    <p>Leaps forward and sweeps the area with massive jaws. Cannot be disabled.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Tail Smash</h3>
+    <p>Slams its tail repeatedly for massive damage. Disabled by tearing off the tail.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Tail Sweep</h3>
+    <p>Wildly swings its tail in a wide arc. Disabled by tearing off the tail.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Energy Net</h3>
+    <p>Fires multiple energy beams after most weapons are removed. Cannot be disabled.</p>
+  </div>
+
+</div>
+          </div>
+        </div>
+      </div>
+
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header" aria-expanded="false">Strategy <span class="chev">▾</span></div>
+        <div class="accordion-content">
+          <p>The Apex Thunderjaw is the strongest machine in the game, and it's capable of dealing way more damage than its normal counterpart, but it can also be taken down with the right methods. Start by tearing off one or both of its Disc launchers to use against it, then shoot down its tail to disable some of its attacks and to collect it. After that just keep applying Acid and Electricity to it until it's down.</p>
+        </div>
+      </div>
+    </div> 
+
+    <div class="accordion">
+   <div class="accordion-item">
+    <div class="accordion-header" aria-expanded="false">Item Drops <span class="chev">▾</span></div>
+    <div class="accordion-content">
+     <div class="drops-grid">
+      <div class="drop epic"><strong>Crystal Braiding</strong> - 100%</div>
+      <div class="drop common"><strong>Metal Shards</strong> - 100%</div>
+      <div class="drop common"><strong>Glowblast</strong> - 100%</div>
+      <div class="drop epic"><strong>Luminous Brainstem</strong> - 100%</div>
+      <div class="drop epic"><strong>Apex Thunderjaw Heart</strong> - 100%</div>
+      <div class="drop common"><strong>Braided Wire</strong> - 76%</div>
+      <div class="drop uncommon"><strong>Thunderjaw Circulator</strong> - 70%</div>
+      <div class="drop rare"><strong>Large Machine Core</strong> - 69%</div>
+      <div class="drop rare"><strong>Thunderjaw Primary Nerve</strong> - 63%</div>
+      <div class="drop epic"><strong>Volatile Sludge</strong> - 50%</div>
+      <div class="drop rare"><strong>Piercing Spike</strong> - 49%</div>
+      <div class="drop uncommon"><strong>Machine Muscle</strong> - 46%</div>
+      <div class="drop rare"><strong>Metal Bone</strong> - 29%</div>
+      <div class="drop common"><strong>Sturdy Hardplate</strong> - 16%</div>
+    </div>
+   </div>
+  </div>
+  </div>
+  </section>
+  </article>
+
+
+
+
+
+`,
+
+"fireclaw": `
+
+<article id="fireclaw" class="theme-machine">
+  <h1 class="title">Fireclaw</h1>
+  
+  <section class="infobox">
+    <div><strong>Type:</strong>Aquisition - Heavyweight</div>
+    <div><strong>Real-World Inspiration:</strong>Grizzly Bear</div>
+  </section>
+
+  <div class="machine-tabs" role="tablist">
+    <button data-variant="normal" class="active">Normal</button>
+    <button data-variant="apex">Apex</button>
+  </div>
+
+  <!-- Normal Variant -->
+  <section class="machine-variant" data-variant-section="normal">
+    <h2>Normal Variant</h2>
+    <p class="intro">The Fireclaw is an enormous prototype machine that circulates molten fluids for its attacks and defensive capabilities. It is extremely lethal.</p>
+
+    <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
+          <div class="accordion-content">
+            <div class="attack-list">
+
+  <div class="attack-card">
+    <h3>Volcanic Burst</h3>
+    <p>Embeds its claws into the ground, creating a lava eruption under its enemy. This attack can be disabled by destroying its Blaze sac.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Molten Barrage</h3>
+    <p>Throws multiple flaming rocks in quick succession. This attack can be partially disabled by bursting its Blaze sac</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Leaping Slice</h3>
+    <p>Lunges itself onto the enemy, slashing everything in the way. This attack cannot be disabled.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Blazing Combo</h3>
+    <p>Stands on its hind legs, then starts to slice'n'dice its enemy with fiery claws. This attack can be disabled by bursting its Blaze sac.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Flaming Discharge</h3>
+    <p>Sprays its immediate area with flammable gas, then ignites the gas to scorch everything around it. This attack can be disabled by destroying its Blaze sac.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Scorching Backslam</h3>
+    <p>Leaps into the air, then slams its back onto its enemy to release a fiery explosion. This attack can be disabled by bursting its Blaze sac.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Flaming Sling</h3>
+    <p>Digs up a large boulder, then it throws it at its enemy, which it then explodes. This attack can be partially disabled by destroying its Blaze sac.</p>
+  </div>
+</div>
+<p>After about 40% of its health is gone, it will enter a frenzied mode where all attacks will deal more Fire damage and drop tiny embers, similar to a Slaughterspine's Charged Form. It will also start attacking way faster and more wildly.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header" aria-expanded="false">Strategy <span class="chev">▾</span></div>
+          <div class="accordion-content">
+            <p>The Fireclaw is quite a formidable machine especially in its frenzied mode, but it has some very large weakpoints. Start by incapcitating it by popping its Sparkers, since it has 4 of them, just rinse and repeat until it's dead.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header" aria-expanded="false">Item Drops <span class="chev">▾</span></div>
+          <div class="accordion-content">
+            <div class="drops-grid">
+            <div class="drop common"><strong>Metal Shards</strong> - 100%</div>
+            <div class="drop common"><strong>Blaze</strong> - 100%</div>
+            <div class="drop common"><strong>Braided Wire</strong> - 76%</div>
+            <div class="drop uncommon"><strong>Fireclaw Circulator</strong> - 69%</div>
+            <div class="drop rare"><strong>Large Machine Core</strong> - 68%</div>
+            <div class="drop rare"><strong>Fireclaw Primary Nerve</strong> - 64%</div>
+            <div class="drop epic"><strong>Volatile Sludge</strong> - 51%</div>
+            <div class="drop uncommon"><strong>Machine Muscle</strong> - 45%</div>
+            <div class="drop rare"><strong>Metal Bone</strong> - 28%</div>
+            <div class="drop epic"><strong>Luminous Brainstem</strong> - 28%</div>
+            <div class="drop epic"><strong>Crystal Braiding</strong> - 27%</div>
+            <div class="drop common"><strong>Sturdy Hardplate</strong> - 15%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </section>
+
+     <section class="machine-variant" data-variant-section="apex">
+      <h2>Apex Variant</h2>
+      <p class="intro">The Fireclaw Apex is a variant of the Fireclaw that has a more aggressive and dangerous attack pattern. It is also more durable and can have a higher health pool.</p>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header" aria-expanded="false">Attacks & Behavior <span class="chev">▾</span></div>
+          <div class="accordion-content">
+            <div class="attack-list">
+
+  <div class="attack-card">
+    <h3>Volcanic Burst</h3>
+    <p>Embeds its claws into the ground, creating a lava eruption under its enemy. This attack can be disabled by destroying its Blaze sac.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Molten Barrage</h3>
+    <p>Throws multiple flaming rocks in quick succession. This attack can be partially disabled by bursting its Blaze sac</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Leaping Slice</h3>
+    <p>Lunges itself onto the enemy, slashing everything in the way. This attack cannot be disabled.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Blazing Combo</h3>
+    <p>Stands on its hind legs, then starts to slice'n'dice its enemy with fiery claws. This attack can be disabled by bursting its Blaze sac.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Flaming Discharge</h3>
+    <p>Sprays its immediate area with flammable gas, then ignites the gas to scorch everything around it. This attack can be disabled by destroying its Blaze sac.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Scorching Backslam</h3>
+    <p>Leaps into the air, then slams its back onto its enemy to release a fiery explosion. This attack can be disabled by bursting its Blaze sac.</p>
+  </div>
+
+  <div class="attack-card">
+    <h3>Flaming Sling</h3>
+    <p>Digs up a large boulder, then it throws it at its enemy, which it then explodes. This attack can be partially disabled by destroying its Blaze sac.</p>
+  </div>
+</div>
+<p>After about 40% of its health is gone, it will enter a frenzied mode where all attacks will deal more Fire damage and drop tiny embers, similar to a Slaughterspine's Charged Form. It will also start attacking way faster and more wildly.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header" aria-expanded="false">Strategy <span class="chev">▾</span></div>
+          <div class="accordion-content">
+            <p>The Apex Fireclaw is even more ferocious as an aquisition machine, but it has the same weaknesses as its normal counterpart.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header" aria-expanded="false">Item Drops <span class="chev">▾</span></div>
+          <div class="accordion-content">
+            <div class="drops-grid">
+            <div class="drop common"><strong>Blaze</strong> - 100%</div>
+            <div class="drop common"><strong>Metal Shards</strong> - 100%</div>
+            <div class="drop epic"><strong>Luminous Brainstem</strong> - 100%</div>
+            <div class="drop epic"><strong>Apex Fireclaw Heart</strong> - 100%</div>
+            <div class="drop common"><strong>Braided Wire</strong> - 76%</div>
+            <div class="drop uncommon"><strong>Fireclaw Circulator</strong> - 70%</div>
+            <div class="drop rare"><strong>Large Machine Core</strong> - 69%</div>
+            <div class="drop rare"><strong>Fireclaw Primary Nerve</strong> - 63%</div>
+            <div class="drop epic"><strong>Volatile Sludge</strong> - 50%</div>
+            <div class="drop epic"><strong>Piercing Spike</strong> - 50%</div>
+            <div class="drop uncommon"><strong>Machine Muscle</strong> - 45%</div>
+            <div class="drop epic"><strong>Crystal Braiding</strong> - 28%</div>
+            <div class="drop rare"><strong>Metal Bone</strong> - 28%</div>
+            <div class="drop common"><strong>Sturdy Hardplate</strong> - 15%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </section>
+      </article>
+                
+`,
 
 "acid": `
+
+
+
+
+
 
 <article id="acid">
   <h1 class="title">Acid (Corrosion)</h1>
@@ -2249,27 +3726,37 @@ const articles = {
     <div class="accordion-header" aria-expanded="false">Machines that're Weak to acid <span class="chev">▾</span></div>
     <div class="accordion-content">
      <ul>
-      <li><strong>Normal Scrounger</strong></li>
-      <li><strong>Plowhorn</strong></li>
-      <li><strong>Normal/Apex Shell-Walker</strong></li>
-      <li><strong>Normal/Apex Grimhorn</strong></li>
-      <li><strong>Normal Ravager</strong></li>
-      <li><strong>Normal Rollerback</strong></li>
-      <li><strong>Normal/Apex Behemoth</strong></li>
-      <li><strong>Normal/Apex Shellsnapper</strong></li>
-      <li><strong>Normal/Apex Stormbird</strong></li>
-      <li><strong>Normal/Apex Thunderjaw</strong></li>
-      <li><strong>Apex Slaughterspine</strong></li>
-      <li><strong>Specter</strong></li>
-      <li><strong>Specter Prime</strong></li>
+      <li><strong>Normal Scrounger</strong>
+      <li><strong>Plowhorn</strong>
+      <li><strong>Normal/Apex Shell-Walker</strong>
+      <li><strong>Normal/Apex Grimhorn</strong>
+      <li><strong>Normal Ravager</strong>
+      <li><strong>Normal Rollerback</strong>
+      <li><strong>Normal/Apex Behemoth</strong>
+      <li><strong>Normal/Apex Shellsnapper</strong>
+      <li><strong>Normal/Apex Stormbird</strong>
+      <li><strong>Normal/Apex Thunderjaw</strong>
+      <li><strong>Apex Slaughterspine</strong>
+      <li><strong>Specter</strong>
+      <li><strong>Specter Prime</strong>
     </div>
    </div>
   </div>
    </article>
    </div>
+
+
+
+
+
 `,
 
 "frost": `
+
+
+
+
+
 
 <article id="frost">
   <h1 class="title">Frost</h1>
@@ -2281,7 +3768,7 @@ const articles = {
    <div class="accordion-item">
     <div class="accordion-header" aria-expanded="false">Strategy <span class="chev">▾</span></div>
     <div class="accordion-content">
-     <p>Acid could be best utilized against Apex and heavyweight machines, as they tend to have a lot armor plates which need to be melted, but it could also be used effectively against medium to lightweight machines, like a Ravager for example</p>
+     <p>Frost is one of the elements that just work with any machine, since the status effect itself doesn't do any damage, its boosting capabilities won't be reduced by machine strengths.</p>
     </div>
    </div>
   </div>
@@ -2291,27 +3778,37 @@ const articles = {
     <div class="accordion-header" aria-expanded="false">Machines that're Weak to frost <span class="chev">▾</span></div>
     <div class="accordion-content">
      <ul>
-     <li><strong>Normal Scrounger</strong></li>
-      <li><strong>Plowhorn</strong></li>
-      <li><strong>Normal/Apex Shell-Walker</strong></li>
-      <li><strong>Normal/Apex Grimhorn</strong></li>
-      <li><strong>Normal Ravager</strong></li>
-      <li><strong>Normal Rollerback</strong></li>
-      <li><strong>Normal/Apex Behemoth</strong></li>
-      <li><strong>Normal/Apex Shellsnapper</strong></li>
-      <li><strong>Normal/Apex Stormbird</strong></li>
-      <li><strong>Normal/Apex Thunderjaw</strong></li>
-      <li><strong>Apex Slaughterspine</strong></li>
-      <li><strong>Specter</strong></li>
-      <li><strong>Specter Prime</strong></li>
+     <li><strong>Normal Scrounger</strong>
+      <li><strong>Plowhorn</strong>
+      <li><strong>Normal/Apex Shell-Walker</strong>
+      <li><strong>Normal/Apex Grimhorn</strong>
+      <li><strong>Normal Ravager</strong>
+      <li><strong>Normal Rollerback</strong>
+      <li><strong>Normal/Apex Behemoth</strong>
+      <li><strong>Normal/Apex Shellsnapper</strong>
+      <li><strong>Normal/Apex Stormbird</strong>
+      <li><strong>Normal/Apex Thunderjaw</strong>
+      <li><strong>Apex Slaughterspine</strong>
+      <li><strong>Specter</strong>
+      <li><strong>Specter Prime</strong>
      </ul>
     </div>
    </div>
   </div>
    </article>
+
+
+
+
+
 `,
 
 "rost": `
+
+
+
+
+
 <article id="rost" class="theme-lore">
   <h1 class="title">Rost</h1>
   
@@ -2329,9 +3826,19 @@ const articles = {
     <p>But after arriving there, he discovered that Jiran, also known as the Mad Sun-King, is dead, so his quest of vengeance was useless. Returning to the Embrace, ashamed of himself, he begged the High Matriarchs to let him back into the tribe. After some time, they let him in under two conditions: 1. that he may live as an outcast separate from the tribe, in the wilderness, 2. that he may raise a child they found at the doorstep of All-Mother's Mountain, and that child is our protagonist, Aloy.</p>
   </section>
 </article>
+
+
+
+
+
 `,
 
 "GAIA": `
+
+
+
+
+
 <article id="GAIA" class="theme-lore">
   <h1 class="title">GAIA</h1>
   
@@ -2382,8 +3889,19 @@ const articles = {
     <p>Aloy's work is ongoing: without a central intelligence, the terraforming system remains fractured. To fully restore the world, Aloy must locate backups of GAIA and reconcile the remaining subordinate functions among the ruins of the ancient world.</p>
   </section>
 </article>
+
+
+
+
+
 `,
+
 "sun-king avad": `
+
+
+
+
+
 <article id="sun-king-avad" class="theme-lore">
   <h1 class="title">Sun-King Avad</h1>
   
@@ -2418,19 +3936,34 @@ const articles = {
     <p>Avad inherited a kingdom scarred by tyranny, insurgency, and distrust among neighboring tribes. Together with figures like Aloy, Erend, Vanasha, and Blameless Marad, he has worked to protect his people and heal divisions. Since the Battle of the Alight, Avad has pursued reconciliation and the restoration of positive relations across the region.</p>
   </section>
 </article>
+
+
+
+
+
 `,
 
-};
+}
+
+
+
+
+;
 
 /* Utility: close search results */
 function closeSearchResults() {
   searchResults.innerHTML = '';
   searchResults.style.display = 'none';
+  currentHighlight = -1;
 }
 
-/* Render results list (does not auto-load) */
+let currentHighlight = -1;
+
+/* Render results list with enhanced features */
 function showSearchMatches(query) {
   closeSearchResults();
+  currentHighlight = -1;
+  
   if (!query) return;
   const q = query.toLowerCase();
   const matches = [];
@@ -2442,139 +3975,350 @@ function showSearchMatches(query) {
     const re = new RegExp(escapeRegExp(qRaw), 'ig');
     return text.replace(re, (m) => `<strong class="search-hit">${m}</strong>`);
   }
+  
+  function getArticleType(id) {
+    if (['acid', 'frost'].includes(id)) return 'Element';
+    if (['rost', 'GAIA', 'sun-king avad'].includes(id)) return 'Lore';
+    return 'Machine';
+  }
+  
+  function matchesCategory(id, query) {
+    const type = getArticleType(id).toLowerCase();
+    const q = query.toLowerCase();
+    
+    if (q === 'machines' || q === 'machine') return type === 'machine';
+    if (q === 'elements' || q === 'element') return type === 'element';
+    if (q === 'lore') return type === 'lore';
+    return false;
+  }
+  
+
 
   for (const id in articles) {
-    // get title from the HTML string if present
     const titleMatch = articles[id].match(/<h1[^>]*class=["']title["'][^>]*>([\s\S]*?)<\/h1>/i);
     const title = titleMatch ? titleMatch[1].trim() : id;
-    if (id.includes(q) || title.toLowerCase().includes(q)) matches.push({ id, title });
+    
+    const categoryMatches = matchesCategory(id, query);
+    
+    // For category searches, ONLY show category matches
+    if (['machines', 'elements', 'lore'].includes(query.toLowerCase())) {
+      if (categoryMatches) {
+        matches.push({ 
+          id, 
+          title, 
+          type: getArticleType(id),
+          priority: 1
+        });
+      }
+    } else {
+      // For regular searches, use all matching methods
+      const titleMatches = title.toLowerCase().includes(q);
+      const idMatches = id.includes(q);
+      const contentMatches = articles[id].toLowerCase().includes(q);
+      
+      if (titleMatches || idMatches || contentMatches || categoryMatches) {
+        let priority = 4;
+        if (titleMatches) priority = 1;
+        else if (idMatches) priority = 2;
+        else if (categoryMatches) priority = 3;
+        
+        matches.push({ 
+          id, 
+          title, 
+          type: getArticleType(id),
+          priority
+        });
+      }
+    }
   }
 
   if (!matches.length) {
-    searchResults.style.display = 'none';
+    const noResults = document.createElement('div');
+    noResults.className = 'no-results';
+    noResults.textContent = `No results found for "${query}"`;
+    searchResults.appendChild(noResults);
+    searchResults.style.display = 'block';
     return;
   }
 
-  matches.sort((a, b) => a.title.localeCompare(b.title));
+  // Sort by priority, then alphabetically
+  matches.sort((a, b) => {
+    if (a.priority !== b.priority) return a.priority - b.priority;
+    return a.title.localeCompare(b.title);
+  });
 
+  // For category searches, show more results
+  const isCategory = ['machines', 'elements', 'lore'].includes(query.toLowerCase());
+  const limit = isCategory ? 15 : 8;
+  const limitedMatches = matches.slice(0, limit);
 
   // create result nodes
-  matches.forEach(m => {
+  limitedMatches.forEach((m, index) => {
     const item = document.createElement('div');
     item.className = 'result-item';
     item.setAttribute('role','option');
+    item.dataset.index = index;
 
     const highlightedTitle = highlightMatch(m.title, query);
     const highlightedId = highlightMatch(m.id, query);
 
-    item.innerHTML = `<div>
-                        <div class="result-title">${highlightedTitle}</div>
-                        <div class="result-meta">/${highlightedId}</div>
-                      </div>`;
+    item.innerHTML = `
+      <div class="result-content">
+        <div class="result-title">${highlightedTitle}</div>
+        <div class="result-meta">/${highlightedId}</div>
+      </div>
+      <div class="result-type">${m.type}</div>
+    `;
+    
     item.addEventListener('click', () => {
       loadArticle(m.id);
       closeSearchResults();
       searchBar.value = '';
     });
+    
     searchResults.appendChild(item);
   });
 
+  if (matches.length > limit) {
+    const moreResults = document.createElement('div');
+    moreResults.className = 'no-results';
+    moreResults.textContent = `+${matches.length - limit} more results...`;
+    searchResults.appendChild(moreResults);
+  }
+
   searchResults.style.display = 'block';
+}
+
+/* Keyboard navigation for search results */
+function highlightResult(index) {
+  const items = searchResults.querySelectorAll('.result-item');
+  items.forEach(item => item.classList.remove('highlighted'));
+  
+  if (index >= 0 && index < items.length) {
+    items[index].classList.add('highlighted');
+    items[index].scrollIntoView({ block: 'nearest' });
+  }
+}
+
+function selectHighlightedResult() {
+  const highlighted = searchResults.querySelector('.result-item.highlighted');
+  if (highlighted) {
+    highlighted.click();
+  }
 }
 
 /* Load article by id (inject into articleContainer) */
 function loadArticle(id) {
   if (!articles[id]) return;
-  // hide home
-  homeSection.style.display = 'none';
-  // inject article HTML
-  articleContainer.innerHTML = articles[id];
-  autoLinkCapitalizedWords(articleContainer, id);
-  // init UI bits inside article
-  setupAccordionAndTabs();
-  // scroll to top of article container
-  articleContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  
+  // Track article view
+  trackArticleView(id);
+  
+  // Add to recent searches
+  addToRecent(id);
+  
+  // Add loading state
+  articleContainer.innerHTML = '<div class="loading">Loading...</div>';
+  
+  setTimeout(() => {
+    // hide home
+    homeSection.style.display = 'none';
+    // inject article HTML
+    articleContainer.innerHTML = articles[id];
+    autoLinkCapitalizedWords(articleContainer, id);
+    // init UI bits inside article
+    applySynonymLinks(articleContainer);
+
+    setupAccordionAndTabs();
+    // scroll to top of article container
+    articleContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    
+    // Add back to home button
+    addBackButton();
+  }, 100);
+}
+
+/* Add back to home functionality */
+function addBackButton() {
+  if (document.querySelector('.back-home')) return;
+  
+  const backBtn = document.createElement('button');
+  backBtn.className = 'back-home';
+  backBtn.innerHTML = '← Back to Home';
+  backBtn.addEventListener('click', () => {
+    articleContainer.innerHTML = '';
+    homeSection.style.display = 'flex';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  
+  articleContainer.insertBefore(backBtn, articleContainer.firstChild);
 }
 
 /* Setup accordion and tabs inside the injected article */
 function setupAccordionAndTabs() {
   const article = document.getElementById('article-container');
 
-  // --- 1. Setup accordions ---
+  if (!article) return;
+
+  // --- 1. Setup machine variant tabs FIRST ---
+  const variants = article.querySelectorAll('.machine-variant');
+  const buttons = article.querySelectorAll('.machine-tabs button');
+
+  // Hide all variants initially
+  variants.forEach(sec => {
+    sec.style.display = 'none';
+  });
+  
+  // Show normal variant
+  const normalVariant = article.querySelector('.machine-variant[data-variant-section="normal"]');
+  if (normalVariant) normalVariant.style.display = 'block';
+  
+  // Set active button
+  buttons.forEach(btn => btn.classList.remove('active'));
+  const normalBtn = article.querySelector('.machine-tabs button[data-variant="normal"]');
+  if (normalBtn) normalBtn.classList.add('active');
+
+  // Tab click events
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const variant = btn.dataset.variant;
+      
+      variants.forEach(sec => {
+        sec.style.display = 'none';
+      });
+      
+      const targetVariant = article.querySelector(`.machine-variant[data-variant-section="${variant}"]`);
+      if (targetVariant) targetVariant.style.display = 'block';
+      
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // --- 2. Setup accordions ---
   const accordionItems = article.querySelectorAll('.accordion-item');
   accordionItems.forEach(item => {
     const header = item.querySelector('.accordion-header');
     const content = item.querySelector('.accordion-content');
     const chev = header.querySelector('.chev');
 
-    // reset state
+    if (!header || !content) return;
+
+    // Force closed state with !important
     header.setAttribute('aria-expanded', 'false');
     content.classList.remove('open');
-    content.style.maxHeight = null;
-    if (chev) chev.style.transform = '';
+    content.style.setProperty('max-height', '0px', 'important');
+    content.style.setProperty('overflow', 'hidden', 'important');
+    content.style.setProperty('padding-top', '0px', 'important');
+    content.style.setProperty('padding-bottom', '0px', 'important');
+    content.style.setProperty('display', 'block', 'important');
+    if (chev) chev.style.transform = 'rotate(0deg)';
 
-    // click behavior
+    // Add click event
     header.addEventListener('click', () => {
       const isOpen = content.classList.contains('open');
 
-      // close all siblings in the same accordion
+      // Close all other accordions in same container
       const parentAccordion = header.closest('.accordion');
-      parentAccordion.querySelectorAll('.accordion-content').forEach(c => {
-        c.classList.remove('open');
-        c.style.maxHeight = null;
-        const h = c.previousElementSibling;
-        if (h) h.setAttribute('aria-expanded', 'false');
-        const cv = h.querySelector('.chev');
-        if (cv) cv.style.transform = '';
-      });
+      if (parentAccordion) {
+        parentAccordion.querySelectorAll('.accordion-content').forEach(c => {
+          if (c !== content) {
+            c.classList.remove('open');
+            c.style.maxHeight = '0px';
+            c.style.paddingTop = '0px';
+            c.style.paddingBottom = '0px';
+            const h = c.previousElementSibling;
+            if (h) h.setAttribute('aria-expanded', 'false');
+            const cv = h.querySelector('.chev');
+            if (cv) cv.style.transform = 'rotate(0deg)';
+          }
+        });
+      }
 
-      // toggle current
+      // Toggle current
       if (!isOpen) {
         content.classList.add('open');
-        content.style.maxHeight = content.scrollHeight + 'px';
+        content.style.paddingTop = '14px';
+        content.style.paddingBottom = '14px';
+        content.style.maxHeight = (content.scrollHeight + 20) + 'px';
         header.setAttribute('aria-expanded', 'true');
         if (chev) chev.style.transform = 'rotate(180deg)';
+      } else {
+        content.classList.remove('open');
+        content.style.maxHeight = '0px';
+        content.style.paddingTop = '0px';
+        content.style.paddingBottom = '0px';
+        header.setAttribute('aria-expanded', 'false');
+        if (chev) chev.style.transform = 'rotate(0deg)';
       }
-    });
-  });
-
-  // --- 2. Setup machine variant tabs ---
-  const variants = article.querySelectorAll('.machine-variant');
-  const buttons = article.querySelectorAll('.machine-tabs button');
-
-  // show only the "normal" variant by default
-  variants.forEach(sec => {
-    sec.style.display = sec.dataset.variantSection === 'normal' ? 'block' : 'none';
-  });
-  buttons.forEach(btn => btn.classList.remove('active'));
-  const normalBtn = article.querySelector('.machine-tabs button[data-variant="normal"]');
-  if (normalBtn) normalBtn.classList.add('active');
-
-  // tab click events
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const variant = btn.dataset.variant;
-      variants.forEach(sec => {
-        sec.style.display = sec.dataset.variantSection === variant ? 'block' : 'none';
-      });
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
     });
   });
 }
 
-/* SEARCH behavior (suggestions only) */
+/* Enhanced SEARCH behavior with keyboard navigation */
+const searchLoading = document.getElementById('search-loading');
+const searchIcon = document.querySelector('.search-icon');
+
 searchBar.addEventListener('input', (e) => {
   const q = e.target.value.trim();
+  currentHighlight = -1;
+  
   if (!q) {
-    // clear articles and show home if no query
     articleContainer.innerHTML = '';
     homeSection.style.display = 'flex';
     closeSearchResults();
+    hideSearchLoading();
     return;
   }
-  // show matches dropdown (no instant load) — pass raw query for highlighting
-  showSearchMatches(q);
+  
+  showSearchLoading();
+  setTimeout(() => {
+    showSearchMatches(q);
+    hideSearchLoading();
+  }, 150);
+});
+
+function showSearchLoading() {
+  if (searchLoading) searchLoading.hidden = false;
+  if (searchIcon) searchIcon.style.opacity = '0';
+}
+
+function hideSearchLoading() {
+  if (searchLoading) searchLoading.hidden = true;
+  if (searchIcon) searchIcon.style.opacity = '1';
+}
+
+/* Keyboard navigation */
+searchBar.addEventListener('keydown', (e) => {
+  const items = searchResults.querySelectorAll('.result-item');
+  
+  switch(e.key) {
+    case 'ArrowDown':
+      e.preventDefault();
+      currentHighlight = Math.min(currentHighlight + 1, items.length - 1);
+      highlightResult(currentHighlight);
+      break;
+      
+    case 'ArrowUp':
+      e.preventDefault();
+      currentHighlight = Math.max(currentHighlight - 1, -1);
+      highlightResult(currentHighlight);
+      break;
+      
+    case 'Enter':
+      e.preventDefault();
+      if (currentHighlight >= 0) {
+        selectHighlightedResult();
+      } else if (items.length > 0) {
+        items[0].click();
+      }
+      break;
+      
+    case 'Escape':
+      closeSearchResults();
+      searchBar.blur();
+      break;
+  }
 });
 
 /* Close results when clicking outside */
@@ -2584,13 +4328,128 @@ document.addEventListener('click', (ev) => {
   }
 });
 
-/* CTA button: open "explore first match" by showing results focused */
-ctaExplore?.addEventListener('click', () => {
-  searchBar.focus();
-  searchBar.value = '';
-  // optionally open results with popular items — here we just focus
+/* Category navigation */
+document.querySelectorAll('.category-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const category = card.dataset.category;
+    searchBar.value = category;
+    searchBar.dispatchEvent(new Event('input'));
+  });
 });
 
+/* Popular content navigation */
+document.querySelectorAll('.popular-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const articleId = item.dataset.article;
+    if (articles[articleId]) {
+      loadArticle(articleId);
+    }
+  });
+});
+
+/* CTA button: open "explore first match" by showing results focused */
+ctaExplore?.addEventListener('click', () => {
+  searchBar.value = 'machines';
+  searchBar.focus();
+  searchBar.dispatchEvent(new Event('input'));
+});
+
+/* Analytics tracking */
+let analytics = JSON.parse(localStorage.getItem('analytics') || '{}');
+
+function trackArticleView(articleId) {
+  analytics[articleId] = (analytics[articleId] || 0) + 1;
+  localStorage.setItem('analytics', JSON.stringify(analytics));
+}
+
+function getPopularArticles() {
+  return Object.entries(analytics)
+    .sort(([,a], [,b]) => b - a)
+    .slice(0, 5)
+    .map(([id]) => id);
+}
+
+/* Recent searches functionality */
+let recentSearches = JSON.parse(localStorage.getItem('recentSearches') || '[]');
+
+function addToRecent(articleId) {
+  const titleMatch = articles[articleId].match(/<h1[^>]*class=["']title["'][^>]*>([\s\S]*?)<\/h1>/i);
+  const title = titleMatch ? titleMatch[1].trim() : articleId;
+  
+  recentSearches = recentSearches.filter(item => item.id !== articleId);
+  recentSearches.unshift({ id: articleId, title });
+  recentSearches = recentSearches.slice(0, 6);
+  
+  localStorage.setItem('recentSearches', JSON.stringify(recentSearches));
+  updateRecentLinks();
+}
+
+function updateRecentLinks() {
+  const container = document.getElementById('recent-links');
+  if (!container) return;
+  
+  if (recentSearches.length === 0) {
+    container.innerHTML = '<div class="no-recent">No recent searches yet</div>';
+    return;
+  }
+  
+  container.innerHTML = recentSearches.map(item => 
+    `<button class="quick-link" data-article="${item.id}">${item.title}</button>`
+  ).join('');
+  
+  container.querySelectorAll('.quick-link').forEach(link => {
+    link.addEventListener('click', () => {
+      const articleId = link.dataset.article;
+      if (articleId && articles[articleId]) {
+        loadArticle(articleId);
+      }
+    });
+  });
+}
+
+// Initialize recent links on page load
+updateRecentLinks();
+
+/* Theme toggle functionality */
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.querySelector('.theme-icon');
+let isDark = localStorage.getItem('theme') !== 'light';
+
+function updateTheme() {
+  if (isDark) {
+    document.body.classList.remove('light-theme');
+    themeIcon.textContent = '🌙';
+  } else {
+    document.body.classList.add('light-theme');
+    themeIcon.textContent = '☀️';
+  }
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+}
+
+themeToggle?.addEventListener('click', () => {
+  isDark = !isDark;
+  updateTheme();
+});
+
+// Initialize theme
+updateTheme();
+
+/* Back to top button functionality */
+const backToTopBtn = document.getElementById('back-to-top');
+
+function updateBackToTop() {
+  if (window.scrollY > 300) {
+    backToTopBtn.hidden = false;
+  } else {
+    backToTopBtn.hidden = true;
+  }
+}
+
+backToTopBtn?.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+window.addEventListener('scroll', updateBackToTop);
 
 /* Start state: show home */
 homeSection.style.display = 'flex';
@@ -2720,8 +4579,98 @@ function autoLinkCapitalizedWords(container, currentID) {
     }
 
     if (replacedAnything) {
-      textNode.parentNode.replaceChild(frag, textNode);
+      try {
+        if (textNode.parentNode) {
+          textNode.parentNode.replaceChild(frag, textNode);
+        }
+      } catch (e) {
+        console.warn('Failed to replace text node in autoLinkCapitalizedWords:', e);
+      }
     }
   });
 }
 
+// Synonym dictionary: articleID → synonyms you choose
+const linkSynonyms = {
+    "acid": ["corrosion", "corroding"],
+    "fire": ["heat", "burning"],
+    "frost": ["ice", "brittle"],
+    "plasma": ["charged", "energized"],
+    "shock": ["electricity", "shocked"],
+    "purgewater": ["drenched", "wet"],
+    "adhesive": ["sticky", "slowed"],
+    // Add more here
+};
+
+// Apply auto-linking for synonyms after article loads - safer DOM-based approach
+function applySynonymLinks(container) {
+    if (!container) return;
+    
+    // Create a map for faster lookup
+    const synonymMap = new Map();
+    for (const articleID in linkSynonyms) {
+        linkSynonyms[articleID].forEach(word => {
+            synonymMap.set(word.toLowerCase(), articleID);
+        });
+    }
+    
+    // Walk text nodes safely
+    const walker = document.createTreeWalker(
+        container,
+        NodeFilter.SHOW_TEXT,
+        {
+            acceptNode(node) {
+                if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+                
+                const forbidden = ['A', 'SCRIPT', 'STYLE', 'TEXTAREA', 'CODE', 'PRE'];
+                let parent = node.parentNode;
+                while (parent && parent.nodeType === 1) {
+                    if (forbidden.includes(parent.nodeName)) return NodeFilter.FILTER_REJECT;
+                    parent = parent.parentNode;
+                }
+                
+                return NodeFilter.FILTER_ACCEPT;
+            }
+        }
+    );
+    
+    const nodes = [];
+    let node;
+    while (node = walker.nextNode()) nodes.push(node);
+    
+    nodes.forEach(textNode => {
+        const text = textNode.nodeValue;
+        const words = text.split(/(\b\w+\b)/g);
+        let hasChanges = false;
+        const frag = document.createDocumentFragment();
+        
+        words.forEach(word => {
+            const lowerWord = word.toLowerCase();
+            if (synonymMap.has(lowerWord)) {
+                hasChanges = true;
+                const a = document.createElement('a');
+                a.href = `#${synonymMap.get(lowerWord)}`;
+                a.className = 'auto-link';
+                a.textContent = word;
+                
+                a.addEventListener('click', e => {
+                    e.preventDefault();
+                    if (typeof loadArticle === 'function') loadArticle(synonymMap.get(lowerWord));
+                    else location.hash = synonymMap.get(lowerWord);
+                });
+                
+                frag.appendChild(a);
+            } else {
+                frag.appendChild(document.createTextNode(word));
+            }
+        });
+        
+        if (hasChanges) {
+            try {
+                textNode.parentNode.replaceChild(frag, textNode);
+            } catch (e) {
+                console.warn('Failed to replace text node:', e);
+            }
+        }
+    });
+}
