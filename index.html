@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Forbidden West Wiki - Complete Guide to Machines, Lore & Elements</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Comprehensive wiki for Horizon: Forbidden West featuring detailed machine guides, lore, elements, and strategies. Search through machines like Thunderjaw, Slitherfang, and more.">
+  <meta name="keywords" content="Horizon Forbidden West, wiki, machines, Thunderjaw, Slitherfang, Aloy, GAIA, game guide">
+  <meta name="author" content="Forbidden West Wiki">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Forbidden West Wiki - Complete Game Guide">
+  <meta property="og:description" content="Your complete guide to Horizon: Forbidden West machines, lore, and gameplay elements.">
+  <meta property="og:image" content="images/icon.ico">
+  <meta property="og:url" content="https://sylensio-js.github.io/Horizon-Wiki/">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Forbidden West Wiki">
+  <meta name="twitter:description" content="Complete guide to Horizon: Forbidden West">
+  
+  <!-- Performance & Security -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;600&family=Kensmark+One&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;600&family=Kensmark+One&display=swap" rel="stylesheet"></noscript>
+
+  <!-- Theme stylesheet -->
+  <link rel="stylesheet" href="css/Variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/articles.css">
+  <link rel="stylesheet" href="css/light-theme.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/icon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="images/icon.ico">
+  
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="manifest.json">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Forbidden West Wiki",
+    "description": "Complete guide to Horizon: Forbidden West",
+    "url": "https://sylensio-js.github.io/Horizon-Wiki/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://sylensio-js.github.io/Horizon-Wiki/?search={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+</head>
+<body class="homepage">
+  <!-- HEADER -->
+  <header class="topbar" role="banner">
+    <div class="topbar-inner">
+      <div class="logo">
+        <img src="images/icon.ico" alt="Logo" class="logo-mark">
+        <div class="logo-text">Forbidden West Wiki</div>
+      </div>
+
+      <div class="search-wrap" role="search">
+        <input id="searchBar" class="search-input" type="search" autocomplete="off" placeholder="Try: Thunderjaw, Frost, GAIA, or 'machines'" aria-label="Search" aria-expanded="false" aria-haspopup="listbox">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <div class="search-loading" id="search-loading" hidden>
+          <div class="loading-spinner"></div>
+        </div>
+        <div id="search-results" class="search-results" role="listbox" aria-label="Search results" hidden></div>
+      </div>
+      
+      <button id="compare-toggle" class="compare-toggle" aria-label="Compare machines" title="This tool lets you compare different stats of any two machines, like their class and drops">
+        <span class="compare-icon">⚖️</span>
+      </button>
+      
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main id="mainContent">
+    <!-- HOME LANDING -->
+    <section id="home-section" class="home-landing" aria-label="Home">
+      <div class="parallax-bg" aria-hidden="true"></div>
+      <div class="hero-overlay">
+        <h1 class="hero-title">Welcome to the Forbidden West Wiki</h1>
+        <p class="hero-lead">
+          A compact, well-organized compendium of machines, lore, and guides for <em>Horizon: Forbidden West</em>.
+          Use the search box above to find machines, elements, lore, and other entries. This page is a friendly landing — start where you like.
+        </p>
+
+        <div class="browse-categories">
+          <h3>Browse by Category</h3>
+          <div class="category-grid">
+            <button class="category-card" data-category="machines">
+              <span class="category-icon">🤖</span>
+              <span class="category-name">Machines</span>
+              <span class="category-count">25+ entries</span>
+            </button>
+            <button class="category-card" data-category="elements">
+              <span class="category-icon">⚡</span>
+              <span class="category-name">Elements</span>
+              <span class="category-count">6 types</span>
+            </button>
+            <button class="category-card" data-category="lore">
+              <span class="category-icon">📖</span>
+              <span class="category-name">Lore</span>
+              <span class="category-count">Characters & Story</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="favorites-content">
+          <h3>Your Favorites</h3>
+          <div class="favorites-links" id="favorites-links">
+            <div class="no-favorites">No favorites yet - click ⭐ on any article</div>
+          </div>
+        </div>
+
+        <div class="quick-access">
+          <h3 id="quick-title">Recent Searches</h3>
+          <div class="quick-links" id="recent-links" role="list">
+            <div class="no-recent" role="listitem">No recent searches yet</div>
+          </div>
+        </div>
+
+        <!-- TIPS CAROUSEL -->
+        <div class="tips-carousel">
+          <h3>Tips for New (and Experienced) Players</h3>
+          <div class="tips-container">
+            <div class="tip-card active">
+              <div class="tip-icon">🎯</div>
+              <div class="tip-content">
+                <h4>Target Weak Points</h4>
+                <p>Use your Focus to scan machines and identify weak components. Destroying these can disable attacks or provide valuable resources.</p>
+              </div>
+            </div>
+            <div class="tip-card">
+              <div class="tip-icon">⚡</div>
+              <div class="tip-content">
+                <h4>Exploit Elemental Weaknesses</h4>
+                <p>Each machine has elemental vulnerabilities. Fire melts ice armor, Shock stuns most machines, and Acid corrodes heavy plating.</p>
+              </div>
+            </div>
+            <div class="tip-card">
+              <div class="tip-icon">🏹</div>
+              <div class="tip-content">
+                <h4>Use Torn-Off Weapons</h4>
+                <p>Many machine weapons can be removed and used against them. Disc launchers and cannons deal massive damage to their former owners.</p>
+              </div>
+            </div>
+            <div class="tip-card">
+              <div class="tip-icon">🛡️</div>
+              <div class="tip-content">
+                <h4>Stealth is Your Friend</h4>
+                <p>Use tall grass and stealth to get critical strike opportunities. Many machines can be overridden for powerful allies.</p>
+              </div>
+            </div>
+            <div class="tip-card">
+              <div class="tip-icon">💎</div>
+              <div class="tip-content">
+                <h4>Preserve Valuable Parts</h4>
+                <p>Some machine components are destroyed when the machine dies. Remove them first if you need specific upgrade materials.</p>
+              </div>
+            </div>
+            <div class="tip-card">
+              <div class="tip-icon">🗡️</div>
+              <div class="tip-content">
+              <h4>Apex Hunting</h4>
+              <p>If you kill 2 to 4 normal machines of a single type, then hunt at night, you'll have the highest possible chance of spawning an Apex variant of that machine</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARISON TOOL -->
+    <section id="comparison-section" class="comparison-section" hidden>
+      <div class="comparison-header">
+        <h2>Machine Comparison Tool</h2>
+        <button id="close-comparison" class="close-btn">×</button>
+      </div>
+      
+      <div class="machine-selectors">
+        <div class="selector-group">
+          <label for="machine1-input">Machine 1:</label>
+          <div class="machine-search-wrap">
+            <input id="machine1-input" class="machine-search-input" type="text" placeholder="Search for a machine..." autocomplete="off">
+            <div id="machine1-results" class="machine-search-results" hidden></div>
+          </div>
+          <div id="machine1-tabs" class="machine-tabs" role="tablist" hidden></div>
+        </div>
+        <div class="selector-group">
+          <label for="machine2-input">Machine 2:</label>
+          <div class="machine-search-wrap">
+            <input id="machine2-input" class="machine-search-input" type="text" placeholder="Search for a machine..." autocomplete="off">
+            <div id="machine2-results" class="machine-search-results" hidden></div>
+          </div>
+          <div id="machine2-tabs" class="machine-tabs" role="tablist" hidden></div>
+        </div>
+      </div>
+      
+      <div id="comparison-results" class="comparison-results"></div>
+    </section>
+
+    <!-- ARTICLE CONTAINER -->
+    <div id="article-container" aria-live="polite"></div>
+  </main>
+
+  <!-- Back to top button -->
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top" hidden>
+    <span aria-hidden="true">↑</span>
+  </button>
+
+  <!-- Scripts -->
+  <script src="script.js" defer></script>
+  
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>

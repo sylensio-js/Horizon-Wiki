@@ -1,0 +1,298 @@
+/* Light theme overrides */
+.light-theme {
+  /* Override all dark theme variables */
+  --bg-forest-dark: #f8faf9 !important;
+  --bg-forest-deep: #ffffff !important;
+  --panel: rgba(255, 255, 255, 0.8) !important;
+  --panel-strong: rgba(255, 255, 255, 0.95) !important;
+  --accent: #2d374a !important;
+  --accent-dim: #4a526b !important;
+  --accent-gold: #b8860b !important;
+  --accent-gold-dark: #8b6914 !important;
+  --accent-gold-soft: rgba(184, 134, 11, 0.15) !important;
+  --accent-gold-hover: rgba(184, 134, 11, 0.25) !important;
+  --muted: #6b707c !important;
+  --glass: rgba(255, 255, 255, 0.8) !important;
+  --glass-strong: rgba(255, 255, 255, 0.95) !important;
+  --bg-hero-dim: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Body and main background */
+.light-theme body {
+  background: linear-gradient(180deg, #f8faf9, #ffffff) !important;
+  color: #1a232e !important;
+}
+
+/* Header */
+.light-theme .topbar {
+  background: linear-gradient(180deg, rgba(248, 250, 249, 0.95), rgba(248, 250, 249, 0.8)) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.light-theme .logo-text {
+  color: #1a232e !important;
+}
+
+/* Search */
+.light-theme .search-input {
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #1a232e !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+.light-theme .search-input::placeholder {
+  color: #6b707c !important;
+}
+
+.light-theme .search-results {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.light-theme .result-item {
+  color: #1a232e !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+.light-theme .result-item:hover,
+.light-theme .result-item.highlighted {
+  background: rgba(184, 134, 11, 0.1) !important;
+}
+
+.light-theme .result-meta {
+  color: #6b707c !important;
+}
+
+.light-theme .result-type {
+  color: #b8860b !important;
+}
+
+/* Theme toggle */
+.light-theme .theme-toggle {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  color: #1a232e !important;
+}
+
+/* Hero section */
+.light-theme .hero-overlay {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  color: #1a2e23 !important;
+}
+
+.light-theme .hero-title {
+  color: #1a2e23 !important;
+}
+
+.light-theme .hero-lead {
+  color: #2d4a37 !important;
+}
+
+/* Buttons */
+.light-theme .btn-ghost {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(184, 134, 11, 0.4) !important;
+  color: #2d4a37 !important;
+}
+
+.light-theme .btn-ghost:hover {
+  background: rgba(184, 134, 11, 0.1) !important;
+  border-color: #b8860b !important;
+}
+
+.light-theme .btn-primary {
+  background: linear-gradient(135deg, #b8860b 0%, #d4a017 100%) !important;
+  color: #ffffff !important;
+}
+
+/* Quick links */
+.light-theme .quick-link {
+  background: rgba(184, 134, 11, 0.1) !important;
+  border-color: rgba(184, 134, 11, 0.3) !important;
+  color: #2d4a37 !important;
+}
+
+.light-theme .quick-link:hover {
+  background: rgba(184, 134, 11, 0.2) !important;
+}
+
+.light-theme .back-home {
+  background: rgba(184, 134, 11, 0.1) !important;
+  border-color: rgba(184, 134, 11, 0.3) !important;
+  color: #2d4a37 !important;
+}
+
+/* Articles */
+.light-theme article {
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: #1a2e23 !important;
+}
+
+.light-theme .title {
+  color: #1a2e23 !important;
+}
+
+.light-theme .infobox {
+  background: rgba(184, 134, 11, 0.1) !important;
+  border-color: rgba(184, 134, 11, 0.3) !important;
+  color: #2d4a37 !important;
+}
+
+.light-theme h2 {  
+  color: #2d4a37 !important;
+}
+
+.light-theme .no-favorites {
+  color: #1a2e23 !important;
+}
+/* Accordion */
+.light-theme .accordion-header {
+  background: rgba(184, 134, 11, 0.1) !important;
+  color: #2d4a37 !important;
+  border-color: rgba(184, 134, 11, 0.2) !important;
+}
+
+.light-theme .accordion-header:hover {
+  background: rgba(184, 134, 11, 0.2) !important;
+}
+
+.light-theme .accordion-content {
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #1a2e23 !important;
+  border-color: rgba(184, 134, 11, 0.2) !important;
+}
+
+/* Machine tabs */
+.light-theme .machine-tabs button {
+  background: rgba(255, 255, 255, 0.8) !important;
+  color: #2d4a37 !important;
+  border-color: rgba(184, 134, 11, 0.3) !important;
+}
+
+.light-theme .machine-tabs button.active {
+  background: rgba(184, 134, 11, 0.2) !important;
+  color: #1a2e23 !important;
+}
+
+/* Attack cards */
+.light-theme .attack-card {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(184, 134, 11, 0.2) !important;
+  color: #1a2e23 !important;
+}
+
+.light-theme .attack-card h3 {
+  color: #b8860b !important;
+}
+
+/* Drop items */
+.light-theme .drop {
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #1a2e23 !important;
+  border-color: rgba(184, 134, 11, 0.2) !important;
+}
+
+/* Tags */
+.light-theme .tag {
+  background: rgba(184, 134, 11, 0.2) !important;
+  color: #2d4a37 !important;
+}
+
+/* Links */
+.light-theme a,
+.light-theme .auto-link {
+  color: #b8860b !important;
+}
+
+.light-theme a:hover,
+.light-theme .auto-link:hover {
+  color: #8b6914 !important;
+}
+
+/* Scrollbar (webkit) */
+.light-theme ::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+.light-theme ::-webkit-scrollbar-thumb {
+  background: rgba(184, 134, 11, 0.4) !important;
+}
+
+.light-theme ::-webkit-scrollbar-thumb:hover {
+  background: rgba(184, 134, 11, 0.6) !important;
+}
+/* Logo mark light theme */
+.light-theme .logo-mark {
+  background-color: #f0f0f0 !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1), inset 0 0 10px rgba(184, 134, 11, 0.15) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Comparison Tool Light Theme */
+.light-theme .compare-toggle {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  color: #2d4a37 !important;
+}
+
+.light-theme .comparison-section {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.light-theme .comparison-header h2 {
+  color: #1a2e23 !important;
+}
+
+.light-theme .close-btn {
+  background: rgba(255, 0, 0, 0.1) !important;
+  border-color: rgba(255, 0, 0, 0.3) !important;
+  color: #d32f2f !important;
+}
+
+.light-theme .machine-search-input {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  color: #1a2e23 !important;
+}
+
+.light-theme .machine-search-results {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+.light-theme .machine-search-result {
+  color: #1a2e23 !important;
+  border-bottom-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.light-theme .machine-search-result:hover {
+  background: rgba(184, 134, 11, 0.1) !important;
+}
+
+.light-theme .machine-comparison {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(184, 134, 11, 0.2) !important;
+}
+
+.light-theme .machine-comparison h3 {
+  color: #b8860b !important;
+}
+
+.light-theme .stat-label {
+  color: #2d4a37 !important;
+}
+
+.light-theme .stat-value {
+  color: #1a2e23 !important;
+}
+
+.light-theme .comparison-stat {
+  border-bottom-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.light-theme .selector-group label {
+  color: #2d4a37 !important;
+}

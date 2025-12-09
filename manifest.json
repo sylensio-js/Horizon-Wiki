@@ -1,0 +1,16 @@
+{
+  "name": "Forbidden West Wiki",
+  "short_name": "FW Wiki",
+  "description": "Complete guide to Horizon: Forbidden West",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#ff6b35",
+  "icons": [
+    {
+      "src": "images/icon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    }
+  ]
+}
