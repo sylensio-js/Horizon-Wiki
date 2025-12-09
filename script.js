@@ -317,7 +317,7 @@ const articles = {
     <p>charges the dart cannon then fires three rapid darts. Destroying the dart cannon disables this attack.</p>
   </div>
 </div>
-          <p>It may also cloak and lay explosive mines.Destroy the stealth generator to stop invisibility, and destroy the mine launchers above the hind legs to stop mine deployment.</p>
+          <p>It may also cloak and lay explosive mines. Destroy the stealth generator to stop invisibility, and destroy the mine launchers above the hind legs to stop mine deployment.</p>
         </div>
         </div>
       </div>
@@ -553,7 +553,7 @@ const articles = {
  <div class="accordion-item">
   <div class="accordion-header" aria-expanded="false">Overriding <span class="chev">▾</span></div>
   <div class="accordion-content">
-  <p>The Slaughterspine can be overridden, and its module can be acquired by overriding Cauldron KAPPA's core. And i have to say, its one of, if not, the best override in the game. Because the only thing that managed to beat it was an Apex Stormbird.</p>
+  <p>The Slaughterspine can be overridden, and its module can be acquired by overriding Cauldron KAPPA's core. And I have to say, it's one of, if not, the best override in the game. Because the only thing that managed to beat it was an Apex Stormbird.</p>
   </div>
  </div>
 </div>
@@ -773,7 +773,7 @@ const articles = {
  <div class="accordion-item">
   <div class="accordion-header" aria-expanded="false">Overriding <span class="chev">▾</span></div>
   <div class="accordion-content">
-  <p>The Stormbird can be overridden, and the its module can be acquired by overriding Cauldron KAPPA's core. As for performance, its very good, but it will take some time to override it, as it likes to stay in the air and use that annoying kamikaze attack. And there aren't that many uses for it in combat, as most of the time it's overridden it will hover in the air</p>
+  <p>The Stormbird can be overridden, and its module can be acquired by overriding Cauldron KAPPA's core. As for performance, it's very good, but it will take some time to override it, as it likes to stay in the air and use that annoying kamikaze attack. And there aren't that many uses for it in combat, as most of the time it's overridden it will hover in the air</p>
   </div>
  </div>
 </div>
@@ -1288,7 +1288,7 @@ const articles = {
   
 
   <section class="infobox"> 
-    <div><strong>Type:</strong>Aquisition - Midweight</div>
+    <div><strong>Type:</strong>Acquisition - Midweight</div>
     <div><strong>Real-World Inspiration:</strong>Alligator/Crocodile</div>
   </section>
 
@@ -1627,7 +1627,7 @@ const articles = {
   
 
   <section class="infobox">
-    <div><strong>Type:</strong>Aquisition - Lightweight</div>
+    <div><strong>Type:</strong>Acquisition - Lightweight</div>
     <div><strong>Real-World Inspiration:</strong>Jackal</div>
   </section>
 
@@ -6229,7 +6229,7 @@ x
     </p>
 
     <p>
-        She believed the Tenakth had grown weak under Karja influence,
+        She believed the Tenakth had grown weak under Carja influence,
         that the old ways — the ways of absolute strength — were fading.
         Her uprising split the land, pitting warriors against warriors,
         and casting doubt upon the very meaning of endurance.
@@ -6273,7 +6273,7 @@ x
             home to Lowland traditions as old as the river roots.
         </li>
         <li>
-            <b>Scalding Spear</b> — Capital of the Desert Clan, its walls
+            <b>Scalding Spear</b> — Citadel of the Desert Clan, its walls
             burned golden by the relentless sun.
         </li>
         <li>
@@ -6494,6 +6494,10 @@ function loadArticle(id) {
   
   // Add to recent searches
   addToRecent(id);
+  
+  // Show back to home button
+  const backToHomeBtn = document.getElementById('back-to-home');
+  if (backToHomeBtn) backToHomeBtn.hidden = false;
   
   // Add loading state
   articleContainer.innerHTML = '<div class="loading">Loading...</div>';
@@ -6740,6 +6744,24 @@ function showSearchLoading() {
 function hideSearchLoading() {
   if (searchLoading) searchLoading.hidden = true;
   if (searchIcon) searchIcon.style.opacity = '1';
+}
+
+/* Back to home button */
+const backToHomeBtn = document.getElementById('back-to-home');
+if (backToHomeBtn) {
+  backToHomeBtn.addEventListener('click', () => {
+    // Hide article and show home
+    articleContainer.innerHTML = '';
+    homeSection.style.display = '';
+    homeSection.classList.remove('fade-out');
+    
+    // Hide back to home button
+    backToHomeBtn.hidden = true;
+    
+    // Clear search
+    searchBar.value = '';
+    closeSearchResults();
+  });
 }
 
 /* Keyboard navigation */
