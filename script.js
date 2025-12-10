@@ -5793,7 +5793,7 @@ x
 
   <section class="early-life">
     <h3>Early Life & Tragedy</h3>
-    <p>Rost was once a respected member of the Nora tribe, living peacefully with his beloved wife. During the Red Raids launched by the Mad Sun-King Jiran, Carja forces invaded Mother's Embrace, massacring thousands of Nora and taking many as slaves. Among the casualties was Rost's wife, whose death shattered his world and set him on a path of vengeance.</p>
+    <p>Rost was once a respected member of the Nora tribe, living peacefully with his beloved wife and daughter. During the Red Raids launched by the Mad Sun-King Jiran, Carja forces invaded Mother's Embrace, massacring thousands of Nora and taking many as slaves. Among the casualties was Rost's family, whose death shattered his world and set him on a path of vengeance.</p>
   </section>
 
   <section class="death-seeker">
@@ -6046,6 +6046,187 @@ x
 </article>
 `,   
 
+"aloy": `
+
+<article id="aloy" class="theme-lore">
+  <h1 class="title">Aloy</h1>
+
+  <section class="infobox">
+    <div>Seeker of the Forbidden West</div>
+  </section>
+
+  <section class="overview">
+    <h3>Overview</h3>
+    <p>Aloy is a skilled hunter, tracker, and machine expert, raised among the Nora. Born from the legacy of Elisabet Sobeck, she is tasked with uncovering the secrets of the ancient world while navigating the dangers of the post-apocalyptic Forbidden West.</p>
+  </section>
+
+  <section class="early-life">
+    <h3>Early Life & Training</h3>
+    <p>Abandoned as a child and raised by the Nora outcast Rost, Aloy learned to survive in the harsh wilderness through hunting, crafting, and combat training. Her early life was marked by isolation, yet she developed exceptional skills and a strong sense of curiosity about the world and her origins.</p>
+  </section>
+
+  <section class="tribal-integration">
+    <h3>Integration with the Nora Tribe</h3>
+    <p>Despite being an outcast, Aloy earned the respect of the Nora through The Proving, a rite of passage that demonstrated her strength, courage, and intelligence. Her integration into the tribe provided her with knowledge of their customs, beliefs, and the spiritual significance of the Sacred Land.</p>
+  </section>
+
+  <section class="machine-hunting">
+    <h3>Machine Hunting & Abilities</h3>
+    <p>Aloy became a master hunter of machines, studying their behaviors and weaknesses to protect the tribes and maintain balance with nature. She is adept with the bow, spear, and various tools, using both stealth and strategy to overcome threats.</p>
+  </section>
+
+  <section class="major-quests">
+    <h3>Major Quests & Achievements</h3>
+    <ul>
+      <li><b>The Proving:</b> Aloy’s rite of passage among the Nora that solidified her place in the tribe.</li>
+      <li><b>Discovering the Old Ones:</b> Uncovering ancient technologies and truths that reshape the understanding of the world.</li>
+      <li><b>Uniting the Tribes:</b> Acting as a mediator and hero to prevent conflicts between the Nora, Carja, and Tenakth.</li>
+      <li><b>Stopping Technological Threats:</b> Defeating rogue AI and hostile machines that threaten human survival.</li>
+    </ul>
+  </section>
+
+  <section class="personality">
+    <h3>Personality & Values</h3>
+    <p>Aloy is driven by curiosity, empathy, and an unwavering sense of justice. She respects life, values knowledge, and seeks to reconcile the mistakes of the past with the needs of the present.</p>
+  </section>
+
+  <section class="legacy">
+    <h3>Legacy</h3>
+    <p>Through her deeds, Aloy bridges the past and present, embodying the hope of humanity while carrying forward the mission of her genetic predecessor, Elisabet Sobeck. Her journey serves as inspiration to all who seek to understand and protect the world.</p>
+  </section>
+</article>
+`,
+
+"erend": `
+
+<article id="erend" class="theme-lore">
+  <h1 class="title">Erend</h1>
+
+  <section class="infobox">
+    <div>Oseram Warrior & Loyal Ally</div>
+  </section>
+
+  <section class="overview">
+    <h3>Overview</h3>
+    <p>Erend is a skilled Oseram warrior and engineer, known for his loyalty, courage, and ingenuity. A member of the Sunhawk squad, he often bridges the gap between Oseram craftmanship and Carja military operations, making him an indispensable ally in times of conflict.</p>
+  </section>
+
+  <section class="early-life">
+    <h3>Early Life & Family</h3>
+    <p>Born and raised among the Oseram, Erend grew up immersed in a culture of invention, engineering, and martial skill. His parents were skilled artisans—his father a weaponsmith, his mother a mechanic—who instilled in him the values of hard work, creativity, and responsibility.</p>
+    <p>Erend’s upbringing emphasized resourcefulness, both in combat and daily life, and fostered a natural talent for mechanics and problem-solving that would define his later achievements.</p>
+  </section>
+
+  <section class="training-and-skills">
+    <h3>Training & Skills</h3>
+    <p>From a young age, Erend trained in combat with both traditional weapons and firearms, learning the Oseram approach to warfare: precise, strategic, and inventive. He also honed his engineering skills, mastering machinery, explosives, and modifications to improve weapons and vehicles.</p>
+    <p>His technical prowess often allows him to adapt quickly to unexpected threats, repair or enhance equipment, and provide solutions that others might overlook.</p>
+  </section>
+
+  <section class="military-career">
+    <h3>Military Career</h3>
+    <p>Erend joined the Vanguard squad, rising through the ranks to become one of its most trusted members. He has led operations to defend Carja settlements, coordinated tactical strikes against bandits, and contributed Oseram inventions to give his squad an advantage on the battlefield.</p>
+    <p>His ability to combine engineering knowledge with combat skill makes him both a frontline fighter and a strategic asset, often tasked with leading smaller squads during complex missions.</p>
+  </section>
+
+  <section class="relationship-with-aloy">
+    <h3>Relationship with Aloy</h3>
+    <p>Erend develops a close friendship with Aloy, serving as both her steadfast ally and occasional source of humor. He admires her determination, intelligence, and compassion, while providing support with his combat and engineering expertise.</p>
+    <p>Throughout their shared missions, Erend demonstrates unwavering loyalty, often putting himself at risk to protect Aloy and others, solidifying a bond built on trust and mutual respect.</p>
+  </section>
+
+  <section class="notable-quests">
+    <h3>Notable Quests & Achievements</h3>
+    <ul>
+      <li><b>Vanguard Missions:</b> Led critical operations to defend settlements and suppress rogue threats.</li>
+      <li><b>Supporting Aloy's Campaigns:</b> Assisted in defeating rogue machines and resolving tribal conflicts across the Forbidden West.</li>
+      <li><b>Engineering Innovations:</b> Applied Oseram ingenuity to enhance weapons, vehicles, and defenses for his squad.</li>
+      <li><b>Defending Meridian:</b> Played a key role in protecting the Carja capital during times of political and military crisis.</li>
+      <li><b>Bridging Tribal Relations:</b> Acted as a cultural link between the Oseram and Carja, promoting cooperation and unity.</li>
+    </ul>
+  </section>
+
+  <section class="personality">
+    <h3>Personality & Values</h3>
+    <p>Erend is courageous, loyal, and clever, balancing seriousness in combat with a lighthearted and approachable demeanor. He values friendship, ingenuity, and protecting others, often using humor to maintain morale even in dire situations.</p>
+    <p>His commitment to his people and allies demonstrates a combination of honor, practicality, and heart, making him both respected and beloved by those around him.</p>
+  </section>
+
+  <section class="legacy">
+    <h3>Legacy</h3>
+    <p>Erend’s heroism, ingenuity, and loyalty leave a lasting impact on the Oseram, Carja, and the tribes of the Forbidden West. His contributions in combat, engineering, and diplomacy strengthen bonds between cultures, cementing his status as a respected warrior and invaluable ally to Aloy and the wider world.</p>
+  </section>
+</article>
+`,
+
+"kotallo": `
+
+<article id="kotallo" class="theme-lore">
+  <h1 class="title">Kotallo</h1>
+
+  <section class="infobox">
+    <div>Tenakth Warrior & Endurance Champion</div>
+  </section>
+
+  <section class="overview">
+    <h3>Overview</h3>
+    <p>Kotallo is a celebrated Tenakth warrior known for his resilience, combat skill, and unwavering loyalty to his people. Despite losing an arm in battle, he continues to fight, embodying the Tenakth creed: “What is broken can endure.” Kotallo is a symbol of strength, perseverance, and honor within the Tenakth tribes.</p>
+  </section>
+
+  <section class="early-life">
+    <h3>Early Life & Origins</h3>
+    <p>Kotallo was born into the Lowland Clan of the Tenakth, raised along the river plains and marshlands. From an early age, he was immersed in the traditions of his people: endurance training, hunting, and the crafting of weapons and armor. The Lowland Clan instilled in him a deep respect for both the land and the legacy of his ancestors.</p>
+    <p>As a child, Kotallo exhibited remarkable physical ability and determination. Elders recognized his potential and marked him for a life among the Tenakth warriors, emphasizing discipline, resilience, and loyalty.</p>
+  </section>
+
+  <section class="training-and-skills">
+    <h3>Training & Combat Skills</h3>
+    <p>Kotallo’s training encompassed the full spectrum of Tenakth martial culture. He mastered spear, sword, and bow, as well as hand-to-hand combat. His endurance drills, conducted along the marshes and riverbanks, honed both physical and mental resilience.</p>
+    <p>After losing his arm in a decisive battle, Kotallo adapted by developing new combat techniques and utilizing armor modifications. His ability to continue fighting at peak capacity despite injury has become legendary, inspiring younger warriors across the Tenakth tribes.</p>
+    <ul>
+      <li><b>Spear Mastery:</b> Expert in both offensive and defensive spear techniques.</li>
+      <li><b>Adaptive Combat:</b> Innovates strategies to overcome physical limitations or battlefield disadvantages.</li>
+      <li><b>Survival Skills:</b> Proficient in tracking, hunting, and navigating the marshes and lowlands.</li>
+      <li><b>Armor & Weapon Crafting:</b> Skilled in maintaining and enhancing his own equipment to suit the demands of battle.</li>
+    </ul>
+  </section>
+
+  <section class="military-career">
+    <h3>Military Career & Notable Engagements</h3>
+    <p>Kotallo’s career as a Tenakth warrior is defined by his participation in critical battles to protect his clans and uphold Tenakth honor. He fought in territorial skirmishes, defended sacred sites, and led missions against hostile factions encroaching on Tenakth lands.</p>
+    <p>His most famous engagement involved a confrontation with raiders allied with external powers, during which he sustained the loss of his arm. Rather than withdrawing, Kotallo adapted his combat style and emerged victorious, earning widespread respect and cementing his reputation as a warrior who embodies Tenakth endurance.</p>
+  </section>
+
+  <section class="relationships">
+    <h3>Relationships & Alliances</h3>
+    <p>Kotallo maintains close bonds with key Tenakth figures, including Chief Hekarro and other clan marshals. His mentorship of younger warriors emphasizes the importance of perseverance, discipline, and honor in every action.</p>
+    <p>Although fierce in battle, he values cooperation and balance among the clans. Kotallo also interacts with allies outside the Tenakth when circumstances demand, bridging gaps through shared respect and combat expertise.</p>
+  </section>
+
+  <section class="notable-quests">
+    <h3>Notable Quests & Achievements</h3>
+    <ul>
+      <li><b>Defense of Thornmarsh:</b> Led a critical defense of the Lowland Clan settlement against external raiders.</li>
+      <li><b>Surviving the Red Raids:</b> Adapted to severe injuries while maintaining command and protecting his people.</li>
+      <li><b>Training the Next Generation:</b> Established endurance and combat programs for young warriors in all Tenakth clans.</li>
+      <li><b>Champion of Endurance:</b> Recognized as a living symbol of Tenakth resilience, inspiring both morale and discipline across the tribes.</li>
+    </ul>
+  </section>
+
+  <section class="personality">
+    <h3>Personality & Values</h3>
+    <p>Kotallo embodies patience, fortitude, and honor. He approaches life and battle with measured thought, valuing strategy over recklessness. Despite his formidable presence, he is compassionate toward his people and committed to mentoring the next generation of warriors.</p>
+    <p>He believes in the Tenakth principle that strength is not merely physical: resilience, loyalty, and wisdom define a true warrior.</p>
+  </section>
+
+  <section class="legacy">
+    <h3>Legacy</h3>
+    <p>Kotallo stands as a living testament to the Tenakth creed: “What is broken can endure.” His survival and continued leadership after grave injury serve as inspiration to all clans. Through combat, mentorship, and unwavering dedication, Kotallo’s influence shapes the Tenakth’s ongoing story, preserving their culture and guiding future generations of warriors.</p>
+    <p>His legacy is celebrated in Tenakth oral history, armor markings, and ceremonial traditions, ensuring that his deeds endure long after the battlefields have quieted.</p>
+  </section>
+</article>
+`,
+
 "carja": `
 
 
@@ -6115,9 +6296,11 @@ x
     <h2 class="section-header">Notable Characters</h2>
     <ul>
         <li><b>Sun-King Avad</b> — The reformer who ended the Red Raids.</li>
-        <li><b>Jiran</b> — The Mad Sun-King responsible for the Raids.</li>
+        <li><b>Jiran</b> — The Mad Sun-King responsible for the Red Raids.</li>
         <li><b>Nasadi</b> — Avad’s mother and respected royal figure.</li>
+        <li><b>Itamen</b> - Avad's younger brother and "Sun-King" of the Shadow Carja.</li>
         <li><b>Vanasha</b> — A spy working to stabilize the kingdom.</li>
+        <li><b>Fashav</b> - A Red Raids leader turned Tenakth marshal.</li>
     </ul>
 
 </article>
@@ -6273,7 +6456,7 @@ x
             home to Lowland traditions as old as the river roots.
         </li>
         <li>
-            <b>Scalding Spear</b> — Citadel of the Desert Clan, its walls
+            <b>Scalding Spear</b> — The Stronghold of the Desert Clan, its walls
             burned golden by the relentless sun.
         </li>
         <li>
@@ -6291,13 +6474,116 @@ x
             <b>Regalla</b> — The rebel marshal whose fury nearly split the west in two.
         </li>
         <li>
-            <b>Drakka</b> — A young warrior who embodies the restless fire of his clan.
+            <b>Fashav</b> — The living Bond between Carja and Tenakth after the gruesome Red Raids.
         </li>
         <li>
             <b>Kotallo</b> — The warrior who lost an arm but not his spirit,
             a living symbol of the Tenakth creed: “What is broken can endure.”
         </li>
     </ul>
+
+</article>
+`,
+
+"nora": `
+
+<article id="nora" class="theme-lore">
+
+    <h1 class="title">Nora Tribe</h1>
+
+    <p class="lead">
+        Guardians of the sacred mountains and forested lands, the Nora are a people defined by faith, tradition, and harmony with the natural world. To understand them is to walk among the trees and hear the whispers of the All-Mother carried on the wind.
+    </p>
+
+    <h2 class="section-header">Origins and Beliefs</h2>
+    <p>
+        Long before the lands were shaped by the hands of survivors, the mountains and forests were alive with spirits guiding those who listened. The Nora claim a divine connection to the All-Mother, whose presence dwells within ancient structures scattered throughout their territory.
+    </p>
+
+    <p>
+        Their society is matriarchal, with High Matriarchs guiding spiritual, cultural, and political life. Rituals, festivals, and rites of passage are central to maintaining harmony, teaching youth the values of courage, loyalty, and respect for nature.
+    </p>
+
+    <h2 class="section-header">Daily Life and Practices</h2>
+    <p>
+        Daily life among the Nora revolves around community, survival, and devotion. Hunting, gathering, crafting, and the teaching of essential skills are responsibilities shared by all members. Every action, from the smallest offering to the largest hunt, is performed with reverence for the land and its spirits.
+    </p>
+
+    <p>
+        Children undergo initiation rites marking their transition into adulthood, learning not only survival skills but also the history, rituals, and songs of the tribe. Adults partake in spiritual ceremonies, storytelling, and artistic practices that preserve the tribe’s collective memory and identity.
+    </p>
+
+    <ul>
+        <li>
+            <b>Ritual Offerings</b> — Offerings to the All-Mother ensure harmony with nature and spiritual protection.
+        </li>
+        <li>
+            <b>Oral Histories</b> — Tales of ancestors, legendary hunters, and past Matriarchs are passed down through song and storytelling.
+        </li>
+        <li>
+            <b>Tracking and Hunting</b> — Skills honed from a young age emphasize respect for life and the balance of the ecosystem.
+        </li>
+        <li>
+            <b>Symbolic Tattoos and Marks</b> — Each mark commemorates achievements, lessons learned, or significant life events, creating a living record of a person’s journey.
+        </li>
+        <li>
+            <b>Communal Crafting</b> — The tribe creates weapons, tools, and ceremonial items together, fostering unity and passing knowledge to the next generation.
+        </li>
+
+        <li>
+            <b>The Proving</b> - A trial of courage and loyalty, where the chosen must face the challenges of the world and prove their dedication to the Nora.
+        </li>
+    </ul>
+
+    <h2 class="section-header">Territory and Sacred Sites</h2>
+    <ul>
+        <li>
+            <b>Sacred Land</b> — A forested and mountainous region, home to the tribe and sacred shrines, patrolled and protected rigorously.
+        </li>
+        <li>
+            <b>All-Mother Mountain</b> — The spiritual heart of the Nora, containing ancient structures and sacred sites where the tribe communes with the All-Mother.
+        </li>
+        <li>
+            <b>Hidden Valleys and Forests</b> — Small settlements and ritual sites are dispersed to blend seamlessly with nature and maintain the protection of their people.
+        </li>
+        <li>
+            <b>Ritual Clearing</b> — Open spaces where festivals, seasonal ceremonies, and communal gatherings are held.
+        </li>
+    </ul>
+
+    <h2 class="section-header">Relations with Other Tribes</h2>
+    <p>
+        The Nora maintain a cautious distance from other tribes, particularly those with a reliance on machines or technology. While they have trade and occasional alliances, their focus remains on preserving traditions, spiritual sanctity, and the balance of their environment.
+    </p>
+
+    <p>
+        In times of crisis, however, the tribe has been known to cooperate with outsiders, especially when the All-Mother’s guidance deems it necessary. Such alliances are rare and always approached with caution.
+    </p>
+
+    <h2 class="section-header">Notable Figures</h2>
+    <ul>
+        <li>
+            <b>Aloy</b> — Raised within the tribe, she becomes central to the broader story of the Forbidden West, bridging the old and new worlds.
+        </li>
+        <li>
+            <b>Rost</b> — Mentor and guardian, guiding Aloy in survival, combat, and understanding of the tribe’s traditions.
+        </li>
+        <li>
+            <b>High Matriarchs: Teersa, Lansra, Jezza</b> — Leaders responsible for spiritual guidance, cultural preservation, and governance.
+        </li>
+        <li>
+            <b>Varl</b> — Aloy's companion, a young Nora brave who shares her loyalty and wisdom.
+        </li>
+    </ul>
+
+    <h2 class="section-header">Role in Horizon Forbidden West</h2>
+    <p>
+        While Horizon Forbidden West spans territories far beyond the Sacred Land, the Nora remain a crucial part of Aloy’s journey. Their customs, wisdom, and spiritual guidance provide a foundation for understanding the broader conflicts and the remnants of the Old Ones.
+    </p>
+
+    <p>
+        Through interactions with the Nora, players learn the importance of balance between humanity, technology, and nature, as well as the cost of disregarding tradition and spiritual harmony.
+    </p>
 
 </article>
 `
@@ -6339,10 +6625,10 @@ function showSearchMatches(query) {
   if (['acid', 'freeze', 'fire', 'plasma', 'shock', 'purgewater', 'adhesive'].includes(id)) {
     return 'Element';
   }
-  if (['rost', 'GAIA', 'sun-king avad', 'varl', 'elisabet sobeck'].includes(id)) {
+  if (['rost', 'GAIA', 'sun-king avad', 'varl', 'elisabet sobeck', 'aloy', 'erend', 'kotallo'].includes(id)) {
     return 'Character'; 
   }
-  if (['carja', 'tenakth'].includes(id)) {
+  if (['carja', 'tenakth', 'nora'].includes(id)) {
     return 'Lore';
   }
   return 'Machine';
