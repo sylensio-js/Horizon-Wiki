@@ -2,18 +2,17 @@ const CACHE_NAME = 'forbidden-west-wiki-v2';
 const RUNTIME_CACHE = 'runtime-cache-v1';
 
 const STATIC_ASSETS = [
-  '/Horizon-Wiki/',
-  '/index.html',
-  '/Variables.css',
-  '/global.css',
-  '/header.css',
-  '/home.css',
-  '/articles.css',
-  '/light-theme.css',
-  '/script.js',
-  '/manifest.json',
-  '/icon-192.png',
-  '/icon-512.png',
+  'index.html',
+  'Variables.css',
+  'global.css',
+  'header.css',
+  'home.css',
+  'articles.css',
+  'light-theme.css',
+  'script.js',
+  'manifest.json',
+  'icon-192.png',
+  'icon-512.png',
 ];
 
 const CACHE_STRATEGIES = {
