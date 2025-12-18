@@ -3,7 +3,7 @@ const RUNTIME_CACHE = 'runtime-cache-v1';
 
 const STATIC_ASSETS = [
   '/Horizon-Wiki/index.html',
-  '/Horizon-Wiki/Variables.css',
+  '/Horizon-Wiki/variables.css',
   '/Horizon-Wiki/global.css',
   '/Horizon-Wiki/header.css',
   '/Horizon-Wiki/home.css',
