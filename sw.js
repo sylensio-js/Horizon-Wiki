@@ -2,7 +2,7 @@ const CACHE_NAME = 'forbidden-west-wiki-v2';
 const RUNTIME_CACHE = 'runtime-cache-v1';
 
 const STATIC_ASSETS = [
-  '/',
+  '/Horizon-Wiki/',
   '/index.html',
   '/Variables.css',
   '/global.css',
