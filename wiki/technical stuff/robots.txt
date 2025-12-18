@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sylensio-js.github.io/Horizon-Wiki/sitemap.xml
