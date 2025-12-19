@@ -263,7 +263,7 @@
         return navigator.onLine;
       }
       try {
-        const response = await fetch('/', { method: 'HEAD', cache: 'no-cache' });
+        const response = await fetch('/Horizon-Wiki/', { method: 'HEAD', cache: 'no-cache' });
         return response.ok;
       } catch {
         return false;
