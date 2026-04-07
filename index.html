@@ -75,17 +75,13 @@
       </div>
 
       <div class="search-wrap" role="search">
-        <input id="searchBar" class="search-input" type="search" autocomplete="off" placeholder="Try: Thunderjaw, Frost, GAIA, or 'machines'" aria-label="Search" aria-expanded="false" aria-haspopup="listbox">
+        <input id="searchBar" class="search-input" type="search" autocomplete="off" placeholder="Try: Thunderjaw, Frost, GAIA, or 'machines'" aria-label="Search" aria-expanded="false" aria-haspopup="listbox" title="Press Ctrl+K or Cmd+K to focus search">
         <span class="search-icon" aria-hidden="true">🔍</span>
         <div class="search-loading" id="search-loading" hidden>
           <div class="loading-spinner"></div>
         </div>
         <div id="search-results" class="search-results" role="listbox" aria-label="Search results" hidden></div>
       </div>
-      
-      <button id="compare-toggle" class="compare-toggle" aria-label="Compare machines" title="This tool lets you compare different stats of any two machines, like their class and drops">
-        <span class="compare-icon">⚖️</span>
-      </button>
       
       <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
         <span class="theme-icon">🌙</span>
@@ -200,35 +196,6 @@
       </div>
     </section>
 
-    <!-- COMPARISON TOOL -->
-    <section id="comparison-section" class="comparison-section" hidden>
-      <div class="comparison-header">
-        <h2>Machine Comparison Tool</h2>
-        <button id="close-comparison" class="close-btn">×</button>
-      </div>
-      
-      <div class="machine-selectors">
-        <div class="selector-group">
-          <label for="machine1-input">Machine 1:</label>
-          <div class="machine-search-wrap">
-            <input id="machine1-input" class="machine-search-input" type="text" placeholder="Search for a machine..." autocomplete="off">
-            <div id="machine1-results" class="machine-search-results" hidden></div>
-          </div>
-          <div id="machine1-tabs" class="machine-tabs" role="tablist" hidden></div>
-        </div>
-        <div class="selector-group">
-          <label for="machine2-input">Machine 2:</label>
-          <div class="machine-search-wrap">
-            <input id="machine2-input" class="machine-search-input" type="text" placeholder="Search for a machine..." autocomplete="off">
-            <div id="machine2-results" class="machine-search-results" hidden></div>
-          </div>
-          <div id="machine2-tabs" class="machine-tabs" role="tablist" hidden></div>
-        </div>
-      </div>
-      
-      <div id="comparison-results" class="comparison-results"></div>
-    </section>
-
     <!-- ARTICLE CONTAINER -->
     <div id="article-container" aria-live="polite"></div>
   </main>
@@ -244,6 +211,7 @@
   </button>
 
   <!-- Scripts -->
+  <script src="data/articles.js" defer></script>
   <script src="technical stuff/script.js" defer></script>
   
   <!-- Service Worker Registration -->
@@ -263,7 +231,7 @@
         return navigator.onLine;
       }
       try {
-        const response = await fetch('/Horizon-Wiki/', { method: 'HEAD', cache: 'no-cache' });
+        const response = await fetch('/', { method: 'HEAD', cache: 'no-cache' });
         return response.ok;
       } catch {
         return false;

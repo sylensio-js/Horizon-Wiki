@@ -1,0 +1,20 @@
+{
+  "slitherfang": {
+    "title": "Slitherfang",
+    "type": "Machine",
+    "tags": ["machine", "slitherfang", "combat", "heavyweight"],
+    "file": "machines/slitherfang.json"
+  },
+  "stalker": {
+    "title": "Stalker",
+    "type": "Machine",
+    "tags": ["machine", "stalker", "combat", "lightweight"],
+    "file": "machines/stalker.json"
+  },
+  "thunderjaw": {
+    "title": "Thunderjaw",
+    "type": "Machine",
+    "tags": ["machine", "thunderjaw", "combat", "heavyweight"],
+    "file": "machines/thunderjaw.json"
+  }
+}

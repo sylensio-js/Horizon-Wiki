@@ -212,10 +212,33 @@
   border-radius: var(--radius-md);
   max-height: 320px;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 6px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.04);
   z-index: 3000;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar styling */
+#search-results::-webkit-scrollbar {
+  width: 8px;
+}
+
+#search-results::-webkit-scrollbar-track {
+  background: rgba(16, 24, 34, 0.4);
+  border-radius: 4px;
+}
+
+#search-results::-webkit-scrollbar-thumb {
+  background: rgba(232, 196, 77, 0.3);
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+#search-results::-webkit-scrollbar-thumb:hover {
+  background: rgba(232, 196, 77, 0.5);
 }
 
 #search-results[hidden] {
