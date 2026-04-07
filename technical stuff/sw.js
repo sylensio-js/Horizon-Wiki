@@ -1,19 +1,20 @@
-const CACHE_NAME = 'forbidden-west-wiki-v2';
-const RUNTIME_CACHE = 'runtime-cache-v1';
+const CACHE_NAME = 'forbidden-west-wiki-v3';
+const RUNTIME_CACHE = 'runtime-cache-v2';
 
 const STATIC_ASSETS = [
-  '/',
-  '/index.html',
-  '/css/Variables.css',
-  '/css/global.css',
-  '/css/header.css',
-  '/css/home.css',
-  '/css/articles.css',
-  '/css/light-theme.css',
-  '/technical%20stuff/script.js',
-  '/technical%20stuff/manifest.json',
-  '/images/icon-192.png',
-  '/images/icon-512.png',
+  '/Horizon-Wiki/',
+  '/Horizon-Wiki/index.html',
+  '/Horizon-Wiki/css/Variables.css',
+  '/Horizon-Wiki/css/global.css',
+  '/Horizon-Wiki/css/header.css',
+  '/Horizon-Wiki/css/home.css',
+  '/Horizon-Wiki/css/articles.css',
+  '/Horizon-Wiki/css/light-theme.css',
+  '/Horizon-Wiki/technical stuff/script.js',
+  '/Horizon-Wiki/data/articles.js',
+  '/Horizon-Wiki/technical stuff/manifest.json',
+  '/Horizon-Wiki/images/icon-192.png',
+  '/Horizon-Wiki/images/icon-512.png',
 ];
 
 const CACHE_STRATEGIES = {
@@ -82,8 +83,17 @@ async function handleRequest(request, url) {
 
 async function cacheFirst(request) {
   const cached = await caches.match(request);
-  if (cached) console.log('SW: Cache hit:', request.url);
-  return cached || fetch(request).catch(() => caches.match('/index.html'));
+  if (cached) {
+    console.log('SW: Cache hit:', request.url);
+    return cached;
+  }
+  
+  try {
+    const response = await fetch(request);
+    return response;
+  } catch {
+    return caches.match('/Horizon-Wiki/index.html');
+  }
 }
 
 async function cacheFirstWithRuntime(request) {
@@ -111,7 +121,8 @@ async function networkFirst(request) {
     }
     return response;
   } catch {
-    return caches.match(request) || caches.match('/index.html');
+    const cached = await caches.match(request);
+    return cached || caches.match('/Horizon-Wiki/index.html');
   }
 }
 
@@ -123,7 +134,9 @@ async function staleWhileRevalidate(request) {
       cache.then(c => c.put(request, response.clone()));
     }
     return response;
-  }).catch(() => cached || caches.match('/index.html'));
+  }).catch(async () => {
+    return cached || caches.match('/Horizon-Wiki/index.html');
+  });
 
   return cached || fetchPromise;
 }
