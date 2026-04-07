@@ -227,11 +227,17 @@
     let isOnline = true;
     
     async function checkConnection() {
+      // For localhost testing, just use navigator.onLine
+      if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+        return navigator.onLine;
+      }
+      
       if (location.protocol === 'file:') {
         return navigator.onLine;
       }
+      
       try {
-        const response = await fetch('/', { method: 'HEAD', cache: 'no-cache' });
+        const response = await fetch(location.origin + location.pathname, { method: 'HEAD', cache: 'no-cache' });
         return response.ok;
       } catch {
         return false;
